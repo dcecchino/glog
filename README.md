@@ -1,3 +1,3 @@
 # glog
-graylog content packs
+graylog content packs for
 Graylog Market Place content packs located here 
