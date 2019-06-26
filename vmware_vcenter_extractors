@@ -1,0 +1,440 @@
+{
+  "extractors": [
+    {
+      "title": "VMware Last resort",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 2,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{NUMBER:VMware_EventID}\\]%{GREEDYDATA:message}",
+        "named_captures_only": true
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Vmkernel Throttle error",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)NMP: %{DATA:vmware_throttle_name}:%{DATA:vmware_throttle_proc_id}: Cmd %{DATA:vmware_scsi_cmd_code1} %{DATA:vmware_scsi_cmd_code2} to dev %{DATA:vmware_naa_disk_id} on path \"%{DATA:vmware_hba_id}\" Failed: %{DATA:vmware_scsi_error_code1} Valid sense data: %{DATA:vmware_scsi_error_code2}. Act:NONE"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Vmkernel ResetThrottle error",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)NMP: %{DATA:vmware_throttle_name}:%{DATA:vmware_throttle_proc_id}: Error status %{DATA:vmware_scsi_error_code1} Sense Data: %{DATA:vmware_scsi_error_code2} from dev %{DATA:vmware_naa_disk_id} occurred %{BASE10NUM:vmware_naa_error_index}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Vmkernel Disk error",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)ScsiDeviceIO: %{DATA:vmware_scsi_code1}: %{DATA:vmware_cmd_sn_name} %{DATA:vmware_scsi_error_code1} from world %{DATA:vmware_cmd_5} to dev %{DATA:vmware_naa_disk_id} %{DATA:vmware_cmd_9} %{GREEDYDATA:vmware_scsi_error_code2}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Vmkernel NMP error",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)NMP: %{DATA:vmware_throttle_name}:%{BASE10NUM:vmware_throttle_id}: last error status from device %{DATA:vmware_naa_disk_id } repeated %{BASE10NUM:vmware_naa_error_index}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware SSH Logins",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": ": Accepted keyboard-interactive/pam for %{DATA:username} from %{IPV4} port %{DATA:src_port} %{GREEDYDATA:application_name}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Authentication Failure",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": ": error: %{DATA:application_type}: %{DATA:failure_type} for %{DATA:username} from %{IPV4:ip_address}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "SSH LOGIN PREAUTH",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": ": Connection closed by invalid user %{DATA:username} %{IPV4:ip_address} port %{NUMBER:src_port} "
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware SSH Logins Authentication Failure",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "authentication failure; logname= uid=%{BASE10NUM:vmware_uid_number} euid=%{BASE10NUM:vmware_euid_number} tty=ssh ruser= rhost=%{IPV4:ip_address}  user=%{USERNAME}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Hypervisor Model/Hardware",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} hostd-probe: %{DATA:application_name}\\[%{DATA:application_process_desc}\\] \\[%{DATA:host_probe_message_id}\\] Successfully acquired hardware: %{GREEDYDATA:hypervisor_hardware_model}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Hypervisor Model/Hardware Vmware 5.5 and older",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} hostd-probe: \\[%{DATA:host_probe_message_id}\\] Successfully acquired hardware: %{GREEDYDATA:hypervisor_hardware_model}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Average Device Latency Improved",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)ScsiDeviceIO: %{BASE10NUM:scsi_device_process_id}: Device %{DATA:vmware_naa_disk_id} performance has improved. I/O latency reduced from %{BASE10NUM:previous_avg_device_latency} microseconds to %{BASE16FLOAT:current_avg_device_latency} microseconds."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Average Device Latency Deteriorated",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkwarning: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)WARNING: ScsiDeviceIO: %{BASE10NUM:scsi_device_process_id}: Device %{DATA:vmware_naa_disk_id} performance has deteriorated. I/O latency increased from average value of %{BASE10NUM:previous_avg_device_latency} microseconds to %{BASE16FLOAT:current_avg_device_latency} microseconds."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE 5.5 Version",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "Section for VMware ESX,  %{HOSTNAME} hostd-probe: id=%{BASE16NUM:vmware_process_id}, version=%{DATA:vmware_version}, build=%{BASE16NUM:vmware_build_id}, option=%{GREEDYDATA:vmware_release}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE 6.5 Version",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} hostd-probe: Section for VMware ESX, pid=%{BASE16NUM:vmware_process_id}, version=%{DATA:vmware_version}, build=%{BASE16NUM:vmware_build_id}, option=%{GREEDYDATA:vmware_release}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware Data Path State Down Connectivity Lost ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vobd:%{DATA:application_name} %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}:%{DATA:vmware_storage_path_error} Lost connectivity to storage device %{DATA:vmware_naa_disk_id}. Path %{DATA:vmware_hba_id} is %{DATA:storage_path_state}. Affected datastores:%{GREEDYDATA:datastore}."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Storage Redundancy Degraded",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vobd:  %{DATA:application_name} %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: %{DATA:vmware_storage_path_error} Path redundancy to storage device %{DATA:vmware_naa_disk_id} %{DATA:storage_path_status}. Path %{DATA:vmware_hba_id} is %{DATA:storage_path_state}. Affected datastores:%{GREEDYDATA:datastore}."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware Redundancy Restored",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vobd:%{DATA:application_name} %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}:%{DATA:vmware_storage_path_error} Path redundancy to storage device %{DATA:vmware_naa_disk_id} (%{DATA:datastore}) restored. Path %{DATA:vmware_hba_id} is active again."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware MAC Address disabled",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)NetPort: %{BASE10NUM:net_port_process_id}: %{DATA:vmware_port_status} port %{DATA:vmware_dvs_port_id}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Failed SSH login ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": ": %{DATA:failure_type} keyboard-interactive/pam for invalid user %{DATA:username} from %{IPV4:ip_address} port %{NUMBER:src_port} %{GREEDYDATA:application_name}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware DVS and MAC Address",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)NetPort: %{BASE10NUM:net_port_process_id}: %{DATA:vmware_port_status} port %{DATA:vmware_dvs_port_id} with mac %{GREEDYDATA:vmware_mac_address}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Vmotion Guests",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)Net: %{DATA:vmware_net_proc_id}: %{DATA:connection_state} %{DATA:vmware_guest_name} %{DATA:vmware_ethernet_device} to %{DATA:dvs_switch_id}, portID %{GREEDYDATA:vmware_dvs_port_id}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware Promiscuous Detected ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)etherswitch: L2Sec_EnforcePortCompliance:%{DATA:vmware_l2_process_id}: client %{DATA:vmware_guest_name} requested promiscuous mode on port %{DATA:vmware_dvs_port_id}, disallowed by vswitch policy"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE Login Recorded",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} Hostd: Accepted password for user %{DATA:username} from %{IPV4:ip_address}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "FC STATUS MESSAGE",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:PORT_STATUS_MESSAGE}: %\\$VSAN%{DATA:VSAN_ID}%\\$ Interface %{DATA:FC_PORT_ID} is %{DATA:FC_STATUS} %{GREEDYDATA:FC_STATUS_MESSAGE}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "User Reconfigured Virtual Machine",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] %{DATA:LDAP_username} \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Reconfigured %{DATA:vmware_guest_name} on %{DATA:HOSTNAME} in %{DATA:VCENTER_DATACENTER_ID}."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "BAD Login Vcenter",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Cannot login %{DATA:username}@%{IPV4:ip_address}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VCENTER LOGIN STATUS",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_Application_ID}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[User %{DATA:LDAP_username}@%{IPV4:ip_address} logged in as %{DATA:VCENTER_CLIENT_APPLICATION}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VCENTER DCUI Login Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[User %{DATA:LDAP_username}@%{IPV4:ip_address} logged in as %{DATA:VCENTER_CLIENT_APPLICATION}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VIRTUAL_MACHINE_CPU_MEMORY_STATUS",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[]\\ \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm \\'Virtual machine %{DATA:VMWARE_ALERT} usage' on %{DATA:vmware_guest_name} changed from %{DATA:VMWARE_SEV_LAST} to %{DATA:VMWARE_SEV_CURRENT}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VCENTER SYSTEM STATUS ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[System\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Hardware Sensor Status\\: Processor %{DATA:VCENTER_Hardware_Sensor_Processor_State}, Memory%{DATA:VCENTER_Hardware_Sensor_Memory_State}, Fan %{DATA:VCENTER_Hardware_Sensor_Fan_State}, Voltage %{DATA:VCENTER_Hardware_Sensor_Voltage_State}, Temperature %{DATA:VCENTER_Hardware_Sensor_Temperature_State}, Power %{DATA:VCENTER_Hardware_Sensor_Power_State}, System Board %{DATA:VCENTER_Hardware_Sensor_System_Board_State}, Battery %{DATA:VCENTER_Hardware_Sensor_Battery_State}, Storage %{DATA:VCENTER_Hardware_Sensor_Storage_State}, Other %{DATA:VCENTER_Hardware_Sensor_Other_State}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    }
+  ],
+  "version": "3.0.2"
+}
