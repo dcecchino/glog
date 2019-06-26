@@ -434,6 +434,20 @@
       },
       "condition_type": "none",
       "condition_value": ""
+    },
+      {
+      "title": "VMWARE 6.5 Version with time last started",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} hostd-probe: - time the service was last started, Section for VMware ESX, pid=%{BASE16NUM:vmware_process_id}, version=%{DATA:vmware_version}, build=%{BASE16NUM:vmware_build_id}, option=%{GREEDYDATA:vmware_release}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
     }
   ],
   "version": "3.0.2"
