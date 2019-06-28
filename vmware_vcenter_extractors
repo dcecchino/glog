@@ -435,7 +435,7 @@
       "condition_type": "none",
       "condition_value": ""
     },
-      {
+    {
       "title": "VMWARE 6.5 Version with time last started",
       "extractor_type": "grok",
       "converters": [],
@@ -445,6 +445,34 @@
       "target_field": "",
       "extractor_config": {
         "grok_pattern": "%{HOSTNAME} hostd-probe: - time the service was last started, Section for VMware ESX, pid=%{BASE16NUM:vmware_process_id}, version=%{DATA:vmware_version}, build=%{BASE16NUM:vmware_build_id}, option=%{GREEDYDATA:vmware_release}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE_SHUTDOWN_EXTRACTOR",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)VMKAcpi: %{DATA:vmware_vmkacpi_proc_id}: %{DATA:VMWARE_TASK_ACTION}; %{GREEDYDATA:VMWARE_TASK_EXECUTED}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "HOST AND POWER STATE ALARM",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm 'Host connection and power state' on %{HOSTNAME}"
       },
       "condition_type": "none",
       "condition_value": ""
