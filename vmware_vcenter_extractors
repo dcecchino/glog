@@ -528,7 +528,7 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm 'Cannot connect to storage' on %{DATA:HOSTNAME} triggered by event %{NUMBER:EVENT_PROCESS_ID} 'Path redundancy to storage device %{DATA:vmware_naa_disk_id} degraded. Path %{DATA:vmware_hba_id} is down. Affected datastores: (%{GREEDYDATA:datastore})\\.']"
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[Alarm 'Cannot connect to storage' on %{DATA:HOSTNAME} triggered by event %{NUMBER:EVENT_PROCESS_ID} 'Path redundancy to storage device %{DATA:vmware_naa_disk_id} degraded. Path %{DATA:vmware_hba_id} is down. Affected datastores: (%{GREEDYDATA:datastore})\\.']"
       },
       "condition_type": "none",
       "condition_value": ""
@@ -542,7 +542,21 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{HOSTNAME} vobd:  \\[%{DATA:application_name}\\] %{DATA:vmware_data_id1}: \\[esx.problem.storage.redundancy.lost\\] Lost path redundancy to storage device %{DATA:vmware_naa_disk_id}. Path %{DATA:vmware_hba_id} is down. Affected datastores: %{GREEDYDATA:datastore}\\."
+        "grok_pattern": "%{HOSTNAME} vobd:  \\[%{DATA:application_name}\\] %{DATA:VMware_EventID}: \\[esx.problem.storage.redundancy.lost\\] Lost path redundancy to storage device %{DATA:vmware_naa_disk_id}. Path %{DATA:vmware_hba_id} is down. Affected datastores: %{GREEDYDATA:datastore}\\."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vim.event.EventEx Host hardware sensor state",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[Alarm 'Host hardware sensor state' on %{DATA:HOSTNAME} triggered by event %{DATA:VMware_EventID} 'Sensor %{DATA:sensor_id} type %{DATA:sensor_type}, Description %{GREEDYDATA:part_description} --- %{GREEDYDATA:sensor_number} state %{DATA:sensor_state} . Part %{GREEDYDATA:sensor_part_number} Manufacturer %{GREEDYDATA:sensor_manufacturer}\\']"
       },
       "condition_type": "none",
       "condition_value": ""
