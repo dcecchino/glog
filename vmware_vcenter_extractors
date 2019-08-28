@@ -560,7 +560,35 @@
       },
       "condition_type": "none",
       "condition_value": ""
+    },
+    {
+      "title": "Virtual machine Consolidation Needed",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": " \\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:VMware_EventID}\\] \\[Alarm 'Virtual machine Consolidation Needed status' on %{DATA:vmware_guest_name} changed from %{DATA:VMWARE_SEV_LAST} to %{DATA:VMWARE_SEV_CURRENT}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Virtual machine Consolidation Action",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:VMware_EventID}\\] \\[Alarm 'Virtual machine Consolidation Needed status' on %{DATA:vmware_guest_name}triggered an action\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
     }
   ],
-  "version": "3.0.2"
+  "version": "3.1.0"
 }
