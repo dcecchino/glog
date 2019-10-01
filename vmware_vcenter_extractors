@@ -588,7 +588,21 @@
       },
       "condition_type": "none",
       "condition_value": ""
+    },
+    {
+      "title": "Lost access to volume for datastore outages",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[Lost access to volume %{DATA:vmware_uuid_volume_id} \\(%{GREEDYDATA:datastore}\\) due to connectivity issues. Recovery attempt is in progress and outcome will be reported shortly.]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
     }
   ],
-  "version": "3.1.0"
+  "version": "3.1.2"
 }
