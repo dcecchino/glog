@@ -674,20 +674,6 @@
       "condition_value": ""
     },
     {
-      "title": "EMC VMAX SRP maximum capacity change",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = The SRP maximum capacity has changed to %{BASE16FLOAT:emc_var_srp_max_capacity} GB."
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
       "title": "EMC VMAX device configuration checksum",
       "extractor_type": "grok",
       "converters": [],
@@ -711,6 +697,118 @@
       "target_field": "",
       "extractor_config": {
         "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Array configuration has changed."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX Device state Change",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[Device=%{DATA:emc_var_device_name}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Device state has changed to %{GREEDYDATA:emc_var_device_state}."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX SRP maximum capacity change",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[FastSRP=%{DATA:emc_var_fastsrp_group}\\] \\[sev=%{DATA:emc_var_severity}\\]  = The SRP maximum capacity has changed to %{BASE16FLOAT:emc_var_srp_max_capacity} GB."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cisco NIC Link is Down",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)\\<%{BASE10NUM:vmware_igb_code}\\>igb\\: %{DATA:vmware_nic_id} NIC Link is %{WORD:vmware_nic_status}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cisco Detected Tx Unit Hang",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)\\<%{BASE10NUM:vmware_igb_code}\\>igb\\ %{DATA:vmware_hardware_address}: Detected Tx Unit Hang"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cisco VMNIC and portgroup DOWN",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vobd:  \\[%{DATA:application_name}\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_process_name}\\] Uplink\\: %{DATA:vmware_nic_id} is %{WORD:vmware_nic_status}. Affected portgroup: %{DATA:dvs_switch_id}. %{BASE10NUM:dvs_link_totals} uplinks up. Failed criteria: %{BASE10NUM:vmware_failed_criteria_count}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cisco Vmware Uplink has recovered",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vobd:  \\[%{DATA:application_name}\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_process_name}\\] Uplink %{DATA:vmware_nic_id}has recovered from a transient failure due to watchdog timeout"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cisco Vmware Uplink Watchdog timeout",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vobd:  \\[%{DATA:application_name}\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_process_name}\\] Watchdog timeout occurred for uplink %{DATA:vmware_nic_id}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cisco Network Bug ID Flapping Event Extractor",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)%{DATA:vmware_data_id1}:\\[%{DATA:vmware_data_id2}\\]watchdog_work_cb@com.vmware.driverAPI\\#%{GREEDYDATA:vmware_driver_api_code} stack: %{GREEDYDATA:vmware_driver_stack_err_code}"
       },
       "condition_type": "none",
       "condition_value": ""
