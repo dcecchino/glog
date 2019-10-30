@@ -812,6 +812,20 @@
       },
       "condition_type": "none",
       "condition_value": ""
+    },
+    {
+      "title": "VMWARE disks consolidation is needed",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:application_name}:%{DATA:VCENTER_facility} hostd\\[%{DATA:VCENTER_PROCESS_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID2}\\] Event %{DATA:VMware_EventID}: Virtual machine %{DATA:vmware_guest_name} disks consolidation is needed on %{DATA:vmware_hypervisor_name_current} in cluster %{DATA:vmware_hypervisor_name_current} in ha-datacenter."
+      },
+      "condition_type": "none",
+      "condition_value": ""
     }
   ],
   "version": "3.1.2"
