@@ -16,3 +16,6 @@ Provides Graylog Dashboards for all Hypervisors, Storage performance, DVS Messag
 # /etc/init.d/vmware-fdm restart
 # /etc/init.d/rhttpproxy restart
 # esxcli system syslog reload 
+
+
+TODO list migrate extractors to reg expression
