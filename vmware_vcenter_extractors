@@ -730,6 +730,20 @@
       "condition_value": ""
     },
     {
+      "title": "EMC VMAX Effective used capacity for SRP",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[FastSRP=%{DATA:emc_var_fastsrp_group}\\] \\[sev=%{DATA:emc_var_severity}\\]  = The Effective used capacity for SRP has changed to %{DATA:emc_var_effective_percentage} percent"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
       "title": "Cisco NIC Link is Down",
       "extractor_type": "grok",
       "converters": [],
