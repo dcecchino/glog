@@ -730,20 +730,6 @@
       "condition_value": ""
     },
     {
-      "title": "EMC VMAX Effective used capacity for SRP",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[FastSRP=%{DATA:emc_var_fastsrp_group}\\] \\[sev=%{DATA:emc_var_severity}\\]  = The Effective used capacity for SRP has changed to %{DATA:emc_var_effective_percentage} percent"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
       "title": "Cisco NIC Link is Down",
       "extractor_type": "grok",
       "converters": [],
@@ -840,7 +826,91 @@
       },
       "condition_type": "none",
       "condition_value": ""
+    },
+    {
+      "title": "Vmware Internal Disk Reset potential disk failure",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)lsi_mr3: mfi_TaskMgmt:%{BASE10NUM:task_mgmt_process_id}: Processing taskMgmt virt reset for device: %{GREEDYDATA:vmware_hba_id}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Internal Disk disconnection (disk failure) ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkwarning: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)WARNING: ScsiScan: %{DATA:vmware_scsi_code1}: Failed to add path %{GREEDYDATA:vmware_hba_id} : No connection"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX Effective used capacity for SRP",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[FastSRP=%{DATA:emc_var_fastsrp_group}\\] \\[sev=%{DATA:emc_var_severity}\\]  = The Effective used capacity for SRP has changed to %{DATA:emc_var_effective_percentage} percent"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMAX data device pool is almost full",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Save or data device pool is almost full."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Expired Host License",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}Z\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm 'Expired host license' on %{DATA:HOSTNAME} triggered an action\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware License Key Applied",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}Z\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[\\] \\[\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[License %{DATA:VMWARE_LIC_KEY} assigned to asset %{DATA:HOSTNAME} with id %{DATA:VMWARE_HOST_ID}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
     }
   ],
-  "version": "3.1.2"
+  "version": "3.1.3"
 }
