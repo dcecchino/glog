@@ -910,6 +910,34 @@
       },
       "condition_type": "none",
       "condition_value": ""
+    },
+    {
+      "title": "Vmware Host Lost Connection ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[Host %{DATA:HOSTNAME} in %{DATA:VCENTER_DATACENTER_ID} is not responding\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware guest is disconnected",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[%{DATA:vmware_guest_name} on host %{DATA:HYPERVISOR_NAME} in %{DATA:VCENTER_DATACENTER_ID} is disconnected\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
     }
   ],
   "version": "3.1.3"
