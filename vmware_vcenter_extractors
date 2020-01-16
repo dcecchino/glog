@@ -938,7 +938,35 @@
       },
       "condition_type": "none",
       "condition_value": ""
+    },
+    {
+      "title": "affinity  rule violated",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[%{DATA:vmware_guest_name} on %{DATA:HYPERVISOR_NAME} in %{DATA:VCENTER_DATACENTER_ID} is violating a DRS VM-Host %{GREEDYDATA:affinity_rule_type} rule\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Rename Datastore Event ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id} opID=%{DATA:vmware_process_id}\\)%{DATA:vmware_vol_name}\\: %{DATA:vmware_vol_id}\\: \\'%{DATA:datastore}\\' \\(FS %{DATA:vmware_filesys_id}\\)\\: FS rename %{DATA:vmware_fs_rename_status}, was %{GREEDYDATA:datastore_previously_named}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
     }
   ],
-  "version": "3.1.3"
+  "version": "3.1.4"
 }
