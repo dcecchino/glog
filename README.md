@@ -6,7 +6,7 @@ Provides Graylog Dashboards for all Hypervisors, Storage performance, DVS Messag
 3. Make sure you point your syslog for both hypervisors and vcenters, start receiving your data. View the Vmware Dashboard. 
 4. Wait for your data to start coming in. 
 
-# Tune your syslog configuration via ssh 
+# Tune your esxi syslog configuration via ssh 
 # sed -i 's/verbose/error/g' /etc/vmware/rhttpproxy/config.xml 
 # sed -i 's/verbose/error/g' /etc/opt/vmware/fdm/fdm.cfg  
 # sed -i 's/info/error/g' /etc/vmware/hostd/probe-config.xml
