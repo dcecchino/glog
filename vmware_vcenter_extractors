@@ -1036,6 +1036,230 @@
       },
       "condition_type": "none",
       "condition_value": ""
+    },
+    {
+      "title": "VMWARE Waiting for host to reboot",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Waiting for host %{DATA:HYPERVISOR_NAME} to %{DATA:vmware_task_executed}.\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware DRS initiated migration ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[DRS migrated %{DATA:vmware_guest_name} from %{DATA:vmware_hypervisor_name_previous} to %{DATA:HYPERVISOR_NAME} in cluster %{DATA:VCENTER_DATACENTER_CLUSTER_ID} in %{DATA:VCENTER_DATACENTER_ID}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "DVS Port Connection Status",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[The dvPort %{DATA:dvs_port_id} was %{DATA:vmware_dvs_status} in the vSphere Distributed Switch %{DATA:vmware_dvs_switch_name} in %{DATA:VCENTER_DATACENTER_ID}.\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Guest OS Shutdown Initiated",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": " \\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[Guest OS shut down for %{DATA:vmware_guest_name} on %{DATA:HYPERVISOR_NAME} in %{DATA:VCENTER_DATACENTER_ID}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE guest removed from Cluster",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Removed %{DATA:vmware_guest_name} on %{DATA:HYPERVISOR_NAME} from%{DATA:VCENTER_DATACENTER_ID}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Shut down of Hypervisor",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Shut down of %{DATA:HYPERVISOR_NAME} in %{DATA:VCENTER_DATACENTER_ID}\\: \\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Cisco FNIC HBA BUG VM 2149522 / CS CSCva47085 ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)\\<%{DATA:fnic_number}\\>fnic : %{DATA:fnic_id}:: %{GREEDYDATA:hdr_event_name}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+       {
+      "title": "vim.event.EventEx performance has improved",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[]\\ \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Device %{DATA:vmware_naa_disk_id} performance has improved. I/O latency reduced from %{BASE10NUM:previous_avg_device_latency} microseconds to %{BASE16FLOAT:current_avg_device_latency} microseconds.\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware vSphere Update Manager Check ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:application_subprocess}\\] \\[\\] \\[%{DATA:VMware_EventID}\\] \\[Task %{GREEDYDATA:vmware_task_executed}in datacenter  completed successfully\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Lost access to volume for datastore outages RECOVERY",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[Successfully restored access to volume %{DATA:vmware_uuid_volume_id} \\(%{DATA:datastore}\\) following connectivity issues.\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "I/O unmanaged workload is detected SIOC",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[%{DATA:vmware_task_executed}\\: %{DATA:datastore}.\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Recommendations on datastore applied",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[%{DATA:vmware_task_executed} cluster %{DATA:datastore_cluster_id} were applied\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware Alarm Host connection and power state email",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm '%{DATA:VMWARE_ALARM_TYPE}' on %{DATA:HOSTNAME} sent email to %{DATA:vmware_email_sendto}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE Alarm 'Host connection failure",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[Alarm '%{DATA:VMWARE_ALARM_TYPE}' on %{DATA:HYPERVISOR_NAME} triggered by event %{DATA:vmware_trigger_id} 'Host %{DATA:HYPERVISOR_NAME} in %{DATA:VCENTER_DATACENTER_ID} is %{DATA:vmware_connection_state}'\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE VMs disconnected",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[%{DATA:vmware_guest_name} on host %{DATA:HYPERVISOR_NAME} in %{DATA:VCENTER_DATACENTER_ID} is %{DATA:vmware_connection_state}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE Host connection and power state Severity",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm '%{DATA:VMWARE_ALARM_TYPE}' on %{DATA:HYPERVISOR_NAME} changed from %{DATA:VMWARE_SEV_LAST} to %{DATA:VMWARE_SEV_CURRENT}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
     }
   ],
   "version": "3.1.4"
