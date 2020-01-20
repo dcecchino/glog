@@ -1135,21 +1135,7 @@
       "condition_type": "none",
       "condition_value": ""
     },
-    {
-      "title": "Extract NAA disk ID",
-      "extractor_type": "lookup_table",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "vmware_naa_disk_id",
-      "target_field": "datastore",
-      "extractor_config": {
-        "lookup_table_name": "disk_name"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
+      {
       "title": "vim.event.EventEx performance has improved",
       "extractor_type": "grok",
       "converters": [],
