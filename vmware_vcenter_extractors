@@ -1256,7 +1256,7 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm '%{DATA:VMWARE_ALARM_TYPE}' on %{DATA:HYPERVISOR_NAME} changed from %{DATA:VMWARE_SEV_LAST} to %{DATA:VMWARE_SEV_CURRENT}\\]"
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm '%{DATA:VMWARE_ALARM_TYPE}' on %{DATA:vmware_vcenter_entity} changed from %{DATA:VMWARE_SEV_LAST} to %{DATA:VMWARE_SEV_CURRENT}\\]"
       },
       "condition_type": "none",
       "condition_value": ""
