@@ -12,7 +12,7 @@ Provides Graylog Dashboards for all Hypervisors, Storage performance, DVS Messag
 # sed -i 's/verbose/error/g' /etc/vmware/rhttpproxy/config.xml 
 # sed -i 's/verbose/error/g' /etc/opt/vmware/fdm/fdm.cfg  
 # sed -i 's/info/error/g' /etc/vmware/hostd/probe-config.xml
-# esxcli system syslog config set --loghost='udp://10.64.218.225:514'
+# esxcli system syslog config set --loghost='udp://youriphere:514'
 # esxcli network firewall ruleset set --ruleset-id=syslog --enabled=true
 # esxcli network firewall refresh
 # /etc/init.d/vmware-fdm restart
