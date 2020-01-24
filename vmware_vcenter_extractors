@@ -156,34 +156,6 @@
       "condition_value": ""
     },
     {
-      "title": "Vmware Average Device Latency Improved",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)ScsiDeviceIO: %{BASE10NUM:scsi_device_process_id}: Device %{DATA:vmware_naa_disk_id} performance has improved. I/O latency reduced from %{BASE10NUM:previous_avg_device_latency} microseconds to %{BASE16FLOAT:current_avg_device_latency} microseconds."
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
-      "title": "Vmware Average Device Latency Deteriorated",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{HOSTNAME} vmkwarning: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)WARNING: ScsiDeviceIO: %{BASE10NUM:scsi_device_process_id}: Device %{DATA:vmware_naa_disk_id} performance has deteriorated. I/O latency increased from average value of %{BASE10NUM:previous_avg_device_latency} microseconds to %{BASE16FLOAT:current_avg_device_latency} microseconds."
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
       "title": "VMWARE 5.5 Version",
       "extractor_type": "grok",
       "converters": [],
@@ -464,20 +436,6 @@
       "condition_value": ""
     },
     {
-      "title": "HOST AND POWER STATE ALARM",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm 'Host connection and power state' on %{HOSTNAME}"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
       "title": "Migration Completed",
       "extractor_type": "grok",
       "converters": [],
@@ -501,20 +459,6 @@
       "target_field": "",
       "extractor_config": {
         "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[]\\ \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm 'Host memory usage' on %{HOSTNAME} changed from %{DATA:VMWARE_SEV_LAST} to %{DATA:VMWARE_SEV_CURRENT}\\]"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
-      "title": "Host Memory Alarm",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[]\\ \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm 'Host Memory' on %{HOSTNAME} changed from %{DATA:VMWARE_SEV_LAST} to %{DATA:VMWARE_SEV_CURRENT}\\]"
       },
       "condition_type": "none",
       "condition_value": ""
@@ -1135,20 +1079,7 @@
       "condition_type": "none",
       "condition_value": ""
     },
-      {
-      "title": "vim.event.EventEx performance has improved",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[]\\ \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Device %{DATA:vmware_naa_disk_id} performance has improved. I/O latency reduced from %{BASE10NUM:previous_avg_device_latency} microseconds to %{BASE16FLOAT:current_avg_device_latency} microseconds.\\]"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
+  
     {
       "title": "VMware vSphere Update Manager Check ",
       "extractor_type": "grok",
@@ -1257,6 +1188,216 @@
       "target_field": "",
       "extractor_config": {
         "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm '%{DATA:VMWARE_ALARM_TYPE}' on %{DATA:HYP_OR_VM_NAME} changed from %{DATA:VMWARE_SEV_LAST} to %{DATA:VMWARE_SEV_CURRENT}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE detected non-vi workload (VOBD)",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:application_name}\\:  \\[%{DATA:vmware_process_name}\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_event_name}\\] Detected a non vi workload on datastore %{GREEDYDATA:datastore}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE unsupported external IO activity is detected",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:application_name}\\:  \\[%{DATA:vmware_process_name}\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_event_name}\\] An external IO activity is detected on datastore %{DATA:datastore}, this is an unsupported configuration. Please consult IO Resource Management Documentation or follow the Ask VMware link for more information."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware netCorrelator link status",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:application_name}\\:  \\[%{DATA:vmware_process_name}\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_event_name}\\] vmnic %{DATA:vmware_nic_id} linkstate %{GREEDYDATA:vmware_nic_status}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware Physical Link is down",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:application_name}\\:  \\[%{DATA:vmware_process_name}\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_event_name}\\] Physical NIC %{DATA:vmware_nic_id} linkstate is %{GREEDYDATA:vmware_nic_status}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware scratch partition warning",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:application_name}\\:  \\[%{DATA:vmware_process_name}\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_event_name}\\] Size of scratch partition %{DATA:vmware_uuid_volume_id} is too small. Recommended scratch partition size is %{DATA:recommended_scratch_size} MiB."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Heartbeat Datastore Recovered (VOBD)",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:application_name}\\:  \\[vmfsCorrelator\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_event_name}\\] %{DATA:vmware_uuid_volume_id} %{GREEDYDATA:datastore}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware NMI cpu event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:application_name}\\:  \\[%{DATA:vmware_process_name}\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_event_name}\\] NMI IPI\\: eip\\(base\\)\\:ebp\\:cs \\[%{DATA:vmware_eip_code_1}\\(%{DATA:vmware_eip_code_2}\\)\\:%{DATA:vmware_eip_code_3}\\] \\(Src %{DATA:vmware_cpu_code_4}\\, %{DATA:cpu_id}\\)"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE NMI Alarm",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[Alarm '%{DATA:VMWARE_ALARM_TYPE}' on %{HOSTNAME} triggered by event %{DATA:vmware_trigger_id} 'Issue detected on %{HOSTNAME} in %{DATA:VCENTER_DATACENTER_ID}\\: NMI: 709: NMI IPI received. Was eip\\(base\\)\\:ebp\\:cs \\[%{DATA:vmware_eip_code_1}\\(%{DATA:vmware_eip_code_2}\\)\\:%{DATA:vmware_eip_code_3}\\]\\(%{DATA:vmware_cpu_code_4}\\, %{DATA:cpu_id}\\)"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "HOST AND POWER STATE ALARM",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm '%{DATA:VMWARE_ALARM_TYPE}' on %{HOSTNAME}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Host Memory Alarm",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[]\\ \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm '{DATA:VMWARE_ALARM_TYPE}' on %{HOSTNAME} changed from %{DATA:VMWARE_SEV_LAST} to %{DATA:VMWARE_SEV_CURRENT}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "ScsiCorrelator Performance Latency",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:application_name}\\:  \\[%{DATA:vmware_process_name}\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_event_name}\\] Device %{DATA:vmware_naa_disk_id} performance has %{DATA:scsi_performance_status}. I/O latency reduced from %{BASE10NUM:previous_avg_device_latency} microseconds to %{BASE16FLOAT:current_avg_device_latency} microseconds\\."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Average Device Latency Improved",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)ScsiDeviceIO: %{BASE10NUM:scsi_device_process_id}: Device %{DATA:vmware_naa_disk_id} performance has %{DATA:scsi_performance_status}. I/O latency reduced from %{BASE10NUM:previous_avg_device_latency} microseconds to %{BASE16FLOAT:current_avg_device_latency} microseconds."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Average Device Latency Deteriorated",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkwarning: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)WARNING: ScsiDeviceIO: %{BASE10NUM:scsi_device_process_id}: Device %{DATA:vmware_naa_disk_id} performance has %{DATA:scsi_performance_status}. I/O latency increased from average value of %{BASE10NUM:previous_avg_device_latency} microseconds to %{BASE16FLOAT:current_avg_device_latency} microseconds."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vim.event.EventEx performance",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[]\\ \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Device %{DATA:vmware_naa_disk_id} performance has %{DATA:scsi_performance_status}. I/O latency increased from average value of %{BASE10NUM:previous_avg_device_latency} microseconds to %{BASE16FLOAT:current_avg_device_latency} microseconds.\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vim.event.EventEx performance has improved",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[]\\ \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Device %{DATA:vmware_naa_disk_id} performance has %{DATA:scsi_performance_status}. I/O latency reduced from %{BASE10NUM:previous_avg_device_latency} microseconds to %{BASE16FLOAT:current_avg_device_latency} microseconds.\\]"
       },
       "condition_type": "none",
       "condition_value": ""
