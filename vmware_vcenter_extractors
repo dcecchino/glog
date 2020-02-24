@@ -1079,7 +1079,6 @@
       "condition_type": "none",
       "condition_value": ""
     },
-  
     {
       "title": "VMware vSphere Update Manager Check ",
       "extractor_type": "grok",
@@ -1319,20 +1318,6 @@
       "condition_value": ""
     },
     {
-      "title": "Host Memory Alarm",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[]\\ \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm '{DATA:VMWARE_ALARM_TYPE}' on %{HOSTNAME} changed from %{DATA:VMWARE_SEV_LAST} to %{DATA:VMWARE_SEV_CURRENT}\\]"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
       "title": "ScsiCorrelator Performance Latency",
       "extractor_type": "grok",
       "converters": [],
@@ -1401,7 +1386,120 @@
       },
       "condition_type": "none",
       "condition_value": ""
+    },
+        
+    {
+      "title": "Host Memory Alarm",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[]\\ \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm '%{DATA:VMWARE_ALARM_TYPE}' on %{HOSTNAME} changed from %{DATA:VMWARE_SEV_LAST} to %{DATA:VMWARE_SEV_CURRENT}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware device detected to be a snapshot",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id} opID=%{DATA:vmware operation ID}\\)LVM\\: %{BASE10NUM:vmware_lvm_id}\\: Device %{DATA:vmware_naa_disk_id} detected to be a snapshot\\:"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VmBeingHotMigratedEvent Vmware",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Migrating %{DATA:vmware_guest_name} from %{DATA:vmware_hypervisor_name_previous}, %{DATA:vmware_migrated_datastore_previous} to %{DATA:vmware_hypervisor_name_current}, %{DATA:vmware_migrated_datastore_current} in %{DATA:VCENTER_DATACENTER_ID}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware HostSyncFailedEvent Error communicating with remote host ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[]\\ \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Cannot synchronize host %{DATA:HOSTNAME}. An error occurred while communicating with the remote host.\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmotion Datastore migrating off",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Migrating %{DATA:vmware_guest_name} off host %{DATA:HOSTNAME} in %{DATA:VCENTER_DATACENTER_ID}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Receive process state",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:VMware_action} %{DATA:vmware_action_type} to get %{DATA:VMware_service} state for %{DATA:vmware_process_name}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Executing OP API Health",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "Executing op API_HEALTH on service %{DATA:vmware_process_name}\\."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Service State ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "Skip service %{DATA:vmware_process_name} health check. State %{DATA:vmware_service_state}, Curr request 0"
+      },
+      "condition_type": "none",
+      "condition_value": ""
     }
   ],
-  "version": "3.1.4"
+  "version": "3.2.2"
 }
