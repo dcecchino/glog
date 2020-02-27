@@ -1387,7 +1387,7 @@
       "condition_type": "none",
       "condition_value": ""
     },
-        
+    
     {
       "title": "Host Memory Alarm",
       "extractor_type": "grok",
@@ -1429,7 +1429,7 @@
       },
       "condition_type": "none",
       "condition_value": ""
-    },
+        },
     {
       "title": "VMware HostSyncFailedEvent Error communicating with remote host ",
       "extractor_type": "grok",
@@ -1496,6 +1496,76 @@
       "target_field": "",
       "extractor_config": {
         "grok_pattern": "Skip service %{DATA:vmware_process_name} health check. State %{DATA:vmware_service_state}, Curr request 0"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Virtual Machine State stop/start",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] %{DATA:LDAP_username} \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[%{DATA:vmware_guest_name} on host %{DATA:HOSTNAME} in %{DATA:VCENTER_DATACENTER_ID} is %{DATA:vmware_service_state}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "hostd-probe message",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\------\\ Early init logs Z %{DATA:HOSTNAME} %{DATA:application_name}\\: d   --------"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMAX item has changed ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = %{DATA:VMAX_quick_config} has changed"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMAX license has changed",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[License=%{DATA:vmax_license}\\] \\[sev=%{DATA:emc_var_severity}\\]  = %{DATA:VMAX_quick_config} License has changed"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "SDRS maintenance mode",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Datastore %{DATA:datastore} is %{DATA:vmware_task_executed}\\]"
       },
       "condition_type": "none",
       "condition_value": ""
