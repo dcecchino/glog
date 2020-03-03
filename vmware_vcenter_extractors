@@ -122,7 +122,7 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "authentication failure; logname= uid=%{BASE10NUM:vmware_uid_number} euid=%{BASE10NUM:vmware_euid_number} tty=ssh ruser= rhost=%{IPV4:ip_address}  user=%{USERNAME}"
+        "grok_pattern": "authentication failure; logname= uid=%{BASE10NUM:vmware_uid_number} euid=%{BASE10NUM:vmware_euid_number} tty=ssh ruser= rhost=%{IPV4:ip_address}  user=%{username}"
       },
       "condition_type": "none",
       "condition_value": ""
@@ -332,7 +332,7 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] %{DATA:LDAP_username} \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Reconfigured %{DATA:vmware_guest_name} on %{DATA:HOSTNAME} in %{DATA:VCENTER_DATACENTER_ID}."
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] %{DATA:username} \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Reconfigured %{DATA:vmware_guest_name} on %{DATA:HOSTNAME} in %{DATA:VCENTER_DATACENTER_ID}."
       },
       "condition_type": "none",
       "condition_value": ""
@@ -360,7 +360,7 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_Application_ID}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[User %{DATA:LDAP_username}@%{IPV4:ip_address} logged in as %{DATA:VCENTER_CLIENT_APPLICATION}\\]"
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_Application_ID}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[User %{DATA:username}@%{IPV4:ip_address} logged in as %{DATA:VCENTER_CLIENT_APPLICATION}\\]"
       },
       "condition_type": "none",
       "condition_value": ""
@@ -374,7 +374,7 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[User %{DATA:LDAP_username}@%{IPV4:ip_address} logged in as %{DATA:VCENTER_CLIENT_APPLICATION}\\]"
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[User %{DATA:username}@%{IPV4:ip_address} logged in as %{DATA:VCENTER_CLIENT_APPLICATION}\\]"
       },
       "condition_type": "none",
       "condition_value": ""
@@ -1341,7 +1341,7 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] %{DATA:LDAP_username} \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[%{DATA:vmware_guest_name} on host %{DATA:HOSTNAME} in %{DATA:VCENTER_DATACENTER_ID} is %{DATA:vmware_service_state}\\]"
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] %{DATA:username} \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[%{DATA:vmware_guest_name} on host %{DATA:HOSTNAME} in %{DATA:VCENTER_DATACENTER_ID} is %{DATA:vmware_service_state}\\]"
       },
       "condition_type": "none",
       "condition_value": ""
