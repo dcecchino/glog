@@ -1,1 +1,3461 @@
-{"id":"01d276e6-02ab-4919-980f-5af7ee3b36e5","rev":4,"v":"1","name":"VMware ","summary":"Content back for Vmware 5.5, 6.5, and 6.7","description":"","vendor":"David Cecchino ","url":"","created_at":"2019-11-13T03:01:14.564Z","server_version":"3.1.3+cda805f","parameters":[],"entities":[{"id":"9bd13121-8a7f-45ae-89a5-c45dbc65c89b","type":{"name":"dashboard","version":"1"},"v":"1","data":{"title":{"@type":"string","@value":"EMC Storage Dashboard"},"description":{"@type":"string","@value":"VMAX "},"widgets":[{"id":{"@type":"string","@value":"dfeb9398-baf9-4fab-a873-37478c9d58d8"},"description":{"@type":"string","@value":"Recent Disk Pool Changes Last 1 Day"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":86400}},"configuration":{"query":{"@type":"string","@value":"\"Data Pool configuration has changed\""},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":86400}},"stacked_fields":{"@type":"string","@value":"emc_diskpool_id"},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"emc_vmax_id"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":4},"height":{"@type":"integer","@value":3},"row":{"@type":"integer","@value":4},"col":{"@type":"integer","@value":3}}},{"id":{"@type":"string","@value":"622689a1-20b2-4d5b-8fad-b227f9f2a4dc"},"description":{"@type":"string","@value":"Last Day VMAX Disk Pool utilization"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":432000}},"configuration":{"query":{"@type":"string","@value":"\"Data Pool utilization is now\""},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":432000}},"stacked_fields":{"@type":"string","@value":"emc_diskpool_id,emc_var_data_pool_utilization"},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"emc_vmax_id"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":2},"height":{"@type":"integer","@value":2},"row":{"@type":"integer","@value":1},"col":{"@type":"integer","@value":1}}},{"id":{"@type":"string","@value":"ecf43c85-1de8-40c7-883e-fcb0fec5fdd3"},"description":{"@type":"string","@value":"Fiber Channel Switch Port Failures Last 1 day"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":86400}},"configuration":{"query":{"@type":"string","@value":"DOWN AND Interface "},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":86400}},"stacked_fields":{"@type":"string","@value":"PORT_STATUS_MESSAGE,FC_PORT_ID,FC_STATUS_MESSAGE,VSAN_ID"},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"source"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":4},"height":{"@type":"integer","@value":3},"row":{"@type":"integer","@value":1},"col":{"@type":"integer","@value":3}}}]},"constraints":[{"type":"server-version","version":">=3.1.3+cda805f"}]},{"id":"f158b120-d2d2-4593-92dc-c92dfa1cfd73","type":{"name":"dashboard","version":"1"},"v":"1","data":{"title":{"@type":"string","@value":"VMware Dashboard"},"description":{"@type":"string","@value":"Infrastructure Data"},"widgets":[{"id":{"@type":"string","@value":"bec4e1a0-c5c8-4206-b7c2-a2919037ba71"},"description":{"@type":"string","@value":"Last 7 days DVS Network Messages"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":604800}},"configuration":{"query":{"@type":"string","@value":""},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":604800}},"stacked_fields":{"@type":"string","@value":""},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"dvs_switch_id"},"stream_id":{"@type":"string","@value":"9472b5dd-c78b-494d-b517-a17e27088cf8"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":6},"height":{"@type":"integer","@value":3},"row":{"@type":"integer","@value":37},"col":{"@type":"integer","@value":1}}},{"id":{"@type":"string","@value":"eb9b5417-699a-468f-954b-0af87e92a83d"},"description":{"@type":"string","@value":"Path/Lost Storage Connectivity last 30 days"},"type":{"@type":"string","@value":"SEARCH_RESULT_CHART"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":2592000}},"configuration":{"interval":{"@type":"string","@value":"hour"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":2592000}},"query":{"@type":"string","@value":"\"Path redundancy to storage device\" OR \"Lost connectivity to storage device\" NOT \"active\""}},"position":{"width":{"@type":"integer","@value":6},"height":{"@type":"integer","@value":2},"row":{"@type":"integer","@value":14},"col":{"@type":"integer","@value":1}}},{"id":{"@type":"string","@value":"51ee5c20-032e-4fd9-95bf-558e29b8a193"},"description":{"@type":"string","@value":"VMware Recent Changes in the Last 2 days"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":172800}},"configuration":{"query":{"@type":"string","@value":"application_name:vim.event.VmReconfiguredEvent"},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":172800}},"stacked_fields":{"@type":"string","@value":"vmware_guest_name,username,HOSTNAME"},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"application_name"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":6},"height":{"@type":"integer","@value":2},"row":{"@type":"integer","@value":53},"col":{"@type":"integer","@value":1}}},{"id":{"@type":"string","@value":"bf8e263f-77ca-456a-b230-8ed002aea2d4"},"description":{"@type":"string","@value":"VMware version check'd in Last 5 minutes"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":300}},"configuration":{"query":{"@type":"string","@value":"hostd-probe AND \"for VMware\" OR time"},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":300}},"stacked_fields":{"@type":"string","@value":""},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"vmware_version"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":2},"height":{"@type":"integer","@value":2},"row":{"@type":"integer","@value":4},"col":{"@type":"integer","@value":1}}},{"id":{"@type":"string","@value":"1a2e8a2f-5f9f-473e-b359-764d8b1541c7"},"description":{"@type":"string","@value":"Quick values - Cisco/Vmware Network Flap/bug events"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":86400}},"configuration":{"query":{"@type":"string","@value":"\"watchdog_work_cb\" AND \"0x410800000d9\" "},"show_pie_chart":{"@type":"boolean","@value":true},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":86400}},"stacked_fields":{"@type":"string","@value":"timestamp"},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"source"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":4},"height":{"@type":"integer","@value":4},"row":{"@type":"integer","@value":6},"col":{"@type":"integer","@value":3}}},{"id":{"@type":"string","@value":"8229f2da-e18e-4bc6-a706-daf6b8827f8a"},"description":{"@type":"string","@value":"Last successful logins past 2 hours"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":7200}},"configuration":{"query":{"@type":"string","@value":""},"show_pie_chart":{"@type":"boolean","@value":true},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":7200}},"stacked_fields":{"@type":"string","@value":"ip_address"},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"username"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":3},"height":{"@type":"integer","@value":5},"row":{"@type":"integer","@value":45},"col":{"@type":"integer","@value":4}}},{"id":{"@type":"string","@value":"26b6f5dd-b015-4864-a22b-8516d763b9e4"},"description":{"@type":"string","@value":"Top LDAP/Vmware Users Last Day"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":86400}},"configuration":{"query":{"@type":"string","@value":"NOT root AND NOT DCUI"},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":86400}},"stacked_fields":{"@type":"string","@value":""},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"username"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":6},"height":{"@type":"integer","@value":3},"row":{"@type":"integer","@value":50},"col":{"@type":"integer","@value":1}}},{"id":{"@type":"string","@value":"e5c39969-23b0-42d8-97dd-66c5ee126bc1"},"description":{"@type":"string","@value":"Vmware  Hypervisors rebooted in last 30 days"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":2592000}},"configuration":{"query":{"@type":"string","@value":"shutdown"},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":2592000}},"stacked_fields":{"@type":"string","@value":"VMWARE_TASK_ACTION,VMWARE_TASK_EXECUTED"},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"HOSTNAME"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":6},"height":{"@type":"integer","@value":4},"row":{"@type":"integer","@value":55},"col":{"@type":"integer","@value":1}}},{"id":{"@type":"string","@value":"50101e48-bdc1-4eeb-b836-bdbc004badb9"},"description":{"@type":"string","@value":"Storage device performance last 30 minutes deteriorated"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":1800}},"configuration":{"query":{"@type":"string","@value":"\"performance has deteriorated\""},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":1800}},"stacked_fields":{"@type":"string","@value":""},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"vmware_naa_disk_id"},"stream_id":{"@type":"string","@value":"b2589175-8b02-450a-a06e-494ac1bdf533"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":4},"height":{"@type":"integer","@value":2},"row":{"@type":"integer","@value":1},"col":{"@type":"integer","@value":3}}},{"id":{"@type":"string","@value":"94460dc7-5987-4c0c-a976-9d2f1412a3ce"},"description":{"@type":"string","@value":"Memory/CPU Alerts last 8 Hours Severity"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":28800}},"configuration":{"query":{"@type":"string","@value":"Virtual Machine"},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":28800}},"stacked_fields":{"@type":"string","@value":"VCENTER_DATACENTER_ID,vmware_guest_name,VMWARE_SEV_LAST"},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"VMWARE_ALERT"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":6},"height":{"@type":"integer","@value":4},"row":{"@type":"integer","@value":23},"col":{"@type":"integer","@value":1}}},{"id":{"@type":"string","@value":"6e410b1d-7d89-47cb-bcf8-74ef7bacd833"},"description":{"@type":"string","@value":"Last 8 hours Vmware vmotions"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":28800}},"configuration":{"query":{"@type":"string","@value":"connected"},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":28800}},"stacked_fields":{"@type":"string","@value":""},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"vmware_guest_name"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":15}},"position":{"width":{"@type":"integer","@value":6},"height":{"@type":"integer","@value":4},"row":{"@type":"integer","@value":30},"col":{"@type":"integer","@value":1}}},{"id":{"@type":"string","@value":"1dfdfee1-aaac-4777-81fc-1865804fd401"},"description":{"@type":"string","@value":"Last 8 hours Vmotions to Datastores"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":28800}},"configuration":{"query":{"@type":"string","@value":"\"migration\""},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":28800}},"stacked_fields":{"@type":"string","@value":"source,vmware_guest_name,vmware_migrated_datastore_current,timestamp"},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"VCENTER_DATACENTER_ID"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":6},"height":{"@type":"integer","@value":3},"row":{"@type":"integer","@value":34},"col":{"@type":"integer","@value":1}}},{"id":{"@type":"string","@value":"33063bdb-32e7-4a30-a65c-1f694f8712aa"},"description":{"@type":"string","@value":"Last 2 hours Guests attempting network sniffing"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":7200}},"configuration":{"query":{"@type":"string","@value":"disallowed"},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":7200}},"stacked_fields":{"@type":"string","@value":""},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"vmware_guest_name"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":6},"height":{"@type":"integer","@value":2},"row":{"@type":"integer","@value":43},"col":{"@type":"integer","@value":1}}},{"id":{"@type":"string","@value":"311ec18a-ad7b-438b-ad8d-8047f6b1ccdb"},"description":{"@type":"string","@value":"# of Hypervisor last 5 minutes"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":300}},"configuration":{"query":{"@type":"string","@value":"Successfully Acquired"},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":300}},"stacked_fields":{"@type":"string","@value":""},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"hypervisor_hardware_model"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":2},"height":{"@type":"integer","@value":3},"row":{"@type":"integer","@value":1},"col":{"@type":"integer","@value":1}}},{"id":{"@type":"string","@value":"f72b67e8-e71c-4f3a-acd2-1f3adcb79a6b"},"description":{"@type":"string","@value":"VMware Port Group to Hypervisor"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":1800}},"configuration":{"query":{"@type":"string","@value":"connected AND connection_state:connected "},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":1800}},"stacked_fields":{"@type":"string","@value":"vmware_guest_name,HOSTNAME"},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"vmware_dvs_port_id"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":3},"height":{"@type":"integer","@value":3},"row":{"@type":"integer","@value":40},"col":{"@type":"integer","@value":4}}},{"id":{"@type":"string","@value":"b7878120-c189-4fc0-8ad1-8d03ebb3cf7e"},"description":{"@type":"string","@value":"Physical Host Memory Alarm last 2 hours"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":7200}},"configuration":{"query":{"@type":"string","@value":"\"Host Memory\" OR \"VMWARE_SEV_CURRENT:yellow\" OR \"VMWARE_SEV_CURRENT:red\""},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":7200}},"stacked_fields":{"@type":"string","@value":"timestamp,VMWARE_SEV_CURRENT"},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"HOSTNAME"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":6},"height":{"@type":"integer","@value":3},"row":{"@type":"integer","@value":27},"col":{"@type":"integer","@value":1}}},{"id":{"@type":"string","@value":"0a002499-8546-4723-a408-5973ddd33664"},"description":{"@type":"string","@value":"Host / Device Performance Issue last day"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":86400}},"configuration":{"query":{"@type":"string","@value":"\"performance has deteriorated\""},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":86400}},"stacked_fields":{"@type":"string","@value":"vmware_naa_disk_id"},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"HOSTNAME"},"stream_id":{"@type":"string","@value":"b2589175-8b02-450a-a06e-494ac1bdf533"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":6},"height":{"@type":"integer","@value":5},"row":{"@type":"integer","@value":16},"col":{"@type":"integer","@value":1}}},{"id":{"@type":"string","@value":"3055d9f8-109b-48db-bc5b-9eeafac81959"},"description":{"@type":"string","@value":"Hosts where Virtual Machines Consolidation needed -  last day"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":86400}},"configuration":{"query":{"@type":"string","@value":"\"disks consolidation is needed\" AND facility:local4"},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":86400}},"stacked_fields":{"@type":"string","@value":""},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"source"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":3},"height":{"@type":"integer","@value":6},"row":{"@type":"integer","@value":1},"col":{"@type":"integer","@value":7}}},{"id":{"@type":"string","@value":"1e178925-8876-41a0-8711-8291992c2d8d"},"description":{"@type":"string","@value":"Login Failure Past Day username/source ip"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":86400}},"configuration":{"query":{"@type":"string","@value":"failure_type:\"Authentication failure\" OR failure_type:Failed OR failure_type:\"User not known to the underlying authentication module\" "},"show_pie_chart":{"@type":"boolean","@value":true},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":86400}},"stacked_fields":{"@type":"string","@value":"username,ip_address"},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"source"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":3},"height":{"@type":"integer","@value":5},"row":{"@type":"integer","@value":45},"col":{"@type":"integer","@value":1}}},{"id":{"@type":"string","@value":"181b44c3-522b-4943-bdc8-71227f784745"},"description":{"@type":"string","@value":"Vmware Datastore Errors last Day "},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":86400}},"configuration":{"query":{"@type":"string","@value":"application_name:vim.event.EventEx AND VCENTER_facility:error NOT Unknown"},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":86400}},"stacked_fields":{"@type":"string","@value":"vmware_naa_disk_id,datastore"},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"HOSTNAME"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":4},"height":{"@type":"integer","@value":3},"row":{"@type":"integer","@value":3},"col":{"@type":"integer","@value":3}}},{"id":{"@type":"string","@value":"fbc3ab24-0162-4c30-bf54-a715cc427073"},"description":{"@type":"string","@value":"MAC to DVS port ID "},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":1800}},"configuration":{"query":{"@type":"string","@value":"enabled port"},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":1800}},"stacked_fields":{"@type":"string","@value":"vmware_mac_address"},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"vmware_dvs_port_id"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":3},"height":{"@type":"integer","@value":3},"row":{"@type":"integer","@value":40},"col":{"@type":"integer","@value":1}}},{"id":{"@type":"string","@value":"9fc9e592-b76d-4e65-aa75-17546e418f40"},"description":{"@type":"string","@value":"Device Reset Throttle Last Day"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":86400}},"configuration":{"query":{"@type":"string","@value":"\"nmp_ResetDeviceLogThrottling\""},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":86400}},"stacked_fields":{"@type":"string","@value":"HOSTNAME"},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"vmware_naa_disk_id"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":6},"height":{"@type":"integer","@value":2},"row":{"@type":"integer","@value":12},"col":{"@type":"integer","@value":1}}},{"id":{"@type":"string","@value":"e2325cf9-e350-442c-adb8-27dfeaf4422e"},"description":{"@type":"string","@value":"Last 7 days VMware Hardware Faults"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":604800}},"configuration":{"query":{"@type":"string","@value":"deassert AND alarm"},"show_pie_chart":{"@type":"boolean","@value":false},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":604800}},"stacked_fields":{"@type":"string","@value":"HOSTNAME,VCENTER_DATACENTER_ID"},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"source"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":6},"height":{"@type":"integer","@value":2},"row":{"@type":"integer","@value":21},"col":{"@type":"integer","@value":1}}},{"id":{"@type":"string","@value":"603b3fc4-22a0-41dc-a90f-812b652fc969"},"description":{"@type":"string","@value":"VMWare Datastore Lost Access to Volume Outage"},"type":{"@type":"string","@value":"QUICKVALUES"},"cache_time":{"@type":"integer","@value":10},"time_range":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":28800}},"configuration":{"query":{"@type":"string","@value":"\"Lost access to volume\""},"show_pie_chart":{"@type":"boolean","@value":true},"sort_order":{"@type":"string","@value":"desc"},"timerange":{"type":{"@type":"string","@value":"relative"},"range":{"@type":"integer","@value":28800}},"stacked_fields":{"@type":"string","@value":"vmware_uuid_volume_id,datastore"},"data_table_limit":{"@type":"integer","@value":50},"field":{"@type":"string","@value":"source"},"show_data_table":{"@type":"boolean","@value":true},"limit":{"@type":"integer","@value":5}},"position":{"width":{"@type":"integer","@value":2},"height":{"@type":"integer","@value":6},"row":{"@type":"integer","@value":6},"col":{"@type":"integer","@value":1}}}]},"constraints":[{"type":"server-version","version":">=3.1.3+cda805f"}]},{"id":"fe2585ba-d48e-46db-9557-de23e2ffd581","type":{"name":"pipeline","version":"1"},"v":"1","data":{"title":{"@type":"string","@value":"Vmware Average Device Latency"},"description":{"@type":"string","@value":""},"source":{"@type":"string","@value":"pipeline \"Vmware Average Device Latency\"\nstage 0 match either\nend"},"connected_streams":[{"@type":"string","@value":"b2589175-8b02-450a-a06e-494ac1bdf533"}]},"constraints":[{"type":"server-version","version":">=3.1.3+cda805f"}]},{"id":"4ce02ee2-2bfa-4762-999b-77df144f683f","type":{"name":"pipeline","version":"1"},"v":"1","data":{"title":{"@type":"string","@value":"Vmware Network DVS and MAC "},"description":{"@type":"string","@value":""},"source":{"@type":"string","@value":"pipeline \"Vmware Network DVS and MAC \"\nstage 0 match either\nend"},"connected_streams":[{"@type":"string","@value":"477c5ad7-7549-41ce-a314-169da5655a93"}]},"constraints":[{"type":"server-version","version":">=3.1.3+cda805f"}]},{"id":"b2589175-8b02-450a-a06e-494ac1bdf533","type":{"name":"stream","version":"1"},"v":"1","data":{"alarm_callbacks":[],"outputs":[],"remove_matches":{"@type":"boolean","@value":false},"title":{"@type":"string","@value":"Vmware Average Device Latency"},"stream_rules":[{"type":{"@type":"string","@value":"GREATER"},"field":{"@type":"string","@value":"current_avg_device_latency"},"value":{"@type":"string","@value":"9000"},"inverted":{"@type":"boolean","@value":false},"description":{"@type":"string","@value":"9 millisecond latency"}}],"alert_conditions":[],"matching_type":{"@type":"string","@value":"AND"},"disabled":{"@type":"boolean","@value":false},"description":{"@type":"string","@value":"Stream containing all messages looking for device latency greater than 4 milliseconds"},"default_stream":{"@type":"boolean","@value":false}},"constraints":[{"type":"server-version","version":">=3.1.3+cda805f"}]},{"id":"477c5ad7-7549-41ce-a314-169da5655a93","type":{"name":"stream","version":"1"},"v":"1","data":{"alarm_callbacks":[],"outputs":[],"remove_matches":{"@type":"boolean","@value":false},"title":{"@type":"string","@value":"MAC and DVS "},"stream_rules":[{"type":{"@type":"string","@value":"PRESENCE"},"field":{"@type":"string","@value":"vmware_mac_address"},"value":{"@type":"string","@value":""},"inverted":{"@type":"boolean","@value":false},"description":{"@type":"string","@value":""}},{"type":{"@type":"string","@value":"PRESENCE"},"field":{"@type":"string","@value":"dvs_switch_id"},"value":{"@type":"string","@value":""},"inverted":{"@type":"boolean","@value":false},"description":{"@type":"string","@value":""}},{"type":{"@type":"string","@value":"PRESENCE"},"field":{"@type":"string","@value":"vmware_dvs_port_id"},"value":{"@type":"string","@value":""},"inverted":{"@type":"boolean","@value":false},"description":{"@type":"string","@value":""}},{"type":{"@type":"string","@value":"PRESENCE"},"field":{"@type":"string","@value":"vmware_guest_name"},"value":{"@type":"string","@value":""},"inverted":{"@type":"boolean","@value":false},"description":{"@type":"string","@value":""}}],"alert_conditions":[],"matching_type":{"@type":"string","@value":"OR"},"disabled":{"@type":"boolean","@value":false},"description":{"@type":"string","@value":"Stream containing all messages"},"default_stream":{"@type":"boolean","@value":false}},"constraints":[{"type":"server-version","version":">=3.1.3+cda805f"}]},{"id":"9472b5dd-c78b-494d-b517-a17e27088cf8","type":{"name":"stream","version":"1"},"v":"1","data":{"alarm_callbacks":[],"outputs":[],"remove_matches":{"@type":"boolean","@value":false},"title":{"@type":"string","@value":"All messages"},"stream_rules":[],"alert_conditions":[],"matching_type":{"@type":"string","@value":"AND"},"disabled":{"@type":"boolean","@value":false},"description":{"@type":"string","@value":"Stream containing all messages"},"default_stream":{"@type":"boolean","@value":true}},"constraints":[{"type":"server-version","version":">=3.1.3+cda805f"}]}]}
+{
+  "v": 1,
+  "id": "bdd7debd-1215-4ea8-ba40-d5a1cb1d980e",
+  "rev": 1,
+  "name": "Glog for VMware ",
+  "summary": "Content back for Vmware 5.5, 6.5, and 6.7",
+  "description": "Graylog Content Pack",
+  "vendor": "David Cecchino dave@icnsolutions.net",
+  "url": "https://github.com/dcecchino/glog",
+  "parameters": [],
+  "entities": [
+    {
+      "v": "1",
+      "type": {
+        "name": "dashboard",
+        "version": "2"
+      },
+      "id": "4ad3f564-f045-474d-8627-d5378a568620",
+      "data": {
+        "summary": {
+          "@type": "string",
+          "@value": "This dashboard was migrated automatically."
+        },
+        "search": {
+          "queries": [
+            {
+              "id": "00000170-191e-ffd4-b94b-000c29be9bf3",
+              "timerange": {
+                "type": "relative",
+                "range": 300
+              },
+              "query": {
+                "type": "elasticsearch",
+                "query_string": ""
+              },
+              "search_types": [
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "application_name:vim.event.EventEx AND VCENTER_facility:error NOT Unknown"
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "HOSTNAME",
+                      "limit": 50
+                    },
+                    {
+                      "type": "values",
+                      "field": "vmware_naa_disk_id",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "datastore",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffb9-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "HOSTNAME",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "connected AND connection_state:connected "
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 1800
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "vmware_dvs_port_id",
+                      "limit": 50
+                    },
+                    {
+                      "type": "values",
+                      "field": "vmware_guest_name",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "HOSTNAME",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffd2-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "vmware_dvs_port_id",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "deassert AND alarm"
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 604800
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "source",
+                      "limit": 50
+                    },
+                    {
+                      "type": "values",
+                      "field": "HOSTNAME",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "VCENTER_DATACENTER_ID",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffcf-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "source",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "failure_type:\"Authentication failure\" OR failure_type:Failed OR failure_type:\"User not known to the underlying authentication module\" "
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "source",
+                      "limit": 50
+                    },
+                    {
+                      "type": "values",
+                      "field": "username",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "ip_address",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffbe-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "source",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "connected"
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 28800
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "vmware_guest_name",
+                      "limit": 50
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffc7-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "vmware_guest_name",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "disallowed"
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 7200
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "vmware_guest_name",
+                      "limit": 50
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffc2-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "vmware_guest_name",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "\"Host Memory\" OR \"VMWARE_SEV_CURRENT:yellow\" OR \"VMWARE_SEV_CURRENT:red\""
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 7200
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "HOSTNAME",
+                      "limit": 50
+                    },
+                    {
+                      "type": "values",
+                      "field": "timestamp",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "VMWARE_SEV_CURRENT",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffcc-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "HOSTNAME",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": ""
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 604800
+                  },
+                  "streams": [
+                    "3be54d00-57ad-4950-8f46-11f1eaf73481"
+                  ],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "dvs_switch_id",
+                      "limit": 50
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffcd-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "dvs_switch_id",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "application_name:vim.event.VmReconfiguredEvent"
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 172800
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "application_name",
+                      "limit": 50
+                    },
+                    {
+                      "type": "values",
+                      "field": "vmware_guest_name",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "LDAP_username",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "HOSTNAME",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffc4-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "application_name",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "\"disks consolidation is needed\" AND facility:local4"
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "source",
+                      "limit": 50
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffc0-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "source",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "\"nmp_ResetDeviceLogThrottling\""
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "vmware_naa_disk_id",
+                      "limit": 50
+                    },
+                    {
+                      "type": "values",
+                      "field": "HOSTNAME",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffcb-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "vmware_naa_disk_id",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "\"watchdog_work_cb\" AND \"0x410800000d9\" "
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "source",
+                      "limit": 5
+                    },
+                    {
+                      "type": "values",
+                      "field": "timestamp",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffba-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "source",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "\"Path redundancy to storage device\" OR \"Lost connectivity to storage device\" NOT \"active\""
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 2592000
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "time",
+                      "field": "timestamp",
+                      "interval": {
+                        "type": "timeunit",
+                        "timeunit": "1h"
+                      }
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffd1-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": []
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "\"migration\""
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 28800
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "VCENTER_DATACENTER_ID",
+                      "limit": 50
+                    },
+                    {
+                      "type": "values",
+                      "field": "source",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "vmware_guest_name",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "vmware_migrated_datastore_current",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "timestamp",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffbc-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "VCENTER_DATACENTER_ID",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "\"Lost access to volume\""
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 28800
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "source",
+                      "limit": 5
+                    },
+                    {
+                      "type": "values",
+                      "field": "vmware_uuid_volume_id",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "datastore",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffc5-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "source",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "NOT root AND NOT DCUI"
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "LDAP_username",
+                      "limit": 50
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffbf-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "LDAP_username",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": ""
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 7200
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "username",
+                      "limit": 5
+                    },
+                    {
+                      "type": "values",
+                      "field": "ip_address",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffc8-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "username",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "\"performance has deteriorated\""
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [
+                    "0db92021-57dc-445d-80f3-6ccb651d4bbf"
+                  ],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "HOSTNAME",
+                      "limit": 50
+                    },
+                    {
+                      "type": "values",
+                      "field": "vmware_naa_disk_id",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffb8-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "HOSTNAME",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": ""
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 7200
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "username",
+                      "limit": 50
+                    },
+                    {
+                      "type": "values",
+                      "field": "ip_address",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffc9-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "username",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "shutdown"
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 2592000
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "HOSTNAME",
+                      "limit": 50
+                    },
+                    {
+                      "type": "values",
+                      "field": "VMWARE_TASK_ACTION",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "VMWARE_TASK_EXECUTED",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffd0-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "HOSTNAME",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "enabled port"
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 1800
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "vmware_dvs_port_id",
+                      "limit": 50
+                    },
+                    {
+                      "type": "values",
+                      "field": "vmware_mac_address",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffd3-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "vmware_dvs_port_id",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "Successfully Acquired"
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 300
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "hypervisor_hardware_model",
+                      "limit": 50
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffc1-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "hypervisor_hardware_model",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "failure_type:\"Authentication failure\" OR failure_type:Failed OR failure_type:\"User not known to the underlying authentication module\" "
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "source",
+                      "limit": 5
+                    },
+                    {
+                      "type": "values",
+                      "field": "username",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "ip_address",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffbd-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "source",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "\"performance has deteriorated\""
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 1800
+                  },
+                  "streams": [
+                    "0db92021-57dc-445d-80f3-6ccb651d4bbf"
+                  ],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "vmware_naa_disk_id",
+                      "limit": 50
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffc3-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "vmware_naa_disk_id",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "\"watchdog_work_cb\" AND \"0x410800000d9\" "
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "source",
+                      "limit": 50
+                    },
+                    {
+                      "type": "values",
+                      "field": "timestamp",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffbb-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "source",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "Virtual Machine"
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 28800
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "VMWARE_ALERT",
+                      "limit": 50
+                    },
+                    {
+                      "type": "values",
+                      "field": "VCENTER_DATACENTER_ID",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "vmware_guest_name",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "VMWARE_SEV_LAST",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffca-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "VMWARE_ALERT",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "\"Lost access to volume\""
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 28800
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "source",
+                      "limit": 50
+                    },
+                    {
+                      "type": "values",
+                      "field": "vmware_uuid_volume_id",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "datastore",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffc6-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "source",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "hostd-probe AND \"for VMware\" OR time"
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 300
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "vmware_version",
+                      "limit": 50
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "00000170-191e-ffce-b94b-000c29be9bf3",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "vmware_version",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [],
+          "requires": {},
+          "owner": "admin",
+          "created_at": "2019-11-15T23:59:20.444Z"
+        },
+        "created_at": "2019-11-15T23:59:20.444Z",
+        "requires": {},
+        "state": {
+          "00000170-191e-ffd4-b94b-000c29be9bf3": {
+            "selected_fields": null,
+            "static_message_list_id": null,
+            "titles": {
+              "widget": {
+                "00000170-191e-ffa5-b94b-000c29be9bf3": "# of Hypervisor last 5 minutes",
+                "00000170-191e-ffb6-b94b-000c29be9bf3": "VMware Port Group to Hypervisor",
+                "00000170-191e-ffa6-b94b-000c29be9bf3": "Last 2 hours Guests attempting network sniffing",
+                "00000170-191e-ffb7-b94b-000c29be9bf3": "MAC to DVS port ID ",
+                "00000170-191e-ffa7-b94b-000c29be9bf3": "Storage device performance last 30 minutes deteriorated",
+                "00000170-191e-ffa8-b94b-000c29be9bf3": "VMware Recent Changes in the Last 2 days",
+                "00000170-191e-ffa9-b94b-000c29be9bf3": "VMWare Datastore Lost Access to Volume Outage",
+                "00000170-191e-ffaa-b94b-000c29be9bf3": "VMWare Datastore Lost Access to Volume Outage",
+                "00000170-191e-ffab-b94b-000c29be9bf3": "Last 8 hours Vmware vmotions",
+                "00000170-191e-ffac-b94b-000c29be9bf3": "Last successful logins past 2 hours",
+                "00000170-191e-ffad-b94b-000c29be9bf3": "Last successful logins past 2 hours",
+                "00000170-191e-ffae-b94b-000c29be9bf3": "Memory/CPU Alerts last 8 Hours Severity",
+                "00000170-191e-ffaf-b94b-000c29be9bf3": "Device Reset Throttle Last Day",
+                "00000170-191e-ff9c-b94b-000c29be9bf3": "Host / Device Performance Issue last day",
+                "00000170-191e-ff9d-b94b-000c29be9bf3": "Vmware Datastore Errors last Day ",
+                "00000170-191e-ff9e-b94b-000c29be9bf3": "Quick values - Cisco/Vmware Network Flap/bug events",
+                "00000170-191e-ff9f-b94b-000c29be9bf3": "Quick values - Cisco/Vmware Network Flap/bug events",
+                "00000170-191e-ffb0-b94b-000c29be9bf3": "Physical Host Memory Alarm last 2 hours",
+                "00000170-191e-ffa0-b94b-000c29be9bf3": "Last 8 hours Vmotions to Datastores",
+                "00000170-191e-ffb1-b94b-000c29be9bf3": "Last 7 days DVS Network Messages",
+                "00000170-191e-ffa1-b94b-000c29be9bf3": "Login Failure Past Day username/source ip",
+                "00000170-191e-ffb2-b94b-000c29be9bf3": "VMware version check'd in Last 5 minutes",
+                "00000170-191e-ffb3-b94b-000c29be9bf3": "Last 7 days VMware Hardware Faults",
+                "00000170-191e-ffa2-b94b-000c29be9bf3": "Login Failure Past Day username/source ip",
+                "00000170-191e-ffa3-b94b-000c29be9bf3": "Top LDAP/Vmware Users Last Day",
+                "00000170-191e-ffb4-b94b-000c29be9bf3": "Vmware  Hypervisors rebooted in last 30 days",
+                "00000170-191e-ffa4-b94b-000c29be9bf3": "Hosts where Virtual Machines Consolidation needed -  last day",
+                "00000170-191e-ffb5-b94b-000c29be9bf3": "Path/Lost Storage Connectivity last 30 days"
+              },
+              "tab": {
+                "title": "VMware Dashboard"
+              }
+            },
+            "widgets": [
+              {
+                "id": "00000170-191e-ff9e-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "\"watchdog_work_cb\" AND \"0x410800000d9\" "
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "pie",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "source",
+                      "type": "values",
+                      "config": {
+                        "limit": 5
+                      }
+                    },
+                    {
+                      "field": "timestamp",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "source",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffaf-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "\"nmp_ResetDeviceLogThrottling\""
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "vmware_naa_disk_id",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    },
+                    {
+                      "field": "HOSTNAME",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "vmware_naa_disk_id",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffa6-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 7200
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "disallowed"
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "vmware_guest_name",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "vmware_guest_name",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffa0-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 28800
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "\"migration\""
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "VCENTER_DATACENTER_ID",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    },
+                    {
+                      "field": "source",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "vmware_guest_name",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "vmware_migrated_datastore_current",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "timestamp",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "VCENTER_DATACENTER_ID",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffa4-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "\"disks consolidation is needed\" AND facility:local4"
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "source",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "source",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffb7-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 1800
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "enabled port"
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "vmware_dvs_port_id",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    },
+                    {
+                      "field": "vmware_mac_address",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "vmware_dvs_port_id",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffae-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 28800
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "Virtual Machine"
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "VMWARE_ALERT",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    },
+                    {
+                      "field": "VCENTER_DATACENTER_ID",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "vmware_guest_name",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "VMWARE_SEV_LAST",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "VMWARE_ALERT",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffac-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 7200
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": ""
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "pie",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "username",
+                      "type": "values",
+                      "config": {
+                        "limit": 5
+                      }
+                    },
+                    {
+                      "field": "ip_address",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "username",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ff9f-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "\"watchdog_work_cb\" AND \"0x410800000d9\" "
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "source",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    },
+                    {
+                      "field": "timestamp",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "source",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffb6-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 1800
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "connected AND connection_state:connected "
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "vmware_dvs_port_id",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    },
+                    {
+                      "field": "vmware_guest_name",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "HOSTNAME",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "vmware_dvs_port_id",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffaa-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 28800
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "\"Lost access to volume\""
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "source",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    },
+                    {
+                      "field": "vmware_uuid_volume_id",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "datastore",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "source",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffb2-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 300
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "hostd-probe AND \"for VMware\" OR time"
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "vmware_version",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "vmware_version",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffab-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 28800
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "connected"
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "vmware_guest_name",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "vmware_guest_name",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffb0-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 7200
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "\"Host Memory\" OR \"VMWARE_SEV_CURRENT:yellow\" OR \"VMWARE_SEV_CURRENT:red\""
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "HOSTNAME",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    },
+                    {
+                      "field": "timestamp",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "VMWARE_SEV_CURRENT",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "HOSTNAME",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffa5-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 300
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "Successfully Acquired"
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "hypervisor_hardware_model",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "hypervisor_hardware_model",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ff9c-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "\"performance has deteriorated\""
+                },
+                "streams": [
+                  "0db92021-57dc-445d-80f3-6ccb651d4bbf"
+                ],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "HOSTNAME",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    },
+                    {
+                      "field": "vmware_naa_disk_id",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "HOSTNAME",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ff9d-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "application_name:vim.event.EventEx AND VCENTER_facility:error NOT Unknown"
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "HOSTNAME",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    },
+                    {
+                      "field": "vmware_naa_disk_id",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "datastore",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "HOSTNAME",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffa3-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "NOT root AND NOT DCUI"
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "LDAP_username",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "LDAP_username",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffb3-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 604800
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "deassert AND alarm"
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "source",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    },
+                    {
+                      "field": "HOSTNAME",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "VCENTER_DATACENTER_ID",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "source",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffad-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 7200
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": ""
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "username",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    },
+                    {
+                      "field": "ip_address",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "username",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffb1-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 604800
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": ""
+                },
+                "streams": [
+                  "3be54d00-57ad-4950-8f46-11f1eaf73481"
+                ],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "dvs_switch_id",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "dvs_switch_id",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffa7-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 1800
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "\"performance has deteriorated\""
+                },
+                "streams": [
+                  "0db92021-57dc-445d-80f3-6ccb651d4bbf"
+                ],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "vmware_naa_disk_id",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "vmware_naa_disk_id",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffa1-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "failure_type:\"Authentication failure\" OR failure_type:Failed OR failure_type:\"User not known to the underlying authentication module\" "
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "pie",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "source",
+                      "type": "values",
+                      "config": {
+                        "limit": 5
+                      }
+                    },
+                    {
+                      "field": "username",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "ip_address",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "source",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffb5-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 2592000
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "\"Path redundancy to storage device\" OR \"Lost connectivity to storage device\" NOT \"active\""
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "bar",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "timestamp",
+                      "type": "time",
+                      "config": {
+                        "interval": {
+                          "type": "timeunit",
+                          "value": 1,
+                          "unit": "hours"
+                        }
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": "Messages"
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": []
+                }
+              },
+              {
+                "id": "00000170-191e-ffa8-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 172800
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "application_name:vim.event.VmReconfiguredEvent"
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "application_name",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    },
+                    {
+                      "field": "vmware_guest_name",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "LDAP_username",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "HOSTNAME",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "application_name",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffb4-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 2592000
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "shutdown"
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "HOSTNAME",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    },
+                    {
+                      "field": "VMWARE_TASK_ACTION",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "VMWARE_TASK_EXECUTED",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "HOSTNAME",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffa2-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "failure_type:\"Authentication failure\" OR failure_type:Failed OR failure_type:\"User not known to the underlying authentication module\" "
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "source",
+                      "type": "values",
+                      "config": {
+                        "limit": 50
+                      }
+                    },
+                    {
+                      "field": "username",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "ip_address",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "source",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00000170-191e-ffa9-b94b-000c29be9bf3",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 28800
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "\"Lost access to volume\""
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "pie",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "source",
+                      "type": "values",
+                      "config": {
+                        "limit": 5
+                      }
+                    },
+                    {
+                      "field": "vmware_uuid_volume_id",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "datastore",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "source",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              }
+            ],
+            "widget_mapping": {
+              "00000170-191e-ffa5-b94b-000c29be9bf3": [
+                "00000170-191e-ffc1-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffb6-b94b-000c29be9bf3": [
+                "00000170-191e-ffd2-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffa6-b94b-000c29be9bf3": [
+                "00000170-191e-ffc2-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffb7-b94b-000c29be9bf3": [
+                "00000170-191e-ffd3-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffa7-b94b-000c29be9bf3": [
+                "00000170-191e-ffc3-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffa8-b94b-000c29be9bf3": [
+                "00000170-191e-ffc4-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffa9-b94b-000c29be9bf3": [
+                "00000170-191e-ffc5-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffaa-b94b-000c29be9bf3": [
+                "00000170-191e-ffc6-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffab-b94b-000c29be9bf3": [
+                "00000170-191e-ffc7-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffac-b94b-000c29be9bf3": [
+                "00000170-191e-ffc8-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffad-b94b-000c29be9bf3": [
+                "00000170-191e-ffc9-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffae-b94b-000c29be9bf3": [
+                "00000170-191e-ffca-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffaf-b94b-000c29be9bf3": [
+                "00000170-191e-ffcb-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ff9c-b94b-000c29be9bf3": [
+                "00000170-191e-ffb8-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ff9d-b94b-000c29be9bf3": [
+                "00000170-191e-ffb9-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ff9e-b94b-000c29be9bf3": [
+                "00000170-191e-ffba-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ff9f-b94b-000c29be9bf3": [
+                "00000170-191e-ffbb-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffb0-b94b-000c29be9bf3": [
+                "00000170-191e-ffcc-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffa0-b94b-000c29be9bf3": [
+                "00000170-191e-ffbc-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffb1-b94b-000c29be9bf3": [
+                "00000170-191e-ffcd-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffa1-b94b-000c29be9bf3": [
+                "00000170-191e-ffbd-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffb2-b94b-000c29be9bf3": [
+                "00000170-191e-ffce-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffb3-b94b-000c29be9bf3": [
+                "00000170-191e-ffcf-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffa2-b94b-000c29be9bf3": [
+                "00000170-191e-ffbe-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffa3-b94b-000c29be9bf3": [
+                "00000170-191e-ffbf-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffb4-b94b-000c29be9bf3": [
+                "00000170-191e-ffd0-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffa4-b94b-000c29be9bf3": [
+                "00000170-191e-ffc0-b94b-000c29be9bf3"
+              ],
+              "00000170-191e-ffb5-b94b-000c29be9bf3": [
+                "00000170-191e-ffd1-b94b-000c29be9bf3"
+              ]
+            },
+            "positions": {
+              "00000170-191e-ffa5-b94b-000c29be9bf3": {
+                "col": 1,
+                "row": 1,
+                "height": 3,
+                "width": 2
+              },
+              "00000170-191e-ffb6-b94b-000c29be9bf3": {
+                "col": 4,
+                "row": 40,
+                "height": 3,
+                "width": 3
+              },
+              "00000170-191e-ffa6-b94b-000c29be9bf3": {
+                "col": 1,
+                "row": 43,
+                "height": 2,
+                "width": 6
+              },
+              "00000170-191e-ffb7-b94b-000c29be9bf3": {
+                "col": 1,
+                "row": 40,
+                "height": 3,
+                "width": 3
+              },
+              "00000170-191e-ffa7-b94b-000c29be9bf3": {
+                "col": 3,
+                "row": 1,
+                "height": 2,
+                "width": 4
+              },
+              "00000170-191e-ffa8-b94b-000c29be9bf3": {
+                "col": 1,
+                "row": 53,
+                "height": 2,
+                "width": 6
+              },
+              "00000170-191e-ffa9-b94b-000c29be9bf3": {
+                "col": 1,
+                "row": 6,
+                "height": 3,
+                "width": 2
+              },
+              "00000170-191e-ffaa-b94b-000c29be9bf3": {
+                "col": 1,
+                "row": 9,
+                "height": 3,
+                "width": 2
+              },
+              "00000170-191e-ffab-b94b-000c29be9bf3": {
+                "col": 1,
+                "row": 30,
+                "height": 4,
+                "width": 6
+              },
+              "00000170-191e-ffac-b94b-000c29be9bf3": {
+                "col": 4,
+                "row": 45,
+                "height": 3,
+                "width": 3
+              },
+              "00000170-191e-ffad-b94b-000c29be9bf3": {
+                "col": 4,
+                "row": 48,
+                "height": 2,
+                "width": 3
+              },
+              "00000170-191e-ffae-b94b-000c29be9bf3": {
+                "col": 1,
+                "row": 23,
+                "height": 4,
+                "width": 6
+              },
+              "00000170-191e-ffaf-b94b-000c29be9bf3": {
+                "col": 1,
+                "row": 12,
+                "height": 2,
+                "width": 6
+              },
+              "00000170-191e-ff9c-b94b-000c29be9bf3": {
+                "col": 1,
+                "row": 16,
+                "height": 5,
+                "width": 6
+              },
+              "00000170-191e-ff9d-b94b-000c29be9bf3": {
+                "col": 3,
+                "row": 3,
+                "height": 3,
+                "width": 4
+              },
+              "00000170-191e-ff9e-b94b-000c29be9bf3": {
+                "col": 3,
+                "row": 6,
+                "height": 2,
+                "width": 4
+              },
+              "00000170-191e-ff9f-b94b-000c29be9bf3": {
+                "col": 3,
+                "row": 8,
+                "height": 2,
+                "width": 4
+              },
+              "00000170-191e-ffb0-b94b-000c29be9bf3": {
+                "col": 1,
+                "row": 27,
+                "height": 3,
+                "width": 6
+              },
+              "00000170-191e-ffa0-b94b-000c29be9bf3": {
+                "col": 1,
+                "row": 34,
+                "height": 3,
+                "width": 6
+              },
+              "00000170-191e-ffb1-b94b-000c29be9bf3": {
+                "col": 1,
+                "row": 37,
+                "height": 3,
+                "width": 6
+              },
+              "00000170-191e-ffa1-b94b-000c29be9bf3": {
+                "col": 1,
+                "row": 45,
+                "height": 3,
+                "width": 3
+              },
+              "00000170-191e-ffb2-b94b-000c29be9bf3": {
+                "col": 1,
+                "row": 4,
+                "height": 2,
+                "width": 2
+              },
+              "00000170-191e-ffb3-b94b-000c29be9bf3": {
+                "col": 1,
+                "row": 21,
+                "height": 2,
+                "width": 6
+              },
+              "00000170-191e-ffa2-b94b-000c29be9bf3": {
+                "col": 1,
+                "row": 48,
+                "height": 2,
+                "width": 3
+              },
+              "00000170-191e-ffa3-b94b-000c29be9bf3": {
+                "col": 1,
+                "row": 50,
+                "height": 3,
+                "width": 6
+              },
+              "00000170-191e-ffb4-b94b-000c29be9bf3": {
+                "col": 1,
+                "row": 55,
+                "height": 4,
+                "width": 6
+              },
+              "00000170-191e-ffa4-b94b-000c29be9bf3": {
+                "col": 7,
+                "row": 1,
+                "height": 6,
+                "width": 3
+              },
+              "00000170-191e-ffb5-b94b-000c29be9bf3": {
+                "col": 1,
+                "row": 14,
+                "height": 2,
+                "width": 6
+              }
+            },
+            "formatting": null,
+            "display_mode_settings": {
+              "positions": {}
+            }
+          }
+        },
+        "properties": [],
+        "owner": "admin",
+        "title": {
+          "@type": "string",
+          "@value": "VMware Dashboard"
+        },
+        "type": "DASHBOARD",
+        "description": {
+          "@type": "string",
+          "@value": "Infrastructure Data"
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.3.1+e2d4365"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline",
+        "version": "1"
+      },
+      "id": "3f296090-a1e1-4f3e-833c-781033e2f016",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "Vmware Network DVS and MAC "
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "pipeline \"Vmware Network DVS and MAC \"\nstage 0 match either\nend"
+        },
+        "connected_streams": [
+          {
+            "@type": "string",
+            "@value": "767e9431-f296-4e5e-9fe1-e10df3b6021b"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.3.1+e2d4365"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "0db92021-57dc-445d-80f3-6ccb651d4bbf",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "Vmware Average Device Latency"
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "GREATER"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "current_avg_device_latency"
+            },
+            "value": {
+              "@type": "string",
+              "@value": "9000"
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": "9 millisecond latency"
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "Stream containing all messages looking for device latency greater than 4 milliseconds"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.3.1+e2d4365"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "pipeline",
+        "version": "1"
+      },
+      "id": "ae29f634-9cb4-4fa3-ade9-b6958fb13827",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "Vmware Average Device Latency"
+        },
+        "description": {
+          "@type": "string",
+          "@value": ""
+        },
+        "source": {
+          "@type": "string",
+          "@value": "pipeline \"Vmware Average Device Latency\"\nstage 0 match either\nend"
+        },
+        "connected_streams": [
+          {
+            "@type": "string",
+            "@value": "0db92021-57dc-445d-80f3-6ccb651d4bbf"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.3.1+e2d4365"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "3be54d00-57ad-4950-8f46-11f1eaf73481",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "All messages"
+        },
+        "stream_rules": [],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "AND"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "Stream containing all messages"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.3.1+e2d4365"
+        }
+      ]
+    },
+    {
+      "v": "1",
+      "type": {
+        "name": "stream",
+        "version": "1"
+      },
+      "id": "767e9431-f296-4e5e-9fe1-e10df3b6021b",
+      "data": {
+        "alarm_callbacks": [],
+        "outputs": [],
+        "remove_matches": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "title": {
+          "@type": "string",
+          "@value": "MAC and DVS "
+        },
+        "stream_rules": [
+          {
+            "type": {
+              "@type": "string",
+              "@value": "PRESENCE"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "vmware_dvs_port_id"
+            },
+            "value": {
+              "@type": "string",
+              "@value": ""
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          },
+          {
+            "type": {
+              "@type": "string",
+              "@value": "PRESENCE"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "vmware_mac_address"
+            },
+            "value": {
+              "@type": "string",
+              "@value": ""
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          },
+          {
+            "type": {
+              "@type": "string",
+              "@value": "PRESENCE"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "dvs_switch_id"
+            },
+            "value": {
+              "@type": "string",
+              "@value": ""
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          },
+          {
+            "type": {
+              "@type": "string",
+              "@value": "PRESENCE"
+            },
+            "field": {
+              "@type": "string",
+              "@value": "vmware_guest_name"
+            },
+            "value": {
+              "@type": "string",
+              "@value": ""
+            },
+            "inverted": {
+              "@type": "boolean",
+              "@value": false
+            },
+            "description": {
+              "@type": "string",
+              "@value": ""
+            }
+          }
+        ],
+        "alert_conditions": [],
+        "matching_type": {
+          "@type": "string",
+          "@value": "OR"
+        },
+        "disabled": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "description": {
+          "@type": "string",
+          "@value": "Stream containing all messages"
+        },
+        "default_stream": {
+          "@type": "boolean",
+          "@value": false
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=3.3.1+e2d4365"
+        }
+      ]
+    }
+  ]
+}
