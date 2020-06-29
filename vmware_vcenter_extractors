@@ -114,20 +114,6 @@
       "condition_value": ""
     },
     {
-      "title": "VMware SSH Logins Authentication Failure",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "authentication failure; logname= uid=%{BASE10NUM:vmware_uid_number} euid=%{BASE10NUM:vmware_euid_number} tty=ssh ruser= rhost=%{IPV4:ip_address}  user=%{username}"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
       "title": "Hypervisor Model/Hardware",
       "extractor_type": "grok",
       "converters": [],
@@ -332,7 +318,7 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] %{DATA:username} \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Reconfigured %{DATA:vmware_guest_name} on %{DATA:HOSTNAME} in %{DATA:VCENTER_DATACENTER_ID}."
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] %{DATA:LDAP_username} \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Reconfigured %{DATA:vmware_guest_name} on %{DATA:HOSTNAME} in %{DATA:VCENTER_DATACENTER_ID}."
       },
       "condition_type": "none",
       "condition_value": ""
@@ -360,7 +346,7 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_Application_ID}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[User %{DATA:username}@%{IPV4:ip_address} logged in as %{DATA:VCENTER_CLIENT_APPLICATION}\\]"
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_Application_ID}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[User %{DATA:LDAP_username}@%{IPV4:ip_address} logged in as %{DATA:VCENTER_CLIENT_APPLICATION}\\]"
       },
       "condition_type": "none",
       "condition_value": ""
@@ -374,7 +360,7 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[User %{DATA:username}@%{IPV4:ip_address} logged in as %{DATA:VCENTER_CLIENT_APPLICATION}\\]"
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[User %{DATA:LDAP_username}@%{IPV4:ip_address} logged in as %{DATA:VCENTER_CLIENT_APPLICATION}\\]"
       },
       "condition_type": "none",
       "condition_value": ""
@@ -547,7 +533,133 @@
       "condition_type": "none",
       "condition_value": ""
     },
-       {
+    {
+      "title": "EMC VMAX Data Pool utilization",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[TPDataPool=%{DATA:emc_diskpool_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Data Pool utilization is now %{BASE10NUM:emc_var_data_pool_utilization} percent."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX Data Pool change event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[TPDataPool=%{DATA:emc_diskpool_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Data Pool configuration has changed."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX Data Application Registration event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Application Registration DB has changed."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMAX Back-End metadata usage",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Back-End metadata usage has changed to %{BASE10NUM:emc_var_backend_meta_usage} percent."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX Array state Change ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Array state has changed to %{WORD:emc_var_array_status}."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX device configuration checksum",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[Device=%{DATA:emc_var_device_name}\\] \\[sev=%{DATA:emc_var_severity}\\]  = The device configuration checksum has changed."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX Array Configuration Event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Array configuration has changed."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX Device state Change",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[Device=%{DATA:emc_var_device_name}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Device state has changed to %{GREEDYDATA:emc_var_device_state}."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX SRP maximum capacity change",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[FastSRP=%{DATA:emc_var_fastsrp_group}\\] \\[sev=%{DATA:emc_var_severity}\\]  = The SRP maximum capacity has changed to %{BASE16FLOAT:emc_var_srp_max_capacity} GB."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
       "title": "Cisco NIC Link is Down",
       "extractor_type": "grok",
       "converters": [],
@@ -660,6 +772,34 @@
       "condition_value": ""
     },
     {
+      "title": "EMC VMAX Effective used capacity for SRP",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[FastSRP=%{DATA:emc_var_fastsrp_group}\\] \\[sev=%{DATA:emc_var_severity}\\]  = The Effective used capacity for SRP has changed to %{DATA:emc_var_effective_percentage} percent"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMAX data device pool is almost full",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Save or data device pool is almost full."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
       "title": "Vmware Expired Host License",
       "extractor_type": "grok",
       "converters": [],
@@ -743,7 +883,21 @@
       "condition_type": "none",
       "condition_value": ""
     },
-       {
+    {
+      "title": "VMAX service processor Unable to call Home ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Service Processor could not complete a call for service."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
       "title": "Vmware Task Executed ",
       "extractor_type": "grok",
       "converters": [],
@@ -1219,7 +1373,6 @@
       "condition_type": "none",
       "condition_value": ""
     },
-    
     {
       "title": "Host Memory Alarm",
       "extractor_type": "grok",
@@ -1261,7 +1414,7 @@
       },
       "condition_type": "none",
       "condition_value": ""
-        },
+    },
     {
       "title": "VMware HostSyncFailedEvent Error communicating with remote host ",
       "extractor_type": "grok",
@@ -1341,7 +1494,7 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] %{DATA:username} \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[%{DATA:vmware_guest_name} on host %{DATA:HOSTNAME} in %{DATA:VCENTER_DATACENTER_ID} is %{DATA:vmware_service_state}\\]"
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] %{DATA:LDAP_username} \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[%{DATA:vmware_guest_name} on host %{DATA:HOSTNAME} in %{DATA:VCENTER_DATACENTER_ID} is %{DATA:vmware_service_state}\\]"
       },
       "condition_type": "none",
       "condition_value": ""
@@ -1360,7 +1513,35 @@
       "condition_type": "none",
       "condition_value": ""
     },
-       {
+    {
+      "title": "VMAX item has changed ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = %{DATA:VMAX_quick_config} has changed"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMAX license has changed",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[License=%{DATA:vmax_license}\\] \\[sev=%{DATA:emc_var_severity}\\]  = %{DATA:VMAX_quick_config} License has changed"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
       "title": "SDRS maintenance mode",
       "extractor_type": "grok",
       "converters": [],
@@ -1373,7 +1554,1716 @@
       },
       "condition_type": "none",
       "condition_value": ""
+    },
+    {
+      "title": "VMware Last resort",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 2,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{NUMBER:VMware_EventID}\\]%{GREEDYDATA:message}",
+        "named_captures_only": true
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Vmkernel Throttle error",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)NMP: %{DATA:vmware_throttle_name}:%{DATA:vmware_throttle_proc_id}: Cmd %{DATA:vmware_scsi_cmd_code1} %{DATA:vmware_scsi_cmd_code2} to dev %{DATA:vmware_naa_disk_id} on path \"%{DATA:vmware_hba_id}\" Failed: %{DATA:vmware_scsi_error_code1} Valid sense data: %{DATA:vmware_scsi_error_code2}. Act:NONE"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Vmkernel ResetThrottle error",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)NMP: %{DATA:vmware_throttle_name}:%{DATA:vmware_throttle_proc_id}: Error status %{DATA:vmware_scsi_error_code1} Sense Data: %{DATA:vmware_scsi_error_code2} from dev %{DATA:vmware_naa_disk_id} occurred %{BASE10NUM:vmware_naa_error_index}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Vmkernel NMP error",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)NMP: %{DATA:vmware_throttle_name}:%{BASE10NUM:vmware_throttle_id}: last error status from device %{DATA:vmware_naa_disk_id } repeated %{BASE10NUM:vmware_naa_error_index}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Vmkernel Disk error",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)ScsiDeviceIO: %{DATA:vmware_scsi_code1}: %{DATA:vmware_cmd_sn_name} %{DATA:vmware_scsi_error_code1} from world %{DATA:vmware_cmd_5} to dev %{DATA:vmware_naa_disk_id} %{DATA:vmware_cmd_9} %{GREEDYDATA:vmware_scsi_error_code2}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Authentication Failure",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": ": error: %{DATA:application_type}: %{DATA:failure_type} for %{DATA:username} from %{IPV4:ip_address}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware SSH Logins",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": ": Accepted keyboard-interactive/pam for %{DATA:username} from %{IPV4} port %{DATA:src_port} %{GREEDYDATA:application_name}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "SSH LOGIN PREAUTH",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": ": Connection closed by invalid user %{DATA:username} %{IPV4:ip_address} port %{NUMBER:src_port} "
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Hypervisor Model/Hardware Vmware 5.5 and older",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} hostd-probe: \\[%{DATA:host_probe_message_id}\\] Successfully acquired hardware: %{GREEDYDATA:hypervisor_hardware_model}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Hypervisor Model/Hardware",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} hostd-probe: %{DATA:application_name}\\[%{DATA:application_process_desc}\\] \\[%{DATA:host_probe_message_id}\\] Successfully acquired hardware: %{GREEDYDATA:hypervisor_hardware_model}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware Data Path State Down Connectivity Lost ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vobd:%{DATA:application_name} %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}:%{DATA:vmware_storage_path_error} Lost connectivity to storage device %{DATA:vmware_naa_disk_id}. Path %{DATA:vmware_hba_id} is %{DATA:storage_path_state}. Affected datastores:%{GREEDYDATA:datastore}."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE 6.5 Version",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} hostd-probe: Section for VMware ESX, pid=%{BASE16NUM:vmware_process_id}, version=%{DATA:vmware_version}, build=%{BASE16NUM:vmware_build_id}, option=%{GREEDYDATA:vmware_release}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Storage Redundancy Degraded",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vobd:  %{DATA:application_name} %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: %{DATA:vmware_storage_path_error} Path redundancy to storage device %{DATA:vmware_naa_disk_id} %{DATA:storage_path_status}. Path %{DATA:vmware_hba_id} is %{DATA:storage_path_state}. Affected datastores:%{GREEDYDATA:datastore}."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE 5.5 Version",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "Section for VMware ESX,  %{HOSTNAME} hostd-probe: id=%{BASE16NUM:vmware_process_id}, version=%{DATA:vmware_version}, build=%{BASE16NUM:vmware_build_id}, option=%{GREEDYDATA:vmware_release}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware MAC Address disabled",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)NetPort: %{BASE10NUM:net_port_process_id}: %{DATA:vmware_port_status} port %{DATA:vmware_dvs_port_id}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware DVS and MAC Address",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)NetPort: %{BASE10NUM:net_port_process_id}: %{DATA:vmware_port_status} port %{DATA:vmware_dvs_port_id} with mac %{GREEDYDATA:vmware_mac_address}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware Redundancy Restored",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vobd:%{DATA:application_name} %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}:%{DATA:vmware_storage_path_error} Path redundancy to storage device %{DATA:vmware_naa_disk_id} (%{DATA:datastore}) restored. Path %{DATA:vmware_hba_id} is active again."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Failed SSH login ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": ": %{DATA:failure_type} keyboard-interactive/pam for invalid user %{DATA:username} from %{IPV4:ip_address} port %{NUMBER:src_port} %{GREEDYDATA:application_name}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Vmotion Guests",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)Net: %{DATA:vmware_net_proc_id}: %{DATA:connection_state} %{DATA:vmware_guest_name} %{DATA:vmware_ethernet_device} to %{DATA:dvs_switch_id}, portID %{GREEDYDATA:vmware_dvs_port_id}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware Promiscuous Detected ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)etherswitch: L2Sec_EnforcePortCompliance:%{DATA:vmware_l2_process_id}: client %{DATA:vmware_guest_name} requested promiscuous mode on port %{DATA:vmware_dvs_port_id}, disallowed by vswitch policy"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE Login Recorded",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} Hostd: Accepted password for user %{DATA:username} from %{IPV4:ip_address}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "FC STATUS MESSAGE",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:PORT_STATUS_MESSAGE}: %\\$VSAN%{DATA:VSAN_ID}%\\$ Interface %{DATA:FC_PORT_ID} is %{DATA:FC_STATUS} %{GREEDYDATA:FC_STATUS_MESSAGE}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "User Reconfigured Virtual Machine",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] %{DATA:username} \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Reconfigured %{DATA:vmware_guest_name} on %{DATA:HOSTNAME} in %{DATA:VCENTER_DATACENTER_ID}."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "BAD Login Vcenter",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Cannot login %{DATA:username}@%{IPV4:ip_address}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VCENTER LOGIN STATUS",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_Application_ID}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[User %{DATA:username}@%{IPV4:ip_address} logged in as %{DATA:VCENTER_CLIENT_APPLICATION}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VCENTER DCUI Login Process",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[User %{DATA:username}@%{IPV4:ip_address} logged in as %{DATA:VCENTER_CLIENT_APPLICATION}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VIRTUAL_MACHINE_CPU_MEMORY_STATUS",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[]\\ \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm \\'Virtual machine %{DATA:VMWARE_ALERT} usage' on %{DATA:vmware_guest_name} changed from %{DATA:VMWARE_SEV_LAST} to %{DATA:VMWARE_SEV_CURRENT}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE 6.5 Version with time last started",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} hostd-probe: - time the service was last started, Section for VMware ESX, pid=%{BASE16NUM:vmware_process_id}, version=%{DATA:vmware_version}, build=%{BASE16NUM:vmware_build_id}, option=%{GREEDYDATA:vmware_release}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VCENTER SYSTEM STATUS ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[System\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Hardware Sensor Status\\: Processor %{DATA:VCENTER_Hardware_Sensor_Processor_State}, Memory%{DATA:VCENTER_Hardware_Sensor_Memory_State}, Fan %{DATA:VCENTER_Hardware_Sensor_Fan_State}, Voltage %{DATA:VCENTER_Hardware_Sensor_Voltage_State}, Temperature %{DATA:VCENTER_Hardware_Sensor_Temperature_State}, Power %{DATA:VCENTER_Hardware_Sensor_Power_State}, System Board %{DATA:VCENTER_Hardware_Sensor_System_Board_State}, Battery %{DATA:VCENTER_Hardware_Sensor_Battery_State}, Storage %{DATA:VCENTER_Hardware_Sensor_Storage_State}, Other %{DATA:VCENTER_Hardware_Sensor_Other_State}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE_SHUTDOWN_EXTRACTOR",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)VMKAcpi: %{DATA:vmware_vmkacpi_proc_id}: %{DATA:VMWARE_TASK_ACTION}; %{GREEDYDATA:VMWARE_TASK_EXECUTED}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Migration Completed",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Migration of virtual machine %{DATA:vmware_guest_name} from %{DATA:vmware_hypervisor_name_previous}, %{DATA:vmware_migrated_datastore_previous} to %{DATA:vmware_hypervisor_name_current}, %{DATA:vmware_migrated_datastore_current} completed\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Host Memory Usage",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[]\\ \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm 'Host memory usage' on %{HOSTNAME} changed from %{DATA:VMWARE_SEV_LAST} to %{DATA:VMWARE_SEV_CURRENT}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vim.event.EventEx path storage degraded",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[Alarm 'Cannot connect to storage' on %{DATA:HOSTNAME} triggered by event %{NUMBER:EVENT_PROCESS_ID} 'Path redundancy to storage device %{DATA:vmware_naa_disk_id} degraded. Path %{DATA:vmware_hba_id} is down. Affected datastores: (%{GREEDYDATA:datastore})\\.']"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "esx.problem.storage.redundancy.lost path redundancy lost",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vobd:  \\[%{DATA:application_name}\\] %{DATA:VMware_EventID}: \\[esx.problem.storage.redundancy.lost\\] Lost path redundancy to storage device %{DATA:vmware_naa_disk_id}. Path %{DATA:vmware_hba_id} is down. Affected datastores: %{GREEDYDATA:datastore}\\."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vim.event.EventEx Host hardware sensor state",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[Alarm 'Host hardware sensor state' on %{DATA:HOSTNAME} triggered by event %{DATA:VMware_EventID} 'Sensor %{DATA:sensor_id} type %{DATA:sensor_type}, Description %{GREEDYDATA:part_description} --- %{GREEDYDATA:sensor_number} state %{DATA:sensor_state} . Part %{GREEDYDATA:sensor_part_number} Manufacturer %{GREEDYDATA:sensor_manufacturer}\\']"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Virtual machine Consolidation Needed",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": " \\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:VMware_EventID}\\] \\[Alarm 'Virtual machine Consolidation Needed status' on %{DATA:vmware_guest_name} changed from %{DATA:VMWARE_SEV_LAST} to %{DATA:VMWARE_SEV_CURRENT}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Virtual machine Consolidation Action",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:VMware_EventID}\\] \\[Alarm 'Virtual machine Consolidation Needed status' on %{DATA:vmware_guest_name}triggered an action\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Lost access to volume for datastore outages",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[Lost access to volume %{DATA:vmware_uuid_volume_id} \\(%{GREEDYDATA:datastore}\\) due to connectivity issues. Recovery attempt is in progress and outcome will be reported shortly.]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX Data Pool utilization",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[TPDataPool=%{DATA:emc_diskpool_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Data Pool utilization is now %{BASE10NUM:emc_var_data_pool_utilization} percent."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX Data Application Registration event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Application Registration DB has changed."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX Data Pool change event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[TPDataPool=%{DATA:emc_diskpool_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Data Pool configuration has changed."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMAX Back-End metadata usage",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Back-End metadata usage has changed to %{BASE10NUM:emc_var_backend_meta_usage} percent."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX Array state Change ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Array state has changed to %{WORD:emc_var_array_status}."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX Array Configuration Event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Array configuration has changed."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX device configuration checksum",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[Device=%{DATA:emc_var_device_name}\\] \\[sev=%{DATA:emc_var_severity}\\]  = The device configuration checksum has changed."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX Device state Change",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[Device=%{DATA:emc_var_device_name}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Device state has changed to %{GREEDYDATA:emc_var_device_state}."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX SRP maximum capacity change",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[FastSRP=%{DATA:emc_var_fastsrp_group}\\] \\[sev=%{DATA:emc_var_severity}\\]  = The SRP maximum capacity has changed to %{BASE16FLOAT:emc_var_srp_max_capacity} GB."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cisco Vmware Uplink has recovered",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vobd:  \\[%{DATA:application_name}\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_process_name}\\] Uplink %{DATA:vmware_nic_id}has recovered from a transient failure due to watchdog timeout"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cisco VMNIC and portgroup DOWN",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vobd:  \\[%{DATA:application_name}\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_process_name}\\] Uplink\\: %{DATA:vmware_nic_id} is %{WORD:vmware_nic_status}. Affected portgroup: %{DATA:dvs_switch_id}. %{BASE10NUM:dvs_link_totals} uplinks up. Failed criteria: %{BASE10NUM:vmware_failed_criteria_count}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cisco Detected Tx Unit Hang",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)\\<%{BASE10NUM:vmware_igb_code}\\>igb\\ %{DATA:vmware_hardware_address}: Detected Tx Unit Hang"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cisco NIC Link is Down",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)\\<%{BASE10NUM:vmware_igb_code}\\>igb\\: %{DATA:vmware_nic_id} NIC Link is %{WORD:vmware_nic_status}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cisco Vmware Uplink Watchdog timeout",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vobd:  \\[%{DATA:application_name}\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_process_name}\\] Watchdog timeout occurred for uplink %{DATA:vmware_nic_id}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cisco Network Bug ID Flapping Event Extractor",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)%{DATA:vmware_data_id1}:\\[%{DATA:vmware_data_id2}\\]watchdog_work_cb@com.vmware.driverAPI\\#%{GREEDYDATA:vmware_driver_api_code} stack: %{GREEDYDATA:vmware_driver_stack_err_code}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Internal Disk Reset potential disk failure",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)lsi_mr3: mfi_TaskMgmt:%{BASE10NUM:task_mgmt_process_id}: Processing taskMgmt virt reset for device: %{GREEDYDATA:vmware_hba_id}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX Effective used capacity for SRP",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[FastSRP=%{DATA:emc_var_fastsrp_group}\\] \\[sev=%{DATA:emc_var_severity}\\]  = The Effective used capacity for SRP has changed to %{DATA:emc_var_effective_percentage} percent"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Internal Disk disconnection (disk failure) ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkwarning: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)WARNING: ScsiScan: %{DATA:vmware_scsi_code1}: Failed to add path %{GREEDYDATA:vmware_hba_id} : No connection"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMAX data device pool is almost full",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Save or data device pool is almost full."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Expired Host License",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}Z\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm 'Expired host license' on %{DATA:HOSTNAME} triggered an action\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware License Key Applied",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}Z\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[\\] \\[\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[License %{DATA:VMWARE_LIC_KEY} assigned to asset %{DATA:HOSTNAME} with id %{DATA:VMWARE_HOST_ID}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Host Lost Connection ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[Host %{DATA:HOSTNAME} in %{DATA:VCENTER_DATACENTER_ID} is not responding\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware guest is disconnected",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[%{DATA:vmware_guest_name} on host %{DATA:HYPERVISOR_NAME} in %{DATA:VCENTER_DATACENTER_ID} is disconnected\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "affinity  rule violated",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[%{DATA:vmware_guest_name} on %{DATA:HYPERVISOR_NAME} in %{DATA:VCENTER_DATACENTER_ID} is violating a DRS VM-Host %{GREEDYDATA:affinity_rule_type} rule\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Rename Datastore Event ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id} opID=%{DATA:vmware_process_id}\\)%{DATA:vmware_vol_name}\\: %{DATA:vmware_vol_id}\\: \\'%{DATA:datastore}\\' \\(FS %{DATA:vmware_filesys_id}\\)\\: FS rename %{DATA:vmware_fs_rename_status}, was %{GREEDYDATA:datastore_previously_named}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Task Executed ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Task: %{DATA:vmware_task_executed}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMAX service processor Unable to call Home ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Service Processor could not complete a call for service."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Alarm Snapshot",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm '%{DATA:VMWARE_ALARM_TYPE} Alarm' on %{DATA:vmware_guest_name} changed from %{DATA:VMWARE_SEV_LAST}to %{DATA:VMWARE_SEV_CURRENT}]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWare virtual machine power status ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[%{DATA:vmware_guest_name} on %{DATA:HYPERVISOR_NAME} in %{DATA:VCENTER_DATACENTER_ID} is powered %{DATA:vmware_power_state}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Virtual Machine Consolidation Status",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Virtual machine %{DATA:vmware_guest_name} disks %{DATA:consolidation status} on %{DATA:HYPERVISOR_NAME} in cluster %{DATA:VCENTER_DATACENTER_CLUSTER_ID} in %{DATA:VCENTER_DATACENTER_ID}.\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Virtual Machine disk consolidation is needed",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:application_name}:%{DATA:VCENTER_facility} hostd\\[%{DATA:VCENTER_PROCESS_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID2}\\] Event %{DATA:VMware_EventID}: Virtual machine %{DATA:vmware_guest_name} disks consolidation is needed on %{DATA:vmware_hypervisor_name_current} in cluster %{DATA:vmware_hypervisor_name_current} in ha-datacenter."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Guest OS Shutdown Initiated",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": " \\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[Guest OS shut down for %{DATA:vmware_guest_name} on %{DATA:HYPERVISOR_NAME} in %{DATA:VCENTER_DATACENTER_ID}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE Waiting for host to reboot",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Waiting for host %{DATA:HYPERVISOR_NAME} to %{DATA:vmware_task_executed}.\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "DVS Port Connection Status",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[The dvPort %{DATA:dvs_port_id} was %{DATA:vmware_dvs_status} in the vSphere Distributed Switch %{DATA:vmware_dvs_switch_name} in %{DATA:VCENTER_DATACENTER_ID}.\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware DRS initiated migration ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[DRS migrated %{DATA:vmware_guest_name} from %{DATA:vmware_hypervisor_name_previous} to %{DATA:HYPERVISOR_NAME} in cluster %{DATA:VCENTER_DATACENTER_CLUSTER_ID} in %{DATA:VCENTER_DATACENTER_ID}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware vSphere Update Manager Check ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:application_subprocess}\\] \\[\\] \\[%{DATA:VMware_EventID}\\] \\[Task %{GREEDYDATA:vmware_task_executed}in datacenter  completed successfully\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE guest removed from Cluster",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Removed %{DATA:vmware_guest_name} on %{DATA:HYPERVISOR_NAME} from%{DATA:VCENTER_DATACENTER_ID}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Cisco FNIC HBA BUG VM 2149522 / CS CSCva47085 ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)\\<%{DATA:fnic_number}\\>fnic : %{DATA:fnic_id}:: %{GREEDYDATA:hdr_event_name}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Shut down of Hypervisor",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Shut down of %{DATA:HYPERVISOR_NAME} in %{DATA:VCENTER_DATACENTER_ID}\\: \\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Lost access to volume for datastore outages RECOVERY",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[Successfully restored access to volume %{DATA:vmware_uuid_volume_id} \\(%{DATA:datastore}\\) following connectivity issues.\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "I/O unmanaged workload is detected SIOC",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[%{DATA:vmware_task_executed}\\: %{DATA:datastore}.\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware Alarm Host connection and power state email",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm '%{DATA:VMWARE_ALARM_TYPE}' on %{DATA:HOSTNAME} sent email to %{DATA:vmware_email_sendto}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Recommendations on datastore applied",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[%{DATA:vmware_task_executed} cluster %{DATA:datastore_cluster_id} were applied\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE Alarm 'Host connection failure",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[Alarm '%{DATA:VMWARE_ALARM_TYPE}' on %{DATA:HYPERVISOR_NAME} triggered by event %{DATA:vmware_trigger_id} 'Host %{DATA:HYPERVISOR_NAME} in %{DATA:VCENTER_DATACENTER_ID} is %{DATA:vmware_connection_state}'\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE VMs disconnected",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[%{DATA:vmware_guest_name} on host %{DATA:HYPERVISOR_NAME} in %{DATA:VCENTER_DATACENTER_ID} is %{DATA:vmware_connection_state}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE  state Severity",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm '%{DATA:VMWARE_ALARM_TYPE}' on %{DATA:HYP_OR_VM_NAME} changed from %{DATA:VMWARE_SEV_LAST} to %{DATA:VMWARE_SEV_CURRENT}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE detected non-vi workload (VOBD)",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:application_name}\\:  \\[%{DATA:vmware_process_name}\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_event_name}\\] Detected a non vi workload on datastore %{GREEDYDATA:datastore}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE unsupported external IO activity is detected",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:application_name}\\:  \\[%{DATA:vmware_process_name}\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_event_name}\\] An external IO activity is detected on datastore %{DATA:datastore}, this is an unsupported configuration. Please consult IO Resource Management Documentation or follow the Ask VMware link for more information."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware netCorrelator link status",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:application_name}\\:  \\[%{DATA:vmware_process_name}\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_event_name}\\] vmnic %{DATA:vmware_nic_id} linkstate %{GREEDYDATA:vmware_nic_status}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware Physical Link is down",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:application_name}\\:  \\[%{DATA:vmware_process_name}\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_event_name}\\] Physical NIC %{DATA:vmware_nic_id} linkstate is %{GREEDYDATA:vmware_nic_status}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Heartbeat Datastore Recovered (VOBD)",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:application_name}\\:  \\[vmfsCorrelator\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_event_name}\\] %{DATA:vmware_uuid_volume_id} %{GREEDYDATA:datastore}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware NMI cpu event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:application_name}\\:  \\[%{DATA:vmware_process_name}\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_event_name}\\] NMI IPI\\: eip\\(base\\)\\:ebp\\:cs \\[%{DATA:vmware_eip_code_1}\\(%{DATA:vmware_eip_code_2}\\)\\:%{DATA:vmware_eip_code_3}\\] \\(Src %{DATA:vmware_cpu_code_4}\\, %{DATA:cpu_id}\\)"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMWARE NMI Alarm",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[Alarm '%{DATA:VMWARE_ALARM_TYPE}' on %{HOSTNAME} triggered by event %{DATA:vmware_trigger_id} 'Issue detected on %{HOSTNAME} in %{DATA:VCENTER_DATACENTER_ID}\\: NMI: 709: NMI IPI received. Was eip\\(base\\)\\:ebp\\:cs \\[%{DATA:vmware_eip_code_1}\\(%{DATA:vmware_eip_code_2}\\)\\:%{DATA:vmware_eip_code_3}\\]\\(%{DATA:vmware_cpu_code_4}\\, %{DATA:cpu_id}\\)"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware scratch partition warning",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:application_name}\\:  \\[%{DATA:vmware_process_name}\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_event_name}\\] Size of scratch partition %{DATA:vmware_uuid_volume_id} is too small. Recommended scratch partition size is %{DATA:recommended_scratch_size} MiB."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "ScsiCorrelator Performance Latency",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:application_name}\\:  \\[%{DATA:vmware_process_name}\\] %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vmware_event_name}\\] Device %{DATA:vmware_naa_disk_id} performance has %{DATA:scsi_performance_status}. I/O latency reduced from %{BASE10NUM:previous_avg_device_latency} microseconds to %{BASE16FLOAT:current_avg_device_latency} microseconds\\."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "HOST AND POWER STATE ALARM",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm '%{DATA:VMWARE_ALARM_TYPE}' on %{HOSTNAME}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Average Device Latency Improved",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)ScsiDeviceIO: %{BASE10NUM:scsi_device_process_id}: Device %{DATA:vmware_naa_disk_id} performance has %{DATA:scsi_performance_status}. I/O latency reduced from %{BASE10NUM:previous_avg_device_latency} microseconds to %{BASE16FLOAT:current_avg_device_latency} microseconds."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Average Device Latency Deteriorated",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkwarning: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)WARNING: ScsiDeviceIO: %{BASE10NUM:scsi_device_process_id}: Device %{DATA:vmware_naa_disk_id} performance has %{DATA:scsi_performance_status}. I/O latency increased from average value of %{BASE10NUM:previous_avg_device_latency} microseconds to %{BASE16FLOAT:current_avg_device_latency} microseconds."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vim.event.EventEx performance has improved",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[]\\ \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Device %{DATA:vmware_naa_disk_id} performance has %{DATA:scsi_performance_status}. I/O latency reduced from %{BASE10NUM:previous_avg_device_latency} microseconds to %{BASE16FLOAT:current_avg_device_latency} microseconds.\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vim.event.EventEx performance",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[]\\ \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Device %{DATA:vmware_naa_disk_id} performance has %{DATA:scsi_performance_status}. I/O latency increased from average value of %{BASE10NUM:previous_avg_device_latency} microseconds to %{BASE16FLOAT:current_avg_device_latency} microseconds.\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Host Memory Alarm",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[]\\ \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Alarm '%{DATA:VMWARE_ALARM_TYPE}' on %{HOSTNAME} changed from %{DATA:VMWARE_SEV_LAST} to %{DATA:VMWARE_SEV_CURRENT}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware device detected to be a snapshot",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id} opID=%{DATA:vmware operation ID}\\)LVM\\: %{BASE10NUM:vmware_lvm_id}\\: Device %{DATA:vmware_naa_disk_id} detected to be a snapshot\\:"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware HostSyncFailedEvent Error communicating with remote host ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[]\\ \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Cannot synchronize host %{DATA:HOSTNAME}. An error occurred while communicating with the remote host.\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VmBeingHotMigratedEvent Vmware",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Migrating %{DATA:vmware_guest_name} from %{DATA:vmware_hypervisor_name_previous}, %{DATA:vmware_migrated_datastore_previous} to %{DATA:vmware_hypervisor_name_current}, %{DATA:vmware_migrated_datastore_current} in %{DATA:VCENTER_DATACENTER_ID}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Executing OP API Health",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "Executing op API_HEALTH on service %{DATA:vmware_process_name}\\."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Service State ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "Skip service %{DATA:vmware_process_name} health check. State %{DATA:vmware_service_state}, Curr request 0"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmotion Datastore migrating off",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Migrating %{DATA:vmware_guest_name} off host %{DATA:HOSTNAME} in %{DATA:VCENTER_DATACENTER_ID}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Receive process state",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:VMware_action} %{DATA:vmware_action_type} to get %{DATA:VMware_service} state for %{DATA:vmware_process_name}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "hostd-probe message",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\------\\ Early init logs Z %{DATA:HOSTNAME} %{DATA:application_name}\\: d   --------"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMAX license has changed",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[License=%{DATA:vmax_license}\\] \\[sev=%{DATA:emc_var_severity}\\]  = %{DATA:VMAX_quick_config} License has changed"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Virtual Machine State stop/start",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] %{DATA:username} \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[%{DATA:vmware_guest_name} on host %{DATA:HOSTNAME} in %{DATA:VCENTER_DATACENTER_ID} is %{DATA:vmware_service_state}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMAX item has changed ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = %{DATA:VMAX_quick_config} has changed"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "SDRS maintenance mode",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[Datastore %{DATA:datastore} is %{DATA:vmware_task_executed}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware SSH Logins Authentication Failure",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "authentication failure; logname= uid=%{BASE10NUM:vmware_uid_number} euid=%{BASE10NUM:vmware_euid_number} tty=ssh ruser= rhost=%{IPV4:ip_address}  user=%{DATA:username}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vSphere HA agent ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[vSphere HA agent on host %{DATA:HOSTNAME} connected to the vSphere HA master on host %{DATA:HOSTNAME} in cluster %{DATA:VCENTER_DATACENTER_CLUSTER_ID} in datacenter %{DATA:VCENTER_DATACENTER_ID}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Hypervisor CPU Error code / MCE ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vobd:  %{DATA:application_name} %{NUMBER:vmware_data_id1}%{DATA:vmware_data_id2}: \\[%{DATA:vob_cpu_log_msg}\\] MCE bank %{DATA:mce_bank_id_number}\\: status\\:%{DATA:vob_cpu_status_code} misc\\:%{DATA:vob_cpu_misc_code} cpu\\:%{GREEDYDATA:vob_cpu_id}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Hypervisor Memory Scrubbing Error",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)MCA\\: %{DATA:MCA_process_id}\\: CE Intr %{DATA:CE_code_1} %{DATA:CE_code_2} %{DATA:CE_code_3} %{DATA:CE_code_4} %{DATA:CE_code_5} Memory Controller Scrubbing Error on Channel %{DATA:memory_scrubbing_channel_error_id}\\."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Memory VMKalert Scrubbing Error",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkalert\\: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)ALERT\\: MCA\\: %{DATA:MCA_process_id}:\\ %{DATA:Exception_Code} Memory Controller Scrubbing Error on Channel %{DATA:memory_scrubbing_channel_error_id}\\."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware re-connected ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[%{DATA:vmware_service_state} to %{DATA:vmware_guest_name} in %{DATA:VCENTER_DATACENTER_ID}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Virtual Machine reconnected",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\[Virtual machine %{DATA:vmware_guest_name} is %{DATA:vmware_service_state}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware ESXI transmit timeout",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:HOSTNAME} vmkernel\\: %{DATA:cpuid}\\:%{DATA:cpu_process_id}\\)WARNING\\: LinNet\\: %{DATA:application_name}:%{DATA:vmware_process_id}\\: NETDEV WATCHDOG\\: %{DATA:vmware_nic_id}\\: transmit timed out"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware ESXI transmit timeout - vmkwarning",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:HOSTNAME} vmkwarning\\: %{DATA:cpuid}\\:%{DATA:cpu_process_id}\\)WARNING\\: LinNet\\: %{DATA:application_name}:%{DATA:vmware_process_id}\\: NETDEV WATCHDOG\\: %{DATA:vmware_nic_id}\\: transmit timed out"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmkwarning nenic timeout",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:HOSTNAME} vmkwarning\\: %{DATA:cpuid}\\:%{DATA:cpu_process_id}\\)WARNING\\: nenic: _vnic_dev_cmd2:333: %{DATA:nenic_device_id}Timed out devcmd %{GREEDYDATA:nenic_devcmd_instance}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmkernel NENIC Flapping Extraction",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:HOSTNAME} vmkernel\\: %{DATA:cpuid}\\:%{DATA:cpu_process_id}\\)nenic\\: %{DATA:nenic_message_state}:%{DATA:nenic-message_state_instance_number}\\: \\[%{DATA:nenic_device_id}\\] %{DATA:nenic-message_state_status} capability\\: %{GREEDYDATA:nenic-message_state_status_number}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
     }
   ],
-  "version": "3.2.2"
+  "version": "3.3.2"
 }
