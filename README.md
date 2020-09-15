@@ -3,8 +3,9 @@ Provides Graylog Dashboards for all Hypervisors, Storage performance, DVS Messag
 
 1. Download content_pack.json and install it under System/Input Content Packs
 2. Download vmware_vcenter_extractors and import it under the System/Inputs/Manage extractors 
-3. Make sure you point your syslog for both hypervisors and vcenters, start receiving your data. View the Vmware Dashboard. 
-4. Wait for your data to start coming in. 
+3. It is recommended to apply a dedicated bucket ports/syslog input for vmware to structure your data!
+4. Make sure you point your syslog for both hypervisors and vcenters, start receiving your data. View the Vmware Dashboard.
+5. Wait for your data to start coming in. 
 
 # Tune your esxi syslog configuration via ssh 
 
