@@ -1373,6 +1373,8 @@
       "condition_type": "none",
       "condition_value": ""
     },
+ 
+   
     {
       "title": "Host Memory Alarm",
       "extractor_type": "grok",
@@ -1415,6 +1417,8 @@
       "condition_type": "none",
       "condition_value": ""
     },
+   
+   
     {
       "title": "VMware HostSyncFailedEvent Error communicating with remote host ",
       "extractor_type": "grok",
@@ -2928,6 +2932,7 @@
       "condition_type": "none",
       "condition_value": ""
     },
+    
     {
       "title": "Host Memory Alarm",
       "extractor_type": "grok",
@@ -2956,6 +2961,8 @@
       "condition_type": "none",
       "condition_value": ""
     },
+    
+  
     {
       "title": "VMware HostSyncFailedEvent Error communicating with remote host ",
       "extractor_type": "grok",
@@ -2984,6 +2991,7 @@
       "condition_type": "none",
       "condition_value": ""
     },
+  
     {
       "title": "Executing OP API Health",
       "extractor_type": "grok",
@@ -3180,6 +3188,7 @@
       "condition_type": "none",
       "condition_value": ""
     },
+  
     {
       "title": "Vmware re-connected ",
       "extractor_type": "grok",
@@ -3263,7 +3272,63 @@
       },
       "condition_type": "none",
       "condition_value": ""
-    }
-  ],
-  "version": "3.3.2"
+    },
+    {
+      "title": "Vmware Hypervisor CPU Error code / MCA",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)MCA\\: %{DATA:MCA_process_id}\\: CE Poll %{DATA:CE_code_1} %{DATA:CE_code_2} %{DATA:CE_code_3} %{DATA:CE_code_4} %{DATA:CE_code_5} Memory Controller Scrubbing Error on Channel %{DATA:memory_scrubbing_channel_error_id}\\."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Vmware Certificate Expiration ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{WORD} 'OU=%{DATA:vmware_certificate_ou}\\,C=%{DATA:vmware_certificate_country},DC=%{DATA:vmware_certificate_dc},DC=%{DATA:vmware_certificate_name},CN=%{DATA:vmware_certificate_cn}' from '%{DATA:vmware_certificate_path}' expires on %{TIMESTAMP_ISO8601}\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Maintenance Mode State Enter/exit",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:application_name}\\: \\[%{DATA:vmware_event_name}\\] The host has %{DATA:maintenance_mode_state} maintenance mode"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Hostd Authentication State",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:application_name}\\: %{DATA:login_state} password for user %{DATA:username} from %{IPV4:ip_address}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    ],
+  "version": "3.3.8"
 }
