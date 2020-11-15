@@ -15,7 +15,7 @@
       "condition_value": ""
     },
     {
-      "title": "Cisco UCS FEX Status",
+      "title": "Cisco UCS FEX Status 1",
       "extractor_type": "grok",
       "converters": [],
       "order": 0,
