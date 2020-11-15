@@ -1,0 +1,117 @@
+{
+  "extractors": [ 
+{
+      "title": "Cisco UCS Call Home Event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:CISCO_CALL_HOME_EVENT}\\: %{GREEDYDATA:SAM_ALERT_DIAGNOSTIC_MAJOR}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cisco UCS FEX Status",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:CISCO_FEX_MSG}\\: %{DATA:CISCO_FEX_ID} %{GREEDYDATA:CISCO_FEX_STATUS}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cisco UCS IOM Module Status ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:CISCO_FEX_MSG} %{DATA:CISCO_SAT_CTRL_MSG}\\: %{DATA:CISCO_IOM_ID} Module %{DATA:CISCO_IOM_Module}\\: %{GREEDYDATA:CISCO_IOM_MODULE_STATUS}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cisco UCS Fault ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:CISCO_UCS_STATUS_MSG}\\: \\[%{DATA:CISCO_UCS_EVENT_ID}\\]\\[%{DATA:CISCO_UCS_SEVERITY}\\]\\[%{DATA:CISCO_UCS_ERROR_MSG}\\]\\[%{DATA:CISCO_UCS_CHASIS_HW_LOCATION}\\] %{DATA:CISCO_IOM_LOCATION} IOM %{DATA:CISCO_IOM_SLOT} \\(%{DATA:CISCO_UCS_FABRIC_ID}\\) is %{GREEDYDATA:CISCO_UCS_FABRIC_ASSESSIBILITY}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cisco UCS FEX Status 2 ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:CISCO_FEX_MSG}\\: %{DATA:CISCO_FEX_ID} %{DATA:CISCO_FEX_STATUS} \\(Serial Number %{GREEDYDATA:HARDWARE_SERIAL_NUMBER}\\)"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cisco UCS FEX Status 3",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:CISCO_FEX_MSG}\\: Fex %{DATA:CISCO_FEX_ID} is %{DATA:CISCO_FEX_STATUS} \\(Serial number \\:%{DATA:HARDWARE_SERIAL_NUMBER}\\)"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cisco UCS Fault Memory",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:CISCO_UCS_STATUS_MSG}\\: \\[%{DATA:CISCO_UCS_EVENT_ID}\\]\\[%{DATA:CISCO_UCS_SEVERITY}\\]\\[%{DATA:CISCO_UCS_ERROR_MSG}\\]\\[%{DATA:CISCO_UCS_CHASIS_HW_LOCATION}\\] %{DATA:CISCO_UCS_CHASIS_HW_LOCATION} shows error. Reason %{DATA:CISCO_UCS_MEMORY_MODULE_1}:%{DATA:CISCO_UCS_MEMORY_ERROR_1}; %{DATA:CISCO_UCS_MEMORY_MODULE_2}:%{DATA:CISCO_UCS_MEMORY_ERROR_2};"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cisco UCS Authentication",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:CISCO_UCS_STATUS_MSG}:\\ %{DATA:Cisco_UCS_Auth_Code} %{DATA:Cisco_UCS_Auth_status} for User  - %{GREEDYDATA:username}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    }
+   ],
+  "version": "3.3.8"
+}
