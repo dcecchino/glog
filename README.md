@@ -7,6 +7,12 @@ Provides Graylog Dashboards for all Hypervisors, Storage performance, DVS Messag
 4. Make sure you point your syslog for both hypervisors and vcenters, start receiving your data. View the Vmware Dashboard.
 5. Wait for your data to start coming in. 
 
+#Enable high port on graylog server iptables 
+
+iptables -t nat -A PREROUTING -p udp --dport 514 -j REDIRECT --to 1514
+iptables -t nat -A PREROUTING -p tcp --dport 514 -j REDIRECT --to 1514
+
+
 # Tune your esxi syslog configuration via ssh 
 
 # sed -i 's/verbose/error/g' /etc/vmware/vpxa/vpxa.cfg
