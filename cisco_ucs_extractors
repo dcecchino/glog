@@ -85,7 +85,7 @@
       "condition_value": ""
     },
     {
-      "title": "Cisco UCS Fault Memory",
+      "title": "Cisco UCS Error Messages",
       "extractor_type": "grok",
       "converters": [],
       "order": 0,
@@ -93,11 +93,11 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{DATA:CISCO_UCS_STATUS_MSG}\\: \\[%{DATA:CISCO_UCS_EVENT_ID}\\]\\[%{DATA:CISCO_UCS_SEVERITY}\\]\\[%{DATA:CISCO_UCS_ERROR_MSG}\\]\\[%{DATA:CISCO_UCS_CHASIS_HW_LOCATION}\\] %{DATA:CISCO_UCS_CHASIS_HW_LOCATION} shows error. Reason %{DATA:CISCO_UCS_MEMORY_MODULE_1}:%{DATA:CISCO_UCS_MEMORY_ERROR_1}; %{DATA:CISCO_UCS_MEMORY_MODULE_2}:%{DATA:CISCO_UCS_MEMORY_ERROR_2};"
+        "grok_pattern": "%UCSM-2-%{DATA:CISCO_UCS_STATUS_MSG}\\: \\[%{DATA:CISCO_UCS_EVENT_ID}\\]\\[%{DATA:CISCO_UCS_SEVERITY}\\]\\[%{DATA:CISCO_UCS_ERROR_MSG}\\]\\[%{DATA:CISCO_UCS_CHASIS_HW_LOCATION}\\] %{GREEDYDATA:CISCO_UCS_FULL_MSG}"
       },
       "condition_type": "none",
       "condition_value": ""
-    },
+    }
     {
       "title": "Cisco UCS Authentication",
       "extractor_type": "grok",
