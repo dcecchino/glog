@@ -9,8 +9,8 @@ Provides Graylog Dashboards for all Hypervisors, Storage performance, DVS Messag
 
 #Enable high port on graylog server iptables 
 
-iptables -t nat -A PREROUTING -p udp --dport 514 -j REDIRECT --to 1514
-iptables -t nat -A PREROUTING -p tcp --dport 514 -j REDIRECT --to 1514
+# iptables -t nat -A PREROUTING -p udp --dport 514 -j REDIRECT --to 1514
+# iptables -t nat -A PREROUTING -p tcp --dport 514 -j REDIRECT --to 1514
 
 
 # Tune your esxi syslog configuration via ssh 
