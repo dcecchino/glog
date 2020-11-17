@@ -97,7 +97,7 @@
       },
       "condition_type": "none",
       "condition_value": ""
-    }
+    },
     {
       "title": "Cisco UCS Authentication",
       "extractor_type": "grok",
