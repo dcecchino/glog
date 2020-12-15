@@ -3328,7 +3328,7 @@
       },
       "condition_type": "none",
       "condition_value": ""
-    ,
+    }
     ],
   "version": "3.3.8"
 }
