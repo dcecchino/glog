@@ -1,0 +1,274 @@
+{
+  "extractors": [
+
+  {
+      "title": "Cohesity Backup Tasks",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:cohesity_syslog_type}: \\{\"EventMessage\" : \"%{DATA:cohesity_event_message_type}\\\"\\, \"Timestamp\" : \"%{TIMESTAMP_ISO8601:cohesity_event_message_timestamp}\\\"\\, \\\"ClusterInfo\\\" \\: \\{\"ClusterId\" : \"%{DATA:cohesity_cluster_id}\\\", \"ClusterName\" : \"%{DATA:cohesity_cluster_name}\"\\}, \"EventType\" \\: %{DATA:cohesity_event_type}, \"EnvironmentType\" \\: %{DATA:cohesity_environment_type}, \"RegisteredSource\" \\: \\{\"EntityType\" \\: \"%{DATA:cohesity_entity_type}\", \"EntityId\" : \"%{DATA:cohesity_entity_id}\", \"EntityName\" \\: \"%{DATA:cohesity_backup_vcenter_name}\"\\}\\, \"BackupJobName\" \\: \"%{DATA:cohesity_backup_job_name}\"\\, \"BackupJobId\" \\: \"%{DATA:cohesity_backup_job_id_number}\", \"Entities\" \\: \\[\\{\"EntityType\" : \"kVMware\", \"EntityId\" \\: \"%{DATA:cohesity_backup_entity_id}\\, \"EntityName\" \\: \"%{DATA:cohesity_entity_hostname}\"}\\]\\, \"TaskId\" \\: \"%{DATA:cohesity_task_id}\"\\, \"AttributeMap\" \\: \\{\\}\\}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cohesity Backup Extraction",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:cohesity_syslog_type}: \\{\"EventMessage\" : \"%{DATA:cohesity_event_message_type}\\\"\\, \"Timestamp\" : \"%{TIMESTAMP_ISO8601:cohesity_event_message_timestamp}\\\"\\, \\\"ClusterInfo\\\" \\: \\{\"ClusterId\" : \"%{DATA:cohesity_cluster_id}\\\", \"ClusterName\" : \"%{DATA:cohesity_cluster_name}\"\\}, \"EventType\" \\: %{DATA:cohesity_event_type}, \"EnvironmentType\" \\: %{DATA:cohesity_environment_type}, \"RegisteredSource\" \\: \\{\"EntityType\" \\: \"%{DATA:cohesity_entity_type}\", \"EntityId\" : \"%{DATA:cohesity_entity_id}\", \"EntityName\" \\: \"%{DATA:cohesity_backup_vcenter_name}\"\\}\\, \"BackupJobName\" \\: \"%{DATA:cohesity_backup_job_name}\"\\, \"BackupJobId\" \\: \"%{DATA:cohesity_backup_job_id_number}\", \"Entities\" \\: \\[\\{\"EntityType\" : \"kVMware\", \"EntityId\" \\: \"%{DATA:cohesity_backup_entity_id}\\, \"EntityName\" \\: \"%{DATA:cohesity_entity_hostname}\"}\\]\\, \"ReplicationTarget\" \\: \\{\"ClusterId\" \\: \"%{DATA:cohesity_repliation_cluster_id}\", \"ClusterName\" \\: \"%{DATA:cohesity_replication_target_hostname}\"\\}, \"AttributeMap\" \\: \\{\"%{DATA:cohesity_attribute_name}\" : \"%{DATA:cohesity_attribute_number}\"\\}\\}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cohesity Backup Replication Extraction",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:cohesity_syslog_type}: \\{\"EventMessage\" : \"%{DATA:cohesity_event_message_type}\\\"\\, \"Timestamp\" : \"%{TIMESTAMP_ISO8601:cohesity_event_message_timestamp}\\\"\\, \\\"ClusterInfo\\\" \\: \\{\"ClusterId\" : \"%{DATA:cohesity_cluster_id}\\\", \"ClusterName\" : \"%{DATA:cohesity_cluster_name}\"\\}, \"EventType\" \\: %{DATA:cohesity_event_type}, \"EnvironmentType\" \\: %{DATA:cohesity_environment_type}, \"RegisteredSource\" \\: \\{\"EntityType\" \\: \"%{DATA:cohesity_entity_type}\", \"EntityId\" : \"%{DATA:cohesity_entity_id}\", \"EntityName\" \\: \"%{DATA:cohesity_backup_vcenter_name}\"\\}\\, \"BackupJobName\" \\: \"%{DATA:cohesity_backup_job_name}\"\\, \"BackupJobId\" \\: \"%{DATA:cohesity_backup_job_id_number}\", \"Entities\" \\: \\[\\{\"EntityType\" : \"kVMware\", \"EntityId\" \\: \"%{DATA:cohesity_backup_entity_id}\\, \"EntityName\" \\: \"%{DATA:cohesity_entity_hostname}\"}\\]\\, \"ReplicationTarget\" \\: \\{\"ClusterId\" \\: \"%{DATA:cohesity_repliation_cluster_id}\", \"ClusterName\" \\: \"%{DATA:cohesity_replication_target_hostname}\"\\}, \"AttributeMap\" \\: \\{\\}\\}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cohesity Backup Tasks 2",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:cohesity_syslog_type}: \\{\"EventMessage\" : \"%{DATA:cohesity_event_message_type}\\\"\\, \"Timestamp\" : \"%{TIMESTAMP_ISO8601:cohesity_event_message_timestamp}\\\"\\, \\\"ClusterInfo\\\" \\: \\{\"ClusterId\" : \"%{DATA:cohesity_cluster_id}\\\", \"ClusterName\" : \"%{DATA:cohesity_cluster_name}\"\\}, \"EventType\" \\: %{DATA:cohesity_event_type}, \"EnvironmentType\" \\: %{DATA:cohesity_environment_type}, \"RegisteredSource\" \\: \\{\"EntityType\" \\: \"%{DATA:cohesity_entity_type}\", \"EntityId\" : \"%{DATA:cohesity_entity_id}\", \"EntityName\" \\: \"%{DATA:cohesity_backup_vcenter_name}\"\\}\\, \"BackupJobName\" \\: \"%{DATA:cohesity_backup_job_name}\"\\, \"BackupJobId\" : \"%{DATA:cohesity_backup_job_id_number}\"\\, \"Entities\" \\: \\[\\]\\, \"TaskId\" \\: \"%{DATA:cohesity_task_id}\"\\, \"AttributeMap\" \\: \\{\"%{DATA:cohesity_attribute_name}\" : %{DATA:cohesity_attrib_number}\\}\\}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cohesity ssh user , ip, and port",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "for %{DATA:username} from %{IPV4} port %{DATA:cohesity_port} ssh2\\:"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cohesity failed password",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\: %{DATA:password_status}password for invalid user %{DATA:username} from %{IPV4} port %{DATA:cohesity_port} ssh2"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cohesity password",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\: %{DATA:password_status} %{DATA:password_type} for %{DATA:username} from %{IPV4} port %{DATA:cohesity_port} ssh2"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cohesity pam auth status",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\: %{DATA:unix_pam_module}\\(%{DATA:unix_service}\\:%{DATA:unix_service_pam}\\)\\: session %{DATA:pam_module_status} for user %{DATA:username}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cohesity pam auth status with uid",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\: %{DATA:unix_pam_module}\\(%{DATA:unix_service}\\:%{DATA:unix_service_pam}\\)\\: session %{DATA:pam_module_status} for user %{DATA:username} by \\(uid=%{DATA:unix_uid_id}\\)"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cohesity PAM fail lock",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:unix_pam_module}\\(%{DATA:unix_service}\\:%{DATA:unix_service_pam}\\)\\: User unknown"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cohesity Backup Failure Extraction",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:cohesity_syslog_type}: \\{\"EventMessage\" : \"%{DATA:cohesity_event_message_type}\\\"\\, \"Timestamp\" : \"%{TIMESTAMP_ISO8601:cohesity_event_message_timestamp}\\\"\\, \\\"ClusterInfo\\\" \\: \\{\"ClusterId\" : \"%{DATA:cohesity_cluster_id}\\\", \"ClusterName\" : \"%{DATA:cohesity_cluster_name}\"\\}, \"EventType\" \\: %{DATA:cohesity_event_type}, \"EnvironmentType\" \\: %{DATA:cohesity_environment_type}, \"RegisteredSource\" \\: \\{\"EntityType\" \\: \"%{DATA:cohesity_entity_type}\", \"EntityId\" : \"%{DATA:cohesity_entity_id}\", \"EntityName\" \\: \"%{DATA:cohesity_backup_vcenter_name}\"\\}\\, \"BackupJobName\" \\: \"%{DATA:cohesity_backup_job_name}\"\\, \"BackupJobId\" \\: \"%{DATA:cohesity_backup_job_id_number}\", \"Entities\" \\: \\[\\{\"EntityType\" : \"kVMware\", \"EntityId\" \\: \"%{DATA:cohesity_backup_entity_id}\\, \"EntityName\" \\: \"%{DATA:cohesity_entity_hostname}\"}\\], \"Error\" \\: \\{\"ErrorCode\" \\: \"%{DATA:COHESITY_ERROR_CODE}\"\\, \"ErrorMessage\" \\: \"\\[Code %{DATA:COHESITY_ERROR_CODE_NUMBER}\\] %{GREEDYDATA:COHESITY_ERROR_CODE_MESSAGE}\\\"}\\, \"TaskId\" \\: \"%{DATA:cohesity_task_id}\"\\, \"AttributeMap\" \\: \\{}\\}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cohesity Backup Failure Extraction 2",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:cohesity_syslog_type}: \\{\"EventMessage\" : \"%{DATA:cohesity_event_message_type}\\\"\\, \"Timestamp\" : \"%{TIMESTAMP_ISO8601:cohesity_event_message_timestamp}\\\"\\, \\\"ClusterInfo\\\" \\: \\{\"ClusterId\" : \"%{DATA:cohesity_cluster_id}\\\", \"ClusterName\" : \"%{DATA:cohesity_cluster_name}\"\\}, \"EventType\" \\: %{DATA:cohesity_event_type}, \"EnvironmentType\" \\: %{DATA:cohesity_environment_type}, \"RegisteredSource\" \\: \\{\"EntityType\" \\: \"%{DATA:cohesity_entity_type}\", \"EntityId\" : \"%{DATA:cohesity_entity_id}\", \"EntityName\" \\: \"%{DATA:cohesity_backup_vcenter_name}\"\\}\\, \"BackupJobName\" \\: \"%{DATA:cohesity_backup_job_name}\"\\, \"BackupJobId\" \\: \"%{DATA:cohesity_backup_job_id_number}\", \"Entities\" \\: \\[\\]\\, \"Error\" \\: \\{\"ErrorCode\" \\: \"%{DATA:COHESITY_ERROR_CODE}\"\\, \"ErrorMessage\" \\: \"\\[Code %{DATA:COHESITY_ERROR_CODE_NUMBER}\\] %{GREEDYDATA:COHESITY_ERROR_CODE_MESSAGE}\\\"}\\, \"TaskId\" \\: \"%{DATA:cohesity_task_id}\"\\, \"AttributeMap\" \\: \\{\"%{DATA:cohesity_attribute_name}\" : %{DATA:cohesity_attrib_number}\\}\\}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cohesity Backup Failure Extraction 3",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:cohesity_syslog_type}: \\{\"EventMessage\" : \"%{DATA:cohesity_event_message_type}\\\"\\, \"Timestamp\" : \"%{TIMESTAMP_ISO8601:cohesity_event_message_timestamp}\\\"\\, \\\"ClusterInfo\\\" \\: \\{\"ClusterId\" : \"%{DATA:cohesity_cluster_id}\\\", \"ClusterName\" : \"%{DATA:cohesity_cluster_name}\"\\}, \"EventType\" \\: %{DATA:cohesity_event_type}, \"EnvironmentType\" \\: %{DATA:cohesity_environment_type}, \"RegisteredSource\" \\: \\{\"EntityType\" \\: \"%{DATA:cohesity_entity_type}\", \"EntityId\" : \"%{DATA:cohesity_entity_id}\", \"EntityName\" \\: \"%{DATA:cohesity_backup_vcenter_name}\"\\}\\, \"BackupJobName\" \\: \"%{DATA:cohesity_backup_job_name}\"\\, \"BackupJobId\" \\: \"%{DATA:cohesity_backup_job_id_number}\", \"Entities\" \\: \\[\\]\\, \"Error\" \\: \\{\"ErrorCode\" \\: \"%{DATA:COHESITY_ERROR_CODE}\"\\, \"ErrorMessage\" \\: %{GREEDYDATA:COHESITY_ERROR_CODE_MESSAGE}\\}\\, \"TaskId\" \\: \"%{DATA:cohesity_task_id}\"\\, \"AttributeMap\" \\: \\{\"%{DATA:cohesity_attribute_name}\" : %{DATA:cohesity_attrib_number}\\}\\}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cohesity Backup Failure Extraction ORACLE Error",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:cohesity_syslog_type}: \\{\"EventMessage\" : \"%{DATA:cohesity_event_message_type}\\\"\\, \"Timestamp\" : \"%{TIMESTAMP_ISO8601:cohesity_event_message_timestamp}\\\"\\, \\\"ClusterInfo\\\" \\: \\{\"ClusterId\" : \"%{DATA:cohesity_cluster_id}\\\", \"ClusterName\" : \"%{DATA:cohesity_cluster_name}\"\\}, \"EventType\" \\: %{DATA:cohesity_event_type}, \"EnvironmentType\" \\: %{DATA:cohesity_environment_type}, \"RegisteredSource\" \\: \\{\"EntityType\" \\: \"%{DATA:cohesity_entity_type}\", \"EntityId\" : \"%{DATA:cohesity_entity_id}\", \"EntityName\" \\: \"%{DATA:cohesity_backup_vcenter_name}\"\\}\\, \"BackupJobName\" \\: \"%{DATA:cohesity_backup_job_name}\"\\, \"BackupJobId\" \\: \"%{DATA:cohesity_backup_job_id_number}\"\\, \"Entities\" \\: \\[\\{\"EntityType\" \\: \"%{DATA:cohesity_entity_type}\"\\, \"EntityId\" \\: \"%{DATA:cohesity_backup_entity_id}\\, \"EntityName\" \\: \"%{DATA:cohesity_entity_hostname}\"}\\], \"Error\" \\: \\{\"ErrorCode\" \\: \"%{DATA:COHESITY_ERROR_CODE}\"\\, \"ErrorMessage\" \\: \"%{GREEDYDATA:COHESITY_ERROR_CODE_MESSAGE}\\}\\, \"TaskId\" \\: \"%{DATA:cohesity_task_id}\"\\, \"AttributeMap\" \\: \\{}\\}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cohesity Backup Failure Extraction ORACLE Error 2",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:cohesity_syslog_type}: \\{\"EventMessage\" : \"%{DATA:cohesity_event_message_type}\\\"\\, \"Timestamp\" : \"%{TIMESTAMP_ISO8601:cohesity_event_message_timestamp}\\\"\\, \\\"ClusterInfo\\\" \\: \\{\"ClusterId\" : \"%{DATA:cohesity_cluster_id}\\\", \"ClusterName\" : \"%{DATA:cohesity_cluster_name}\"\\}, \"EventType\" \\: %{DATA:cohesity_event_type}, \"EnvironmentType\" \\: %{DATA:cohesity_environment_type}, \"RegisteredSource\" \\: \\{\"EntityType\" \\: \"%{DATA:cohesity_entity_type}\", \"EntityId\" : \"%{DATA:cohesity_entity_id}\", \"EntityName\" \\: \"%{DATA:cohesity_backup_vcenter_name}\"\\}\\, \"BackupJobName\" \\: \"%{DATA:cohesity_backup_job_name}\"\\, \"BackupJobId\" \\: \"%{DATA:cohesity_backup_job_id_number}\"\\, \"Entities\" \\: \\[\\], \"Error\" \\: \\{\"ErrorCode\" \\: \"%{DATA:COHESITY_ERROR_CODE}\", \"ErrorMessage\" \\: \"%{GREEDYDATA:COHESITY_ERROR_CODE_MESSAGE}\\}\\, \"TaskId\" \\: \"%{DATA:cohesity_task_id}\"\\, \"AttributeMap\" \\: \\{\"%{DATA:cohesity_attribute_name}\" : %{DATA:cohesity_attrib_number}\\}\\}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cohesity Oracle Pass ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:cohesity_syslog_type}: \\{\"EventMessage\" : \"%{DATA:cohesity_event_message_type}\\\"\\, \"Timestamp\" : \"%{TIMESTAMP_ISO8601:cohesity_event_message_timestamp}\\\"\\, \\\"ClusterInfo\\\" \\: \\{\"ClusterId\" : \"%{DATA:cohesity_cluster_id}\\\", \"ClusterName\" : \"%{DATA:cohesity_cluster_name}\"\\}, \"EventType\" \\: %{DATA:cohesity_event_type}, \"EnvironmentType\" \\: %{DATA:cohesity_environment_type}, \"RegisteredSource\" \\: \\{\"EntityType\" \\: \"%{DATA:cohesity_environment_type}\", \"EntityId\" : \"%{DATA:cohesity_entity_id}\", \"EntityName\" \\: \"%{DATA:cohesity_backup_vcenter_name}\"\\}\\, \"BackupJobName\" \\: \"%{DATA:cohesity_backup_job_name}\"\\, \"BackupJobId\" \\: \"%{DATA:cohesity_backup_job_id_number}\"\\, \"Entities\" \\: \\[\\{\"EntityType\" \\: \"%{DATA:cohesity_entity_type}\"\\, \"EntityId\" \\: \"%{DATA:cohesity_backup_entity_id}\\, \"EntityName\" \\: \"%{DATA:cohesity_entity_hostname}\"}\\], \"TaskId\" \\: \"%{DATA:cohesity_task_id}\"\\, \"AttributeMap\" \\: \\{}\\}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cohesity Archival backup Extraction ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} %{DATA:cohesity_syslog_type}: \\{\"EventMessage\" : \"%{DATA:cohesity_event_message_type}\\\"\\, \"Timestamp\" : \"%{TIMESTAMP_ISO8601:cohesity_event_message_timestamp}\\\"\\, \\\"ClusterInfo\\\" \\: \\{\"ClusterId\" : \"%{DATA:cohesity_cluster_id}\\\", \"ClusterName\" : \"%{DATA:cohesity_cluster_name}\"\\}, \"EventType\" \\: %{DATA:cohesity_event_type}, \"EnvironmentType\" \\: %{DATA:cohesity_environment_type}, \"RegisteredSource\" \\: \\{\"EntityType\" \\: \"%{DATA:cohesity_entity_type}\", \"EntityId\" : \"%{DATA:cohesity_entity_id}\", \"EntityName\" \\: \"%{DATA:cohesity_backup_vcenter_name}\"\\}\\, \"BackupJobName\" \\: \"%{DATA:cohesity_backup_job_name}\"\\, \"BackupJobId\" \\: \"%{DATA:cohesity_backup_job_id_number}\", \"Entities\" \\: \\[\\]\\, \"%{DATA:cohesity_archival_target}\\\" \\: \\{\"Type\" \\: \"%{DATA:cohesity_archivaltarget_type}\"\\, \"Name\" \\: \"%{DATA:cohesity_archival_name}\"\\}\\, \"AttributeMap\" \\: \\{\\}\\}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cohesity login connectivity status",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\: %{DATA:unix_connection_status} from %{IPV4} port %{GREEDYDATA:cohesity_port} ssh2\\: RSA %{DATA:cohesity_rsa_encryption}\\:%{GREEDYDATA:cohesity_rsa_encryption_key}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cohesity connection status",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\: Received disconnect from %{IPV4} port %{DATA:cohesity_port}\\:%{DATA:cohesity_port2}\\: %{DATA:cohesity_connection_status} by user"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    }
+  
+
+  ],
+  "version": "4.0.1"
+}

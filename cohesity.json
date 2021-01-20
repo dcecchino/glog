@@ -1,0 +1,996 @@
+{
+  "v": 1,
+  "id": "c4d6973d-dd0b-4a9c-af65-f892ce50f5c7",
+  "rev": 1,
+  "name": "Cohesity",
+  "summary": "Cohesity Content Pack",
+  "description": "\n",
+  "vendor": "Dave C",
+  "url": "",
+  "parameters": [],
+  "entities": [
+    {
+      "v": "1",
+      "type": {
+        "name": "dashboard",
+        "version": "2"
+      },
+      "id": "fc6c0f51-5431-4c91-87a8-c64c4b7f34b4",
+      "data": {
+        "summary": {
+          "@type": "string",
+          "@value": ""
+        },
+        "search": {
+          "queries": [
+            {
+              "id": "0179ce27-0082-4ab3-b26e-11afe35492f2",
+              "timerange": {
+                "type": "relative",
+                "range": 300
+              },
+              "query": {
+                "type": "elasticsearch",
+                "query_string": ""
+              },
+              "search_types": [
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "(cohesity_cluster_name:*) (vmware_task_executed:\"Remove snapshot\" vmware_task_executed:\"Create virtual machine snapshot\")"
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "time",
+                      "field": "timestamp",
+                      "interval": {
+                        "type": "auto",
+                        "scaling": 1
+                      }
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "e4528bc1-22cb-497f-89a0-cb51ac673d6e",
+                  "column_groups": [],
+                  "sort": []
+                },
+                {
+                  "name": "events",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 604800
+                  },
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "cohesity_cluster_name:*"
+                  },
+                  "streams": [],
+                  "id": "fdd1849b-983b-4f6b-bbd0-6c25224d888f",
+                  "type": "events",
+                  "filter": null
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "cohesity_cluster_name:*"
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 604800
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "time",
+                      "field": "timestamp",
+                      "interval": {
+                        "type": "auto",
+                        "scaling": 1
+                      }
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "fdd5827c-7f63-4582-990b-d9e641c3fd9a",
+                  "column_groups": [
+                    {
+                      "type": "values",
+                      "field": "cohesity_backup_job_name",
+                      "limit": 15
+                    }
+                  ],
+                  "sort": [
+                    {
+                      "type": "pivot",
+                      "field": "timestamp",
+                      "direction": "Ascending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "(cohesity_cluster_name:*) (vmware_task_executed:\"Remove snapshot\" vmware_task_executed:\"Create virtual machine snapshot\" NOT application_name:vim.event.UserLoginSessionEvent)"
+                  },
+                  "name": null,
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "offset": 0,
+                  "streams": [],
+                  "filter": null,
+                  "decorators": [],
+                  "type": "messages",
+                  "id": "91082738-8cd5-4089-a31a-c603c3437704",
+                  "limit": 150
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "cohesity_cluster_name:*"
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "time",
+                      "field": "timestamp",
+                      "interval": {
+                        "type": "auto",
+                        "scaling": 1
+                      }
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "3b425968-e1d2-4ef1-ad18-99e369901c81",
+                  "column_groups": [
+                    {
+                      "type": "values",
+                      "field": "cohesity_event_message_type",
+                      "limit": 15
+                    }
+                  ],
+                  "sort": [
+                    {
+                      "type": "pivot",
+                      "field": "timestamp",
+                      "direction": "Ascending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "snapshot AND application_name:vim.event.AlarmStatusChangedEvent AND VMWARE_ALARM_TYPE:\"Snapshot Size Alarm\" AND VMWARE_SEV_CURRENT:Red"
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [],
+                  "series": [],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "VCENTER_DATACENTER_ID",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "VCENTER_DATACENTER_CLUSTER_ID",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "vmware_guest_name",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "VMWARE_ALARM_TYPE",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "VMWARE_SEV_CURRENT",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "aa3638ee-84a3-44df-b6f2-9fea8bd70ded",
+                  "column_groups": [],
+                  "sort": []
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "cohesity_cluster_name:*"
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "cohesity_cluster_name",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "1560b53a-34f8-4898-a1d6-a2f60d013067",
+                  "column_groups": [],
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "count()",
+                      "direction": "Descending"
+                    }
+                  ]
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "username:YOURDOMAIN_HERE\\\\DOMAIN_ID\\-USER\\-a NOT logged"
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 28800
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "vmware_task_executed",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "VCENTER_DATACENTER_ID",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "3de30fda-6055-47a5-9cd2-ff8c329a7178",
+                  "column_groups": [],
+                  "sort": []
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": "(cohesity_cluster_name:* NOT session NOT disconnected NOT Accepted AND ErrorMessage)"
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [],
+                  "series": [
+                    {
+                      "type": "count",
+                      "id": "count()",
+                      "field": null
+                    }
+                  ],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "cohesity_backup_job_name",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "cohesity_cluster_name",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "9d371e1f-f13f-4de5-ab2e-ebe686bb85d0",
+                  "column_groups": [],
+                  "sort": []
+                },
+                {
+                  "query": {
+                    "type": "elasticsearch",
+                    "query_string": ""
+                  },
+                  "name": "chart",
+                  "timerange": {
+                    "type": "relative",
+                    "range": 86400
+                  },
+                  "streams": [],
+                  "series": [],
+                  "filter": null,
+                  "rollup": true,
+                  "row_groups": [
+                    {
+                      "type": "values",
+                      "field": "cohesity_attribute_name",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "cohesity_attrib_number",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "cohesity_backup_job_name",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "cohesity_backup_job_id_number",
+                      "limit": 15
+                    },
+                    {
+                      "type": "values",
+                      "field": "cohesity_cluster_name",
+                      "limit": 15
+                    }
+                  ],
+                  "type": "pivot",
+                  "id": "000c3ada-5ea2-41c4-b607-5b0830f050be",
+                  "column_groups": [],
+                  "sort": []
+                }
+              ]
+            }
+          ],
+          "parameters": [],
+          "requires": {},
+          "owner": "admin",
+          "created_at": "2021-01-20T19:36:38.415Z"
+        },
+        "created_at": "2020-12-07T21:09:42.316Z",
+        "requires": {},
+        "state": {
+          "0179ce27-0082-4ab3-b26e-11afe35492f2": {
+            "selected_fields": null,
+            "static_message_list_id": null,
+            "titles": {
+              "widget": {
+                "cf00f2f8-1f18-4142-bd74-fa2a7a0404d8": "Aggregating count() by vmware_task_executed, VCENTER_DATACENTER_ID last 8 hours",
+                "17939821-c56c-4f5c-be7b-b941b7d8212f": "Aggregating  by VCENTER_DATACENTER_ID, VCENTER_DATACENTER_CLUSTER_ID, vmware_guest_name, VMWARE_ALARM_TYPE, VMWARE_SEV_CURRENT last day",
+                "283adcd7-84bf-427a-bc53-a24e2e3e0b5d": "Aggregating count() by cohesity_cluster_name number of events",
+                "f0717175-09a2-4850-aa40-a9631c1370ff": "Failed backups in last 24 hours ",
+                "f0b4fc72-31ed-4110-9122-ce1ca43273fd": "Cohesity messages"
+              }
+            },
+            "widgets": [
+              {
+                "id": "17939821-c56c-4f5c-be7b-b941b7d8212f",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "snapshot AND application_name:vim.event.AlarmStatusChangedEvent AND VMWARE_ALARM_TYPE:\"Snapshot Size Alarm\" AND VMWARE_SEV_CURRENT:Red"
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "VCENTER_DATACENTER_ID",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "VCENTER_DATACENTER_CLUSTER_ID",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "vmware_guest_name",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "VMWARE_ALARM_TYPE",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "VMWARE_SEV_CURRENT",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": []
+                }
+              },
+              {
+                "id": "cf00f2f8-1f18-4142-bd74-fa2a7a0404d8",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 28800
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "username:YOURDOMAIN_HERE\\\\DOMAIN_ID\\USER\\-A NOT logged"
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "vmware_task_executed",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "VCENTER_DATACENTER_ID",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": []
+                }
+              },
+              {
+                "id": "ea0b3ba6-a798-447b-b33e-d92603bd5f2b",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "cohesity_cluster_name:*"
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "area",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "timestamp",
+                      "type": "time",
+                      "config": {
+                        "interval": {
+                          "type": "auto",
+                          "scaling": null
+                        }
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [
+                    {
+                      "field": "cohesity_event_message_type",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "visualization_config": {
+                    "interpolation": "step-after"
+                  },
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "pivot",
+                      "field": "timestamp",
+                      "direction": "Ascending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "00ee878e-1a1a-4e22-8294-a33500e57369",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "(cohesity_cluster_name:*) (vmware_task_executed:\"Remove snapshot\" vmware_task_executed:\"Create virtual machine snapshot\")"
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "bar",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "timestamp",
+                      "type": "time",
+                      "config": {
+                        "interval": {
+                          "type": "auto",
+                          "scaling": null
+                        }
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": []
+                }
+              },
+              {
+                "id": "cd4db72f-b6f2-4d4d-babe-b70fbdedc9d0",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 604800
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "cohesity_cluster_name:*"
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "area",
+                  "event_annotation": true,
+                  "row_pivots": [
+                    {
+                      "field": "timestamp",
+                      "type": "time",
+                      "config": {
+                        "interval": {
+                          "type": "auto",
+                          "scaling": null
+                        }
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [
+                    {
+                      "field": "cohesity_backup_job_name",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "visualization_config": {
+                    "interpolation": "spline"
+                  },
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "pivot",
+                      "field": "timestamp",
+                      "direction": "Ascending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "283adcd7-84bf-427a-bc53-a24e2e3e0b5d",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "cohesity_cluster_name:*"
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "area",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "cohesity_cluster_name",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": {
+                    "interpolation": "spline"
+                  },
+                  "formatting_settings": null,
+                  "sort": [
+                    {
+                      "type": "series",
+                      "field": "count()",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "f0717175-09a2-4850-aa40-a9631c1370ff",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "(cohesity_cluster_name:* NOT session NOT disconnected NOT Accepted AND ErrorMessage)"
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "cohesity_backup_job_name",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "cohesity_cluster_name",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [
+                    {
+                      "config": {
+                        "name": null
+                      },
+                      "function": "count()"
+                    }
+                  ],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": []
+                }
+              },
+              {
+                "id": "f0b4fc72-31ed-4110-9122-ce1ca43273fd",
+                "type": "messages",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": "(cohesity_cluster_name:*) (vmware_task_executed:\"Remove snapshot\" vmware_task_executed:\"Create virtual machine snapshot\" NOT application_name:vim.event.UserLoginSessionEvent)"
+                },
+                "streams": [],
+                "config": {
+                  "fields": [
+                    "timestamp",
+                    "source"
+                  ],
+                  "show_message_row": true,
+                  "decorators": [],
+                  "sort": [
+                    {
+                      "type": "pivot",
+                      "field": "timestamp",
+                      "direction": "Descending"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "51417805-5d0d-40eb-9f7a-7b83285a3171",
+                "type": "aggregation",
+                "filter": null,
+                "timerange": {
+                  "type": "relative",
+                  "range": 86400
+                },
+                "query": {
+                  "type": "elasticsearch",
+                  "query_string": ""
+                },
+                "streams": [],
+                "config": {
+                  "visualization": "table",
+                  "event_annotation": false,
+                  "row_pivots": [
+                    {
+                      "field": "cohesity_attribute_name",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "cohesity_attrib_number",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "cohesity_backup_job_name",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "cohesity_backup_job_id_number",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    },
+                    {
+                      "field": "cohesity_cluster_name",
+                      "type": "values",
+                      "config": {
+                        "limit": 15
+                      }
+                    }
+                  ],
+                  "series": [],
+                  "rollup": true,
+                  "column_pivots": [],
+                  "visualization_config": null,
+                  "formatting_settings": null,
+                  "sort": []
+                }
+              }
+            ],
+            "widget_mapping": {
+              "17939821-c56c-4f5c-be7b-b941b7d8212f": [
+                "aa3638ee-84a3-44df-b6f2-9fea8bd70ded"
+              ],
+              "ea0b3ba6-a798-447b-b33e-d92603bd5f2b": [
+                "3b425968-e1d2-4ef1-ad18-99e369901c81"
+              ],
+              "cd4db72f-b6f2-4d4d-babe-b70fbdedc9d0": [
+                "fdd1849b-983b-4f6b-bbd0-6c25224d888f",
+                "fdd5827c-7f63-4582-990b-d9e641c3fd9a"
+              ],
+              "f0717175-09a2-4850-aa40-a9631c1370ff": [
+                "9d371e1f-f13f-4de5-ab2e-ebe686bb85d0"
+              ],
+              "00ee878e-1a1a-4e22-8294-a33500e57369": [
+                "e4528bc1-22cb-497f-89a0-cb51ac673d6e"
+              ],
+              "51417805-5d0d-40eb-9f7a-7b83285a3171": [
+                "000c3ada-5ea2-41c4-b607-5b0830f050be"
+              ],
+              "cf00f2f8-1f18-4142-bd74-fa2a7a0404d8": [
+                "3de30fda-6055-47a5-9cd2-ff8c329a7178"
+              ],
+              "283adcd7-84bf-427a-bc53-a24e2e3e0b5d": [
+                "1560b53a-34f8-4898-a1d6-a2f60d013067"
+              ],
+              "f0b4fc72-31ed-4110-9122-ce1ca43273fd": [
+                "91082738-8cd5-4089-a31a-c603c3437704"
+              ]
+            },
+            "positions": {
+              "17939821-c56c-4f5c-be7b-b941b7d8212f": {
+                "col": 8,
+                "row": 5,
+                "height": 4,
+                "width": 4
+              },
+              "ea0b3ba6-a798-447b-b33e-d92603bd5f2b": {
+                "col": 5,
+                "row": 5,
+                "height": 4,
+                "width": 3
+              },
+              "cd4db72f-b6f2-4d4d-babe-b70fbdedc9d0": {
+                "col": 1,
+                "row": 5,
+                "height": 4,
+                "width": 4
+              },
+              "f0717175-09a2-4850-aa40-a9631c1370ff": {
+                "col": 1,
+                "row": 3,
+                "height": 2,
+                "width": 11
+              },
+              "00ee878e-1a1a-4e22-8294-a33500e57369": {
+                "col": 1,
+                "row": 1,
+                "height": 2,
+                "width": 11
+              },
+              "51417805-5d0d-40eb-9f7a-7b83285a3171": {
+                "col": 4,
+                "row": 9,
+                "height": 4,
+                "width": 5
+              },
+              "cf00f2f8-1f18-4142-bd74-fa2a7a0404d8": {
+                "col": 1,
+                "row": 9,
+                "height": 4,
+                "width": 3
+              },
+              "283adcd7-84bf-427a-bc53-a24e2e3e0b5d": {
+                "col": 9,
+                "row": 9,
+                "height": 4,
+                "width": 3
+              },
+              "f0b4fc72-31ed-4110-9122-ce1ca43273fd": {
+                "col": 1,
+                "row": 13,
+                "height": 12,
+                "width": 11
+              }
+            },
+            "formatting": {
+              "highlighting": []
+            },
+            "display_mode_settings": {
+              "positions": {}
+            }
+          }
+        },
+        "properties": [],
+        "owner": "admin",
+        "title": {
+          "@type": "string",
+          "@value": "Cohesity"
+        },
+        "type": "DASHBOARD",
+        "description": {
+          "@type": "string",
+          "@value": ""
+        }
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=4.0.1+6a0cc0b"
+        }
+      ]
+    }
+  ]
+}
