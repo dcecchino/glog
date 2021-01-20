@@ -1,7 +1,7 @@
 {
   "extractors": [ 
-{
-      "title": "Cisco UCS Call Home Event",
+  {
+      "title": "Cisco UCS CIMC Error",
       "extractor_type": "grok",
       "converters": [],
       "order": 0,
@@ -9,82 +9,12 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{DATA:CISCO_CALL_HOME_EVENT}\\: %{GREEDYDATA:SAM_ALERT_DIAGNOSTIC_MAJOR}"
+        "grok_pattern": "%{DATA:HOSTNAME} fault-engined\\: %{DATA:CISCO_UCS_STATUS_MSG}\\:\\[%{DATA:CISCO_UCS_EVENT_ID}\\]\\[%{DATA:CISCO_UCS_SEVERITY}\\]\\[%{DATA:CISCO_UCS_ERROR_MSG}\\]\\[%{DATA:CISCO_UCS_CHASIS_HW_LOCATION}\\] %{DATA:CISCO_UCS_SYSLOG_HW_MSG}\\:%{GREEDYDATA:CISCO_UCS_SYSLOG_HW_ERROR}"
       },
       "condition_type": "none",
       "condition_value": ""
     },
-    {
-      "title": "Cisco UCS FEX Status 1",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:CISCO_FEX_MSG}\\: %{DATA:CISCO_FEX_ID} %{GREEDYDATA:CISCO_FEX_STATUS}"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
-      "title": "Cisco UCS IOM Module Status ",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:CISCO_FEX_MSG} %{DATA:CISCO_SAT_CTRL_MSG}\\: %{DATA:CISCO_IOM_ID} Module %{DATA:CISCO_IOM_Module}\\: %{GREEDYDATA:CISCO_IOM_MODULE_STATUS}"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
-      "title": "Cisco UCS Fault ",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:CISCO_UCS_STATUS_MSG}\\: \\[%{DATA:CISCO_UCS_EVENT_ID}\\]\\[%{DATA:CISCO_UCS_SEVERITY}\\]\\[%{DATA:CISCO_UCS_ERROR_MSG}\\]\\[%{DATA:CISCO_UCS_CHASIS_HW_LOCATION}\\] %{DATA:CISCO_IOM_LOCATION} IOM %{DATA:CISCO_IOM_SLOT} \\(%{DATA:CISCO_UCS_FABRIC_ID}\\) is %{GREEDYDATA:CISCO_UCS_FABRIC_ASSESSIBILITY}"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
-      "title": "Cisco UCS FEX Status 2 ",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:CISCO_FEX_MSG}\\: %{DATA:CISCO_FEX_ID} %{DATA:CISCO_FEX_STATUS} \\(Serial Number %{GREEDYDATA:HARDWARE_SERIAL_NUMBER}\\)"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
-      "title": "Cisco UCS FEX Status 3",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:CISCO_FEX_MSG}\\: Fex %{DATA:CISCO_FEX_ID} is %{DATA:CISCO_FEX_STATUS} \\(Serial number \\:%{DATA:HARDWARE_SERIAL_NUMBER}\\)"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
+  {
       "title": "Cisco UCS Error Messages",
       "extractor_type": "grok",
       "converters": [],
@@ -99,7 +29,7 @@
       "condition_value": ""
     },
     {
-      "title": "Cisco UCS Authentication",
+      "title": "Cisco UCS CIMC Error 2 ",
       "extractor_type": "grok",
       "converters": [],
       "order": 0,
@@ -107,7 +37,49 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{DATA:CISCO_UCS_STATUS_MSG}:\\ %{DATA:Cisco_UCS_Auth_Code} %{DATA:Cisco_UCS_Auth_status} for User  - %{GREEDYDATA:username}"
+        "grok_pattern": "\\: %{DATA:application_name}\\:%{DATA:process_id}\\: # %{GREEDYDATA:CIMC_CODE_1} \\# %{DATA:CIMC_CODE_2} %{DATE_US} %{TIME} \\| %{DATA:CIMC_APP_TYPE} \\| %{GREEDYDATA:CISCO_UCS_ERROR_MSG} \\#%{DATA:CIMC_APP_CODE} \\| %{DATA:CISCO_UCS_SYSLOG_HW_ERROR} \\| %{GREEDYDATA:CIMC_STATE}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Cisco UCS CIMC Error 3",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:application_name}\\:%{DATA:process_id}\\: # %{GREEDYDATA:CIMC_CODE_1} \\# %{DATA:CIMC_CODE_2} %{DATE_US} %{TIME} UTC \\| %{DATA:CIMC_APP_TYPE} \\| %{GREEDYDATA:CISCO_UCS_ERROR_MSG} \\#%{DATA:CIMC_APP_CODE} \\| %{DATA:CISCO_UCS_SYSLOG_HW_ERROR} \\| %{GREEDYDATA:CIMC_STATE}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+     {
+      "title": "Cisco UCS Error Message 2",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%UCSM-3-%{GREEDYDATA:CISCO_UCS_STATUS_MSG}\\: \\[%{DATA:CISCO_UCS_EVENT_ID}\\]\\[%{DATA:CISCO_UCS_SEVERITY}\\]\\[%{DATA:CISCO_UCS_ERROR_MSG}\\]\\[%{DATA:CISCO_UCS_CHASIS_HW_LOCATION}\\] %{GREEDYDATA:CISCO_UCS_FULL_MSG}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "UCS Error Message 4",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%UCSM-4-%{GREEDYDATA:CISCO_UCS_STATUS_MSG}\\: \\[%{DATA:CISCO_UCS_EVENT_ID}\\]\\[%{DATA:CISCO_UCS_SEVERITY}\\]\\[%{DATA:CISCO_UCS_ERROR_MSG}\\]\\[%{DATA:CISCO_UCS_CHASIS_HW_LOCATION}\\] %{GREEDYDATA:CISCO_UCS_FULL_MSG}"
       },
       "condition_type": "none",
       "condition_value": ""
