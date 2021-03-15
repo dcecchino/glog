@@ -1,21 +1,6 @@
 {
   "extractors": [
-    {
-      "title": "VMware Last resort",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 2,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "\\[%{NUMBER:VMware_EventID}\\]%{GREEDYDATA:message}",
-        "named_captures_only": true
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
+        {
       "title": "Vmware Vmkernel Throttle error",
       "extractor_type": "grok",
       "converters": [],
