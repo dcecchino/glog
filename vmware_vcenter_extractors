@@ -336,21 +336,7 @@
       "condition_type": "none",
       "condition_value": ""
     },
-    {
-      "title": "VCENTER DCUI Login Process",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "\\[%{DATA:VCENTER_NUM_ID}\\] \\[%{GREEDYDATA:timestamp}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:username}\\] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VCENTER_PROCESS_ID}\\] \\[User %{DATA:LDAP_username}@%{IPV4:ip_address} logged in as %{DATA:VCENTER_CLIENT_APPLICATION}\\]"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
+     {
       "title": "VIRTUAL_MACHINE_CPU_MEMORY_STATUS",
       "extractor_type": "grok",
       "converters": [],
