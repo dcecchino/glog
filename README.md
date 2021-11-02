@@ -1,7 +1,10 @@
 # glog vmware content pack and extractors for graylog confirmed tested on 3.x and 4.x graylog-server
 Provides Graylog Dashboards for all Hypervisors, Storage performance, DVS Messages, Vmware version, Storage path failures, Host/Device Performance issues, Memory/CPU alerts, Last list of vmotions, MAC to DVS, VMware port group to hypervisor, Last login failures, Last successful logins, Last 2 hours guests attempting network sniffing, TOP LDAP users, and Vmware virtual machines recent changes by users all in a simple to use Dashboard competely customizable! To get the best benefit make sure your graylog instance is configured for syslog UDP, and make sure to use distributed switching within vmware! Have fun! Extractions using GROK, I've not had the time to change this to regex!
 
-New: Cohesity Extractors and Dashboard for Backups
+New: Cohesity Extractors and Dashboard for Backups 
+New: Dell and Cisco UCS Extractions
+New: VMware 7 regex extractions
+New: Security Extractions 
 
 1. Download content_pack.json and install it under System/Input Content Packs
 2. Download vmware_vcenter_extractors and import it under the System/Inputs/Manage extractors 
@@ -31,4 +34,4 @@ New: Cohesity Extractors and Dashboard for Backups
 # /etc/init.d/vpxa restart
 # esxcli system syslog reload 
 
-TODO list migrate extractors to reg expression
+Slowly migrating to regex from Grok 
