@@ -322,6 +322,20 @@
       },
       "condition_type": "none",
       "condition_value": ""
+    },
+    {
+      "title": "EMC Unity Syslog Event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": ": \"%{YEAR}\\-%{MONTHNUM}-%{MONTHDAY}T%{TIME}Z\" \"%{DATA:emc_unity_sp}@%{DATA:emc_unity_serial}\\\" \"%{DATA:emc_unity_management}\" \"%{DATA:emc_unity_message_code}\" \"%{DATA:emc_unity_username}\" \"%{DATA:facility}\" \"%{DATA:emc_unity_message_code_2}\" \\:: \"%{GREEDYDATA:emc_unity_message_code_description}\" \\:: Category=%{DATA:emc_unity_category} Component=%{DATA:emc_unity_component} TimeZone=%{GREEDYDATA:timezone}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
     }
    
 ],
