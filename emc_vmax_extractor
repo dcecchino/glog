@@ -1,7 +1,22 @@
 {
   "extractors": [
  {
-      "title": "EMC VMAX Data Pool utilization",
+      "title": "VMAX item has changed RegEX",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "VMAX_quick_config",
+      "extractor_config": {
+        "regex_value": "= (.+?) has changed."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+
+   {
+      "title": "VMAX Device state has changed to Not Present",
       "extractor_type": "grok",
       "converters": [],
       "order": 0,
@@ -9,13 +24,13 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[TPDataPool=%{DATA:emc_diskpool_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Data Pool utilization is now %{BASE10NUM:emc_var_data_pool_utilization} percent."
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[Device=%{DATA:emc_var_device_name}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Device state has changed to Not Present."
       },
       "condition_type": "none",
       "condition_value": ""
     },
-    {
-      "title": "EMC VMAX Data Pool change event",
+ {
+      "title": "EMC Director status",
       "extractor_type": "grok",
       "converters": [],
       "order": 0,
@@ -23,13 +38,13 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[TPDataPool=%{DATA:emc_diskpool_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Data Pool configuration has changed."
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[Director=%{DATA:emc_director_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Director state has changed to %{GREEDYDATA:emc_port_status}."
       },
       "condition_type": "none",
       "condition_value": ""
     },
     {
-      "title": "EMC VMAX Data Application Registration event",
+      "title": "EMC VMAX Port ID",
       "extractor_type": "grok",
       "converters": [],
       "order": 0,
@@ -37,12 +52,152 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Application Registration DB has changed."
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[Port=%{DATA:emc_port_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Port state has changed to %{GREEDYDATA:emc_port_status}."
       },
       "condition_type": "none",
       "condition_value": ""
     },
     {
+      "title": "EMC VMAX Director Not Responding",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[Director=%{DATA:emc_director_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Director not responding."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX DIsk Director Not responding",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[Director=%{DATA:emc_director_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Disk director not responding."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX Director is Dead!",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[Director=%{DATA:emc_director_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Director state has changed to Dead."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+ {
+      "title": "EMC VMAX Disk Error ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}] \\[Disk\\=%{DATA:emc_disk_device}\\] \\[sev=%{DATA:emc_var_severity}\\]  \\= %{GREEDYDATA:emc_disk_error_message}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+ {
+      "title": "EMC VMAX lock message",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[SEL=%{DATA:emc_sel_event_id}\\]  = %{GREEDYDATA:emc_disk_error_message}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX general warning",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = %{GREEDYDATA:emc_disk_error_message}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+   {
+      "title": "VMAX license has changed",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[License=%{DATA:vmax_license}\\] \\[sev=%{DATA:emc_var_severity}\\]  = %{DATA:VMAX_quick_config} License has changed"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+{
+      "title": "EMC VMAX Effective used capacity for SRP",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[FastSRP=%{DATA:emc_var_fastsrp_group}\\] \\[sev=%{DATA:emc_var_severity}\\]  = The Effective used capacity for SRP has changed to %{DATA:emc_var_effective_percentage} percent"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMAX data device pool is almost full",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Save or data device pool is almost full."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMAX service processor Unable to call Home ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Service Processor could not complete a call for service."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+{
       "title": "VMAX Back-End metadata usage",
       "extractor_type": "grok",
       "converters": [],
@@ -85,6 +240,48 @@
       "condition_value": ""
     },
     {
+      "title": "EMC VMAX SRP maximum capacity change",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[FastSRP=%{DATA:emc_var_fastsrp_group}\\] \\[sev=%{DATA:emc_var_severity}\\]  = The SRP maximum capacity has changed to %{BASE16FLOAT:emc_var_srp_max_capacity} GB."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+{
+      "title": "EMC VMAX Data Pool change event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[TPDataPool=%{DATA:emc_diskpool_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Data Pool configuration has changed."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "EMC VMAX Data Application Registration event",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Application Registration DB has changed."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
       "title": "EMC VMAX Array Configuration Event",
       "extractor_type": "grok",
       "converters": [],
@@ -112,8 +309,8 @@
       "condition_type": "none",
       "condition_value": ""
     },
-    {
-      "title": "EMC VMAX SRP maximum capacity change",
+{
+      "title": "EMC VMAX Data Pool utilization",
       "extractor_type": "grok",
       "converters": [],
       "order": 0,
@@ -121,133 +318,7 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[FastSRP=%{DATA:emc_var_fastsrp_group}\\] \\[sev=%{DATA:emc_var_severity}\\]  = The SRP maximum capacity has changed to %{BASE16FLOAT:emc_var_srp_max_capacity} GB."
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-     {
-      "title": "EMC VMAX Effective used capacity for SRP",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[FastSRP=%{DATA:emc_var_fastsrp_group}\\] \\[sev=%{DATA:emc_var_severity}\\]  = The Effective used capacity for SRP has changed to %{DATA:emc_var_effective_percentage} percent"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
-      "title": "VMAX data device pool is almost full",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Save or data device pool is almost full."
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-  {
-      "title": "EMC VMAX Effective used capacity for SRP",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[FastSRP=%{DATA:emc_var_fastsrp_group}\\] \\[sev=%{DATA:emc_var_severity}\\]  = The Effective used capacity for SRP has changed to %{DATA:emc_var_effective_percentage} percent"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
-      "title": "VMAX data device pool is almost full",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Save or data device pool is almost full."
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
- {
-      "title": "VMAX item has changed ",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = %{DATA:VMAX_quick_config} has changed"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
-      "title": "VMAX license has changed",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[License=%{DATA:vmax_license}\\] \\[sev=%{DATA:emc_var_severity}\\]  = %{DATA:VMAX_quick_config} License has changed"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
- {
-      "title": "VMAX service processor Unable to call Home ",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Service Processor could not complete a call for service."
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
-      "title": "EMC VMAX lock message",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[SEL=%{DATA:emc_sel_event_id}\\]  = %{GREEDYDATA:emc_disk_error_message}"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
-      "title": "EMC VMAX general warning",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = %{GREEDYDATA:emc_disk_error_message}"
+        "grok_pattern": "%{DATA:emc_var_month} %{BASE10NUM:emc_var_day} %{DATA:emc_var_utctime} EMCstorevntd: \\[fmt=evt\\] \\[evtid=%{DATA:emc_eventid}\\] \\[date=%{TIMESTAMP_ISO8601:emc_var_timestamp}\\] \\[symid=%{DATA:emc_vmax_id}\\] \\[TPDataPool=%{DATA:emc_diskpool_id}\\] \\[sev=%{DATA:emc_var_severity}\\]  = Data Pool utilization is now %{BASE10NUM:emc_var_data_pool_utilization} percent."
       },
       "condition_type": "none",
       "condition_value": ""
