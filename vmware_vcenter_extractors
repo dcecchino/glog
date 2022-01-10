@@ -1439,63 +1439,7 @@
       "condition_type": "none",
       "condition_value": ""
     },
-    {
-      "title": "VMware 7 PS Output with tabs delimited",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:username}     %{DATA:vmware7_ps_pid}  %{DATA:vmware7_ps_cpu_metric}  %{DATA:vmware7_ps_mem_metric}  %{DATA:vmware7_ps_vsz_metric}   %{DATA:vmware7_ps_rss_metric} %{DATA:vmware7_ps_tty}        %{DATA:vmware7_ps_stat}    %{DATA:vmware7_ps_start_time}   %{DATA:vmware7_ps_time} %{GREEDYDATA:application_name}"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
-      "title": "VMware PS Output extractor for processes",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:username}     %{DATA:vmware7_ps_pid} %{DATA:vmware7_ps_cpu_metric}  %{DATA:vmware7_ps_mem_metric}  %{DATA:vmware7_ps_vsz_metric}  %{DATA:vmware7_ps_rss_metric} %{DATA:vmware7_ps_tty}       %{DATA:vmware7_ps_stat}    %{DATA:vmware7_ps_start_time}   %{DATA:vmware7_ps_time} %{GREEDYDATA:application_name} ",
-        "named_captures_only": false
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
-      "title": "VMware 7 PS Output extractor tab",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:username}     %{DATA:vmware7_ps_pid}  %{DATA:vmware7_ps_cpu_metric}  %{DATA:vmware7_ps_mem_metric}  %{DATA:vmware7_ps_vsz_metric} %{DATA:vmware7_ps_rss_metric} %{DATA:vmware7_ps_tty}    %{DATA:vmware7_ps_stat}  %{DATA:vmware7_ps_start_time}   %{DATA:vmware7_ps_time} %{GREEDYDATA:application_name}"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
-      "title": "VMware 7 PS Output",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:username}       %{DATA:vmware7_ps_pid}  %{DATA:vmware7_ps_cpu_metric}  %{DATA:vmware7_ps_mem_metric}      %{DATA:vmware7_ps_vsz_metric}     %{DATA:vmware7_ps_rss_metric} %{DATA:vmware7_ps_tty}        %{DATA:vmware7_ps_stat}    %{DATA:vmware7_ps_start_time}   %{DATA:vmware7_ps_time} \\[%{GREEDYDATA:application_name}\\]"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
+    
     {
       "title": "VMware 7 Stats Monitor Status ",
       "extractor_type": "regex",
@@ -1506,20 +1450,6 @@
       "target_field": "statsmonitor_status",
       "extractor_config": {
         "regex_value": "status\\: ?(.*)"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
-      "title": "VMware 7 Stats Monitor Metric",
-      "extractor_type": "regex",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "statsmonitor_metric",
-      "extractor_config": {
-        "regex_value": "value\\: ?(.*) status"
       },
       "condition_type": "none",
       "condition_value": ""
