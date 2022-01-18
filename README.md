@@ -12,26 +12,30 @@ New: Security Extractions
 4. Make sure you point your syslog for both hypervisors and vcenters, start receiving your data. View the Vmware Dashboard.
 5. Wait for your data to start coming in. 
 
-#Enable high port on graylog server iptables 
+# Enable high port on graylog server iptables 
 
-# iptables -t nat -A PREROUTING -p udp --dport 514 -j REDIRECT --to 1514
-# iptables -t nat -A PREROUTING -p tcp --dport 514 -j REDIRECT --to 1514
+```
+iptables -t nat -A PREROUTING -p udp --dport 514 -j REDIRECT --to 1514
+iptables -t nat -A PREROUTING -p tcp --dport 514 -j REDIRECT --to 1514
+```
 
 
 # Tune your esxi syslog configuration via ssh 
 
-# sed -i 's/verbose/error/g' /etc/vmware/vpxa/vpxa.cfg
-# sed -i 's/verbose/error/g' /etc/vmware/hostd/config.xml
-# sed -i 's/verbose/error/g' /etc/vmware/rhttpproxy/config.xml 
-# sed -i 's/verbose/error/g' /etc/opt/vmware/fdm/fdm.cfg  
-# sed -i 's/info/error/g' /etc/vmware/hostd/probe-config.xml
-# esxcli system syslog config set --loghost='udp://update_syslog_ip_or_hostname:514'
-# esxcli network firewall ruleset set --ruleset-id=syslog --enabled=true
-# esxcli network firewall refresh
-# /etc/init.d/vmware-fdm restart
-# /etc/init.d/rhttpproxy restart
-# /etc/init.d/hostd restart
-# /etc/init.d/vpxa restart
-# esxcli system syslog reload 
+```
+sed -i 's/verbose/error/g' /etc/vmware/vpxa/vpxa.cfg
+sed -i 's/verbose/error/g' /etc/vmware/hostd/config.xml
+sed -i 's/verbose/error/g' /etc/vmware/rhttpproxy/config.xml 
+sed -i 's/verbose/error/g' /etc/opt/vmware/fdm/fdm.cfg  
+sed -i 's/info/error/g' /etc/vmware/hostd/probe-config.xml
+esxcli system syslog config set --loghost='udp://update_syslog_ip_or_hostname:514'
+esxcli network firewall ruleset set --ruleset-id=syslog --enabled=true
+esxcli network firewall refresh
+/etc/init.d/vmware-fdm restart
+/etc/init.d/rhttpproxy restart
+/etc/init.d/hostd restart
+/etc/init.d/vpxa restart
+esxcli system syslog reload 
+```
 
 Slowly migrating to regex from Grok 
