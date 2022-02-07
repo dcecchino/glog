@@ -182,9 +182,7 @@
       "condition_type": "none",
       "condition_value": ""
     },
-    
-    
-    {
+        {
       "title": "Cisco Detected Tx Unit Hang",
       "extractor_type": "grok",
       "converters": [],
@@ -325,7 +323,7 @@
       "condition_value": ""
     },
     
-   
+  
     {
       "title": "Vmware Receive process state",
       "extractor_type": "grok",
@@ -508,7 +506,6 @@
       "condition_type": "none",
       "condition_value": ""
     },
-    
     {
       "title": "Cisco Vmware Uplink has recovered",
       "extractor_type": "grok",
@@ -551,21 +548,7 @@
       "condition_type": "none",
       "condition_value": ""
     },
-    
-    {
-      "title": "Vmware Cisco FNIC HBA BUG VM 2149522 / CS CSCva47085 ",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)\\<%{DATA:fnic_number}\\>fnic : %{DATA:fnic_id}:: %{GREEDYDATA:hdr_event_name}"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
+  
     {
       "title": "VMWARE unsupported external IO activity is detected",
       "extractor_type": "grok",
@@ -692,8 +675,7 @@
       "condition_type": "none",
       "condition_value": ""
     },
-   
- 
+      
     {
       "title": "VMware SSH Logins Authentication Failure",
       "extractor_type": "grok",
@@ -764,7 +746,7 @@
       "condition_type": "none",
       "condition_value": ""
     },
-   
+    
     {
       "title": "Vmware re-connected ",
       "extractor_type": "grok",
@@ -906,20 +888,6 @@
       "condition_value": ""
     },
     {
-      "title": "Cisco UCS CIMC Error",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:HOSTNAME} fault-engined\\: %{DATA:CISCO_UCS_STATUS_MSG}\\:\\[%{DATA:CISCO_UCS_EVENT_ID}\\]\\[%{DATA:CISCO_UCS_SEVERITY}\\]\\[%{DATA:CISCO_UCS_ERROR_MSG}\\]\\[%{DATA:CISCO_UCS_CHASIS_HW_LOCATION}\\] %{DATA:CISCO_UCS_SYSLOG_HW_MSG}\\:%{GREEDYDATA:CISCO_UCS_SYSLOG_HW_ERROR}"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
       "title": "VOBD Failed Login Attempts",
       "extractor_type": "grok",
       "converters": [],
@@ -947,36 +915,8 @@
       "condition_type": "none",
       "condition_value": ""
     },
-    {
-      "title": "Vmware Hypervisor MCA Memory Controller Read error ",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)MCA\\: %{DATA:MCA_process_id}\\: CE Poll %{DATA:CE_code_1} %{DATA:CE_code_2} %{DATA:CE_code_3} %{DATA:CE_code_4} %{DATA:CE_code_5} Memory Controller Read Error on Channel %{DATA:memory_read_channel_error_id}\\."
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-   
-    {
-      "title": "Cisco UCS Error Messages",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%UCSM-2-%{DATA:CISCO_UCS_STATUS_MSG}\\: \\[%{DATA:CISCO_UCS_EVENT_ID}\\]\\[%{DATA:CISCO_UCS_SEVERITY}\\]\\[%{DATA:CISCO_UCS_ERROR_MSG}\\]\\[%{DATA:CISCO_UCS_CHASIS_HW_LOCATION}\\] %{GREEDYDATA:CISCO_UCS_FULL_MSG}"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
+  
+     {
       "title": "VMware DVS port status",
       "extractor_type": "grok",
       "converters": [],
@@ -1032,14 +972,9 @@
       "condition_type": "none",
       "condition_value": ""
     },
-    
    
    
-   
-    
-    
-   
-        {
+     {
       "title": "vmware vlan extractor",
       "extractor_type": "grok",
       "converters": [],
@@ -1053,21 +988,7 @@
       "condition_type": "none",
       "condition_value": ""
     },
-    {
-      "title": "Cisco MAC aged out",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "\\%%{DATA:CISCO_UCS_STATUS_MSG}\\: mac address %{DATA:cisco_mac_address} on vlan %{DATA:vlan_id} is aged out"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-   
+ 
     {
       "title": "VMware Processing taskMgmt abort/reset",
       "extractor_type": "grok",
@@ -1096,37 +1017,8 @@
       "condition_type": "none",
       "condition_value": ""
     },
-   
-   
-    {
-      "title": "Cisco UCS CIMC Error 2 ",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "\\: %{DATA:application_name}\\:%{DATA:process_id}\\: # %{GREEDYDATA:CIMC_CODE_1} \\# %{DATA:CIMC_CODE_2} %{DATE_US} %{TIME} \\| %{DATA:CIMC_APP_TYPE} \\| %{GREEDYDATA:CISCO_UCS_ERROR_MSG} \\#%{DATA:CIMC_APP_CODE} \\| %{DATA:CISCO_UCS_SYSLOG_HW_ERROR} \\| %{GREEDYDATA:CIMC_STATE}"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
-      "title": "Cisco UCS CIMC Error 3",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%{DATA:application_name}\\:%{DATA:process_id}\\: # %{GREEDYDATA:CIMC_CODE_1} \\# %{DATA:CIMC_CODE_2} %{DATE_US} %{TIME} UTC \\| %{DATA:CIMC_APP_TYPE} \\| %{GREEDYDATA:CISCO_UCS_ERROR_MSG} \\#%{DATA:CIMC_APP_CODE} \\| %{DATA:CISCO_UCS_SYSLOG_HW_ERROR} \\| %{GREEDYDATA:CIMC_STATE}"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
+    
+     {
       "title": "VMWARE 7 DNS Query ",
       "extractor_type": "grok",
       "converters": [],
@@ -1183,76 +1075,6 @@
       "condition_value": ""
     },
     {
-      "title": "Cisco UCS Error Message 2",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%UCSM-3-%{GREEDYDATA:CISCO_UCS_STATUS_MSG}\\: \\[%{DATA:CISCO_UCS_EVENT_ID}\\]\\[%{DATA:CISCO_UCS_SEVERITY}\\]\\[%{DATA:CISCO_UCS_ERROR_MSG}\\]\\[%{DATA:CISCO_UCS_CHASIS_HW_LOCATION}\\] %{GREEDYDATA:CISCO_UCS_FULL_MSG}"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
-      "title": "UCS Error Message 4",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%UCSM-4-%{GREEDYDATA:CISCO_UCS_STATUS_MSG}\\: \\[%{DATA:CISCO_UCS_EVENT_ID}\\]\\[%{DATA:CISCO_UCS_SEVERITY}\\]\\[%{DATA:CISCO_UCS_ERROR_MSG}\\]\\[%{DATA:CISCO_UCS_CHASIS_HW_LOCATION}\\] %{GREEDYDATA:CISCO_UCS_FULL_MSG}"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
-      "title": "Cisco UCS Event",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "\\[%{DATA:ucs_syslog_process_name}\\]\\[%{DATA:ucs_syslog_process_interna}\\]\\[\\] \\[%{DATA:ucs_function_stage}\\]\\: %{DATA:ucs_message_type}\\(%{DATA:ucs_backend_process_name}\\)"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
-      "title": "Cisco UCS CIMC Error 4",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "%UCSM-%{DATA:CISCO_UCS_SYSLOG_NUMBER}-%{DATA:CISCO_UCS_STATUS_MSG}\\: \\[%{DATA:CISCO_UCS_EVENT_ID}\\]\\[%{DATA:CISCO_UCS_SEVERITY}\\]\\[%{DATA:CISCO_UCS_ERROR_MSG}\\]\\[%{DATA:CISCO_UCS_CHASIS_HW_LOCATION}\\] %{GREEDYDATA:CISCO_UCS_FULL_MSG}"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
-      "title": "Cisco UCS CIMC Assert Events",
-      "extractor_type": "grok",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "message",
-      "target_field": "",
-      "extractor_config": {
-        "grok_pattern": "\\: %{GREEDYDATA:CISCO_CIMC_unidentifiable_info} \\;  MessageTimestamp \\= \\\"*\\\"%{DATA:CISCO_CIMC_timestamp}\\\" \\;  LogName = \"IPMI SEL\" \\;  LogCreationClassName \\= \"%{DATA:LogCreationClassName}\" \\;  Description \\= \"%{DATA:CIMC_STATE}\" \\;  CreationClassName \\= \"%{DATA:CreationClassName}\" \\; \\}"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
       "title": "VMKalert Memory Controller Read Error",
       "extractor_type": "grok",
       "converters": [],
@@ -1280,7 +1102,8 @@
       "condition_type": "none",
       "condition_value": ""
     },
-        {
+ 
+    {
       "title": "VMware dvs unknown status ",
       "extractor_type": "grok",
       "converters": [],
@@ -1350,7 +1173,7 @@
       "condition_type": "none",
       "condition_value": ""
     },
-    
+  
     {
       "title": "Vmware Expired Host License SNMP trap",
       "extractor_type": "grok",
@@ -1379,7 +1202,6 @@
       "condition_type": "none",
       "condition_value": ""
     },
- 
    
     {
       "title": "Check Datastore liveness",
@@ -1395,7 +1217,7 @@
       "condition_type": "none",
       "condition_value": ""
     },
-    
+  
     {
       "title": "Dell has detected Power Failure ",
       "extractor_type": "grok",
@@ -1424,7 +1246,7 @@
       "condition_type": "none",
       "condition_value": ""
     },
-   
+    
     {
       "title": "VMware HPSA Disk /Controller Issue",
       "extractor_type": "grok",
@@ -1439,7 +1261,6 @@
       "condition_type": "none",
       "condition_value": ""
     },
-    
     {
       "title": "VMware 7 Stats Monitor Status ",
       "extractor_type": "regex",
@@ -1450,6 +1271,20 @@
       "target_field": "statsmonitor_status",
       "extractor_config": {
         "regex_value": "status\\: ?(.*)"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "VMware 7 Stats Monitor Metric",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "statsmonitor_metric",
+      "extractor_config": {
+        "regex_value": "value\\: ?(.*) status"
       },
       "condition_type": "none",
       "condition_value": ""
@@ -1693,7 +1528,8 @@
       "condition_type": "none",
       "condition_value": ""
     },
-     {
+      
+    {
       "title": "Security HTTP Extraction",
       "extractor_type": "regex",
       "converters": [],
@@ -1750,7 +1586,6 @@
       "condition_value": ""
     },
    
-  
     {
       "title": "vim.event.EventEx Host hardware sensor state",
       "extractor_type": "grok",
@@ -2423,7 +2258,8 @@
       "condition_type": "none",
       "condition_value": ""
     },
-       {
+  
+    {
       "title": "IP_ExtractionforvimeventUserLogoutSessionEvent",
       "extractor_type": "regex",
       "converters": [],
@@ -2493,6 +2329,7 @@
       "condition_type": "none",
       "condition_value": ""
     },
+   
     {
       "title": "VMNIC regex",
       "extractor_type": "regex",
@@ -2702,7 +2539,78 @@
       },
       "condition_type": "none",
       "condition_value": ""
+    },
+    {
+      "title": "Vmware Hypervisor MCA Memory Controller Read error ",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME} vmkernel: %{DATA:cpu_id}:%{DATA:cpu_process_id}\\)MCA\\: %{DATA:MCA_process_id}\\: CE %{DATA:Poll_or_INT} %{DATA:CE_code_1} %{DATA:CE_code_2} %{DATA:CE_code_3} %{DATA:CE_code_4} %{DATA:CE_code_5} Memory Controller Read Error on Channel %{DATA:memory_read_channel_error_id}\\."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Regex VIB Software Install",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "vib_install_software",
+      "extractor_config": {
+        "regex_value": "VIB ?(.*) to ImageProfile"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+  
+    {
+      "title": "FCPIO Regex Extraction",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "hdr_event_name",
+      "extractor_config": {
+        "regex_value": "\\:: (.*)"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "FCPIO Regex Extraction fnic number extraction",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "fnic_number",
+      "extractor_config": {
+        "regex_value": "<([^\"]*)>"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "FCPIO Regex Extraction fnic id extraction",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "fnic_id",
+      "extractor_config": {
+        "regex_value": "fnic :([^\"]*)::"
+      },
+      "condition_type": "none",
+      "condition_value": ""
     }
   ],
-  "version": "4.2.0"
+  "version": "4.2.5"
 }
