@@ -20,7 +20,7 @@ iptables -t nat -A PREROUTING -p tcp --dport 514 -j REDIRECT --to 1514
 ```
 
 
-# Tune your esxi syslog configuration via ssh for VMware version 6.5 AND VMWARE 7.0UE or LESS!!1
+# Tune your esxi syslog configuration via ssh for VMware version 6.5 AND VMWARE 7.0U3 or LESS!!1
 
 ```
 sed -i 's/verbose/error/g' /etc/vmware/vpxa/vpxa.cfg
@@ -37,7 +37,7 @@ esxcli network firewall refresh
 /etc/init.d/vpxa restart
 esxcli system syslog reload 
 ```
-# READ CAREFULLY FOR VMWARE 7 
+# READ CAREFULLY FOR VMWARE 7 versions greater than 7.0U3 
 ```
 In previous releases (before ESXi 7.0U3) you may be instructed by other KB article(s) to change some settings of ESXi service "vpxa" by directly editing its configuration file (/etc/vmware/vpxa/vpxa.cfg) manually and restarting the "vpxa" service.
 
