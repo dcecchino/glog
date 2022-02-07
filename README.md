@@ -20,7 +20,7 @@ iptables -t nat -A PREROUTING -p tcp --dport 514 -j REDIRECT --to 1514
 ```
 
 
-# Tune your esxi syslog configuration via ssh for VMware version 6.5 AND VMWARE 7.0U3 or LESS!!1
+# Tune your esxi syslog configuration via ssh for VMware version 6.5 AND VMWARE 7.0U3 or LESS!!
 
 ```
 sed -i 's/verbose/error/g' /etc/vmware/vpxa/vpxa.cfg
