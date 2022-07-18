@@ -1,0 +1,663 @@
+{
+  "extractors": [
+    {
+      "title": "vmware7_ldap_extraction",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "LDAP_username",
+      "extractor_config": {
+        "regex_value": "User (.*)\\@"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_vmware_alarm_type",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "VMWARE_ALARM_TYPE",
+      "extractor_config": {
+        "regex_value": "Alarm '(.*)' on"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_hypervisor_name_1",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "HYPERVISOR_NAME",
+      "extractor_config": {
+        "regex_value": "on (.*) triggered "
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_hypervisor_name_2",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "HYPERVISOR_NAME",
+      "extractor_config": {
+        "regex_value": "entity (.*) was "
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_part_description",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "part_description",
+      "extractor_config": {
+        "regex_value": "Description (.*) state "
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_VMWARE_SEV_LAST ",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "VMWARE_SEV_LAST",
+      "extractor_config": {
+        "regex_value": "changed from (.*) to"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_VMWARE_SEV_CURRENT",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "VMWARE_SEV_CURRENT",
+      "extractor_config": {
+        "regex_value": " to (.*)\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_vmware_guest_name",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "vmware_guest_name",
+      "extractor_config": {
+        "regex_value": "on (.*) changed"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_vmware_alarm_type_2",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "VMWARE_ALARM_TYPE",
+      "extractor_config": {
+        "regex_value": "Alarm '(.*)': an SNMP"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_nfc_operation",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "vmware7_nfc_operation",
+      "extractor_config": {
+        "regex_value": "NFC operation '(.*)' for path "
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_nfc_operation_path",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "vmware7_nfc_operation_path",
+      "extractor_config": {
+        "regex_value": "for path '(.*)' was "
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_nfc_operation_ip",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "ip_address",
+      "extractor_config": {
+        "regex_value": "from '(.*)' and "
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_nfc_operation_status",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "vmware7_nfc_operation_status",
+      "extractor_config": {
+        "regex_value": "and completed with status '(.*)'"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "sensor_part_number",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "sensor_part_number",
+      "extractor_config": {
+        "regex_value": "Part Name/Number (.*) Manufacturer"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_sensor_manufacturer",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "sensor_manufacturer",
+      "extractor_config": {
+        "regex_value": "Manufacturer (.*)]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_sensor_state",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "sensor_state",
+      "extractor_config": {
+        "regex_value": "state (.*) for "
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_vmware_guest_name_2",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "vmware_guest_name",
+      "extractor_config": {
+        "regex_value": "Virtual machine (.*)'s"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_pmem_bandwidth",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "vmware7_pmem_bandwidth",
+      "extractor_config": {
+        "regex_value": "PMem bandwidth usage is (.*)]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_guest_name_3",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "vmware_guest_name",
+      "extractor_config": {
+        "regex_value": "A ticket for (.*) of "
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_hypervisor_name_3",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "HYPERVISOR_NAME",
+      "extractor_config": {
+        "regex_value": "on (.*) in "
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_ldap_extraction",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "LDAP_username",
+      "extractor_config": {
+        "regex_value": "Logout event by (.*) from "
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_ldap_extraction_2",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "LDAP_username",
+      "extractor_config": {
+        "regex_value": "Successful login (.*) from "
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_vmware_power_state",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "vmware_power_state",
+      "extractor_config": {
+        "regex_value": "has (.*)]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_hypervisor_name_4",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "HYPERVISOR_NAME",
+      "extractor_config": {
+        "regex_value": "on (.*) in "
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_vmware_task_executed",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "vmware_task_executed",
+      "extractor_config": {
+        "regex_value": "Task: (.*)]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_assignment_for_uuid",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "vmware7_assignment_object_for_uuid",
+      "extractor_config": {
+        "regex_value": "Assign a new (.*) UUID"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_uuid_assignment",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "vmware7_uuid_assignment",
+      "extractor_config": {
+        "regex_value": "UUID \\((.*)\\) to "
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_task_execution ",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "vmware_task_executed",
+      "extractor_config": {
+        "regex_value": "Running task (.*)\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_vmware_guest_name_connection",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "vmware_guest_name",
+      "extractor_config": {
+        "regex_value": "Virtual machine (.*) is "
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_connection_status",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "vmware7_connection_status",
+      "extractor_config": {
+        "regex_value": "is (.*)]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware_naa_disk_id",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "vmware_naa_disk_id",
+      "extractor_config": {
+        "regex_value": "Device (.*) performance"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_performance_previous_avg_device_latency",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "previous_avg_device_latency",
+      "extractor_config": {
+        "regex_value": "from (.*) microseconds to "
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_current_avg_device_latency",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "current_avg_device_latency",
+      "extractor_config": {
+        "regex_value": "to (.*) microseconds."
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware_scsi_performance_status",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "scsi_performance_status",
+      "extractor_config": {
+        "regex_value": "performance has (.*). I/O"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_hypervisor_name_5",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "HYPERVISOR_NAME",
+      "extractor_config": {
+        "regex_value": "Connected to (.*) in "
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware_sensor_id",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "sensor_id",
+      "extractor_config": {
+        "regex_value": "Sensor (.*) type"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_datacenterlookup_by_hypervisor",
+      "extractor_type": "lookup_table",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "HYPERVISOR_NAME",
+      "target_field": "VCENTER_DATACENTER_CLUSTER_ID",
+      "extractor_config": {
+        "lookup_table_name": "datacenter_lookup"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_vmware_folder_name_lookup",
+      "extractor_type": "lookup_table",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "vmware_guest_name",
+      "target_field": "vmware_folder_name",
+      "extractor_config": {
+        "lookup_table_name": "vmware-folders"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_hypervisor_name_6",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "HYPERVISOR_NAME",
+      "extractor_config": {
+        "regex_value": "query\\[A] (.*) from"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_vcenter_datacenterid_3",
+      "extractor_type": "lookup_table",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "HYPERVISOR_NAME",
+      "target_field": "VCENTER_DATACENTER_ID",
+      "extractor_config": {
+        "lookup_table_name": "host-cluster"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+{
+      "title": "vmware7_alarm_acknowledgement",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "alarm_acknowledgement",
+      "extractor_config": {
+        "regex_value": "Acknowledged alarm '(.*)'"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_template_name",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "template_name",
+      "extractor_config": {
+        "regex_value": "Template (.*) deployed on host"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_version",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "vmware_version",
+      "extractor_config": {
+        "regex_value": "version=(.*) build"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_build_id",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "vmware_build_id",
+      "extractor_config": {
+        "regex_value": "build=(.*) option"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_vmware_release",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "vmware_release",
+      "extractor_config": {
+        "regex_value": "option=(.*)"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware7_hostname crx ",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "HOSTNAME",
+      "extractor_config": {
+        "regex_value": "(.*) crx"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vcenter_grok_ip_extraction",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "cached %{DATA:HYPERVISOR_NAME} is %{IPV4}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    }
+  ],
+  "version": "4.3.3"
+}
