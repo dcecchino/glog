@@ -6,8 +6,10 @@ New: Dell and Cisco UCS Extractions
 New: VMware 7 regex extractions
 New: Security Extractions 
 
+# READ CAREFULLY (new vcenter 7 extractor should be used for vmware 7 only not 6.5, if you use the 6.5 extractors for a 7.0 vcenter instance your buffer processes will fill up very quickly and cause graylog to stop responding 
+
 1. Download content_pack.json and install it under System/Input Content Packs
-2. Download vmware_vcenter_extractors and import it under the System/Inputs/Manage extractors 
+2. Download vmware_vcenter_extractors (6.7 or less) or vmware7_extraction (version 7.0 or higher) and import it under the System/Inputs/Manage extractors 
 3. It is recommended to apply a dedicated bucket ports/syslog input for vmware to structure your data!
 4. Make sure you point your syslog for both hypervisors and vcenters, start receiving your data. View the Vmware Dashboard.
 5. Wait for your data to start coming in. 
