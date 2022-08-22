@@ -504,34 +504,8 @@
       "condition_type": "none",
       "condition_value": ""
     },
-    {
-      "title": "vmware7_datacenterlookup_by_hypervisor",
-      "extractor_type": "lookup_table",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "HYPERVISOR_NAME",
-      "target_field": "VCENTER_DATACENTER_CLUSTER_ID",
-      "extractor_config": {
-        "lookup_table_name": "datacenter_lookup"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
-    {
-      "title": "vmware7_vmware_folder_name_lookup",
-      "extractor_type": "lookup_table",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "vmware_guest_name",
-      "target_field": "vmware_folder_name",
-      "extractor_config": {
-        "lookup_table_name": "vmware-folders"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
+    
+   
     {
       "title": "vmware7_hypervisor_name_6",
       "extractor_type": "regex",
@@ -546,20 +520,7 @@
       "condition_type": "none",
       "condition_value": ""
     },
-    {
-      "title": "vmware7_vcenter_datacenterid_3",
-      "extractor_type": "lookup_table",
-      "converters": [],
-      "order": 0,
-      "cursor_strategy": "copy",
-      "source_field": "HYPERVISOR_NAME",
-      "target_field": "VCENTER_DATACENTER_ID",
-      "extractor_config": {
-        "lookup_table_name": "host-cluster"
-      },
-      "condition_type": "none",
-      "condition_value": ""
-    },
+   
 {
       "title": "vmware7_alarm_acknowledgement",
       "extractor_type": "regex",
