@@ -30,6 +30,9 @@ sed -i 's/verbose/error/g' /etc/vmware/hostd/config.xml
 sed -i 's/verbose/error/g' /etc/vmware/rhttpproxy/config.xml 
 sed -i 's/verbose/error/g' /etc/opt/vmware/fdm/fdm.cfg  
 sed -i 's/info/error/g' /etc/vmware/hostd/probe-config.xml
+sed -i 's/info/error/g' /etc/vmware/vsan/vsanperf.conf 
+sed -i 's/verbose/error/g' /etc/vmware/vsan/vsanmgmt-config.xml
+sed -i 's/verbose/error/g'  /etc/vmware/vsan/vsanesxcmd-config.xml    
 esxcli system syslog config set --loghost='udp://update_syslog_ip_or_hostname:514'
 esxcli network firewall ruleset set --ruleset-id=syslog --enabled=true
 esxcli network firewall refresh
@@ -37,6 +40,9 @@ esxcli network firewall refresh
 /etc/init.d/rhttpproxy restart
 /etc/init.d/hostd restart
 /etc/init.d/vpxa restart
+/etc/init.d/vsantraced  restart
+ /etc/init.d/vsanmgmtd  restart
+ sleep 5
 esxcli system syslog reload 
 ```
 # READ CAREFULLY FOR VMWARE 7 versions greater than 7.0U3 
