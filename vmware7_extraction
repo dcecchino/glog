@@ -15,6 +15,20 @@
       "condition_value": ""
     },
     {
+      "title": "hostname extraction vcenter",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "HOSTNAME",
+      "extractor_config": {
+        "regex_value": "on (.*) changed from "
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
       "title": "vmware7_vmware_alarm_type",
       "extractor_type": "regex",
       "converters": [],
