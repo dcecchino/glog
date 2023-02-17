@@ -620,15 +620,29 @@
       "condition_value": ""
     },
     {
-      "title": "vcenter_grok_ip_extraction",
-      "extractor_type": "grok",
+      "title": "regex extract vcenter id ",
+      "extractor_type": "regex",
       "converters": [],
       "order": 0,
       "cursor_strategy": "copy",
       "source_field": "message",
-      "target_field": "",
+      "target_field": "VCENTER_DATACENTER_ID",
       "extractor_config": {
-        "grok_pattern": "cached %{DATA:HYPERVISOR_NAME} is %{IPV4}"
+        "regex_value": "\\[com.vmware.vim.eam\\] (?:\\[+)(.+?)(?:\\]+)"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware datacenter id extraction ",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "VCENTER_DATACENTER_ID",
+      "extractor_config": {
+        "regex_value": "\\[info\\] \\[\\] (?:\\[+)(.+?)(?:\\]+)"
       },
       "condition_type": "none",
       "condition_value": ""
