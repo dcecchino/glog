@@ -2610,6 +2610,34 @@
       },
       "condition_type": "none",
       "condition_value": ""
+    },
+    {
+      "title": "dcui login failure type ",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "failure_type",
+      "extractor_config": {
+        "regex_value": "pam_unix\\(dcui\\:auth\\)\\: (.*); logname="
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "dcui login username extraction",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "username",
+      "extractor_config": {
+        "regex_value": " rhost=  user=(.*)"
+      },
+      "condition_type": "none",
+      "condition_value": ""
     }
   ],
   "version": "4.2.5"
