@@ -1,5 +1,5 @@
 {
-  "extractors": [
+  "extractors": [f
     {
       "title": "Vmware Vmkernel Throttle error",
       "extractor_type": "grok",
@@ -1810,7 +1810,7 @@
       "condition_type": "none",
       "condition_value": ""
     },
-    {
+      {
       "title": "Virtual machine Consolidation Needed",
       "extractor_type": "grok",
       "converters": [],
@@ -1819,7 +1819,7 @@
       "source_field": "message",
       "target_field": "",
       "extractor_config": {
-        "grok_pattern": "\\[%{NUMBER:VMware_EventID}\\] \\[%{DATA:VCENTER_NUM_ID}\\] \\[%{TIMESTAMP_ISO8601}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:VMware_EventID}\\] \\[Alarm 'Virtual machine Consolidation Needed status' on %{DATA:vmware_guest_name} changed from %{DATA:VMWARE_SEV_LAST} to %{DATA:VMWARE_SEV_CURRENT}\\]"
+        "grok_pattern": "\\[%{NUMBER:VMware_EventID}\\] \\[%{DATA:VCENTER_NUM_ID}\\] \\[%{TIMESTAMP_ISO8601}\\] \\[%{DATA:application_name}\\] \\[%{DATA:VCENTER_facility}\\] \\[%{DATA:LDAP_username}] \\[%{DATA:VCENTER_DATACENTER_ID}\\] \\[%{DATA:VMware_EventID}\\] \\[Alarm 'Virtual machine Consolidation Needed status\\' on %{DATA:vmware_guest_name} changed from %{DATA:VMWARE_SEV_LAST} to %{DATA:VMWARE_SEV_CURRENT}\\]"
       },
       "condition_type": "none",
       "condition_value": ""
