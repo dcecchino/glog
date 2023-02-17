@@ -2694,7 +2694,35 @@
       },
       "condition_type": "none",
       "condition_value": ""
-    }
+    },
+     {
+      "title": "vmware_guest_name for vmtools",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "vmware_guest_name",
+      "extractor_config": {
+        "regex_value": "/[^/]*/[^/]*/[^/]*/([^/]*).vmx opID"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "vmware guest name hostd extraction",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "vmware_guest_name",
+      "extractor_config": {
+        "regex_value": "/[^/]*/[^/]*/[^/]*/([^/]*).vmx opID"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    } 
     ],
   "version": "4.2.5"
 }
