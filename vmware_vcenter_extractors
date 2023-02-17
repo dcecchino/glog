@@ -2638,7 +2638,63 @@
       },
       "condition_type": "none",
       "condition_value": ""
+    },
+      {
+      "title": "hypervisor to vcenter webinterface failed login",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "username",
+      "extractor_config": {
+        "regex_value": "Cannot login (.*)\\@"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "hypervisor to vcenter login ip extraction ",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "IPV4",
+      "extractor_config": {
+        "regex_value": "@(.*)\\]"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "hostd username web extraction ",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "username",
+      "extractor_config": {
+        "regex_value": "login:(.*)\\]\\["
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "PAM webinterface failure type ",
+      "extractor_type": "regex",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "failure_type",
+      "extractor_config": {
+        "regex_value": "pam_lsass](.*)\\: error"
+      },
+      "condition_type": "none",
+      "condition_value": ""
     }
-  ],
+    ],
   "version": "4.2.5"
 }
