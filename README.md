@@ -1,4 +1,5 @@
 # glog vmware content pack and extractors for graylog confirmed tested on 4.3.7 graylog-server written for hypervisors and appliance version of vcenter
+# Note for VMware 8 and Graylog 5 installations is not being tested at the moment, but extractors and dashboards will import into graylog 5.1.4 or higher, however somme widgets will not work properly due to queries needing to be updated due to parsing errors.  
 Provides Graylog Dashboards for all Hypervisors, Storage performance, DVS Messages, Vmware version, Storage path failures, Host/Device Performance issues, Memory/CPU alerts, Last list of vmotions, MAC to DVS, VMware port group to hypervisor, Last login failures, Last successful logins, Last 2 hours guests attempting network sniffing, TOP LDAP users, and Vmware virtual machines recent changes by users all in a simple to use Dashboard competely customizable! To get the best benefit make sure your graylog instance is configured for syslog UDP, and make sure to use distributed switching within vmware! Have fun! Extractions using GROK, I've not had the time to change this to regex!
 
 New: Cohesity Extractors and Dashboard for Backups 
