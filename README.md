@@ -10,7 +10,7 @@ New: Dell and Cisco UCS Extractions
 New: VMware 7 regex extractions
 New: Security Extractions 
 
-# READ CAREFULLY (new vcenter 7 extractor should be used for vmware 7/8 only not 6.5, if you use the 6.5 extractors for a 7.0 vcenter instance your buffer processes will fill up very quickly and cause graylog to stop responding, also to install the content pack you have to have a minimum version of 4.3.7
+# READ CAREFULLY (new vcenter 7 extractor should be used for vmware 7/8 only not 6.5, if you use the 6.5 extractors for a 7.0 vcenter instance your buffer processes will fill up very quickly and cause graylog to stop responding, also to install the content pack you have to have a minimum version of 6
 
 1. Download content_pack.json and install it under System/Input Content Packs
 2. Download vmware_esxi_extractors (apply to esxi input) or vmware7_extraction (version 7.0 or higher and apply to vcenter input) and import it under the System/Inputs/Manage extractors 
