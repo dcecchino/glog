@@ -1,5 +1,5 @@
 # glog vmware content pack and extractors for graylog confirmed tested on 4.3.7 graylog-server written for hypervisors and appliance version of vcenter
-# Note for VMware 8 and Graylog 5 installations is not being tested at the moment, but extractors and dashboards will import into graylog 5.1.4 or higher, however some widgets will not work properly due to queries needing to be updated due to parsing errors.  
+# Note for VMware 8 and Graylog 6 installations has been tested  
 Provides Graylog Dashboards for all Hypervisors, Storage performance, DVS Messages, Vmware version, Storage path failures, Host/Device Performance issues, Memory/CPU alerts, Last list of vmotions, MAC to DVS, VMware port group to hypervisor, Last login failures, Last successful logins, Last 2 hours guests attempting network sniffing, TOP LDAP users, and Vmware virtual machines recent changes by users all in a simple to use Dashboard competely customizable! To get the best benefit make sure your graylog instance is configured for syslog UDP, and make sure to use distributed switching within vmware! Have fun! Extractions using GROK, I've not had the time to change this to regex!
 
 ![image](https://github.com/dcecchino/glog/assets/17807052/5faea0fc-e406-4bf6-a753-d00704fdcbb2)
@@ -10,7 +10,7 @@ New: Dell and Cisco UCS Extractions
 New: VMware 7 regex extractions
 New: Security Extractions 
 
-# READ CAREFULLY (new vcenter 7 extractor should be used for vmware 7 only not 6.5, if you use the 6.5 extractors for a 7.0 vcenter instance your buffer processes will fill up very quickly and cause graylog to stop responding, also to install the content pack you have to have a minimum version of 4.3.7
+# READ CAREFULLY (new vcenter 7 extractor should be used for vmware 7/8 only not 6.5, if you use the 6.5 extractors for a 7.0 vcenter instance your buffer processes will fill up very quickly and cause graylog to stop responding, also to install the content pack you have to have a minimum version of 4.3.7
 
 1. Download content_pack.json and install it under System/Input Content Packs
 2. Download vmware_esxi_extractors (apply to esxi input) or vmware7_extraction (version 7.0 or higher and apply to vcenter input) and import it under the System/Inputs/Manage extractors 
